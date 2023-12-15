@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    {% include 'layout/header.html.twig' %}
+
+    <div class="main-container">
+        <div class="main-container__title-container">
+            <h1>Bienvenue dans l'association <br><span>Arrimages</span></h1>
+        </div>
+
+        <div class="main-container__video-container">
+            <video class="main-container__video-container__video" autoplay controls>
+                <source src="{{ asset('assets/videos/islands.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="main-container__home-btn">
+            <a href="#" class="main-container__home-btn__discover-btn">Nous découvrir</a>
+            <a href="#" class="main-container__home-btn__contact-btn">Nous contacter</a>
+        </div>
+    </div>
+
+    {% include 'layout/footer.html.twig' %}
+
+{% endblock %}
