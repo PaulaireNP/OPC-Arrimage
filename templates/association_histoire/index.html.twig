@@ -3,18 +3,33 @@
 {% block title %}Hello AssociationHistoireController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% include 'layout/header.html.twig' %}
+    <div>
+        <div>
+            <h1>Il était une fois <span>ARRIMAGES</span></h1>
+        </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/src/Controller/AssociationHistoireController.php'|file_link(0) }}">src/Controller/AssociationHistoireController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/templates/association_histoire/index.html.twig'|file_link(0) }}">templates/association_histoire/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <div>
+            <h3>Dans les <span>années 80</span> à Gagny</h3>
+            <p>La confédération syndicale des familles, la mairie et des habitants du quartier des peupliers avaient souhaité l’implantation d’une équipe de prévention au service des habitants.
+                Une adjointe au maire (nous n’avons plus le nom en tête) avait suivi le dossier d’implantation. L’action fut positionnée dans le « quartier des peupliers » à Gagny.
+                Il regroupait des difficultés que les élus et les habitants souhaitaient dépasser par un travail de nature social, et non une action d’animation socio-culturelle.
+            </p>
+            <p>
+                Au départ, il s’agissait de rendre la parole aux habitants en créant des services de proximité (Halte garderie, centre de loisirs, ludothèque). Les initiatives des habitants et des volontaires pour animer la ludothèque et l’aide aux devoirs, ont contribué à ancrer les services proposés dans cette géographie circonscrite.
+                La structuration des activités a été renforcée par l’arrivée de professionnels. Une orthophoniste, une éducatrice, une assistante sociale et une secrétaire, sont venues épauler le directeur. L’équipe s’est étoffée de postes éducatifs par la suite.
+                Le rapport avec les habitants était très fort, les relations sociales étaient très dures.
+                René DIAS en a été le premier directeur.
+            </p>
+        </div>
+
+
+
+    </div>
+
+
+
+    {% include 'layout/footer.html.twig' %}
+
 {% endblock %}
