@@ -3,18 +3,188 @@
 {% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% include 'layout/header.html.twig' %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% include 'layout/banner.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
+<div class="contact-container">
+    <h2><span>Nos</span> informations</h2>
+    <div class="contact-container__recrute-form">
+        <h4><span>Arrimages</span> recrute !</h4>
+        <h4>Vous êtes travailleur social ?</h4>
+        <a href="#">Remplir le formulaire</a>
+    </div>
 </div>
+
+<div class="contact-container-infos">
+
+    <div class="contact-container-infos__card">
+        <h4>Siège</h4>
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone addresse">
+            <p>73 ter avenue Henri Barbusse, <br>
+                93220, Gagny.</p>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone téléphone">
+            <a href="tel:+01 23 45 67 89">01 23 45 67 89</a>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone mail">
+            <a href="mailto:mail-contact@gmail.com">mail-contact@gmail.com</a>
+        </div>
+    </div>
+
+    <div class="contact-container-infos__card">
+        <h4>Clichy-sous-Bois</h4>
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone addresse">
+            <p>4 allée Victor Hugo, <br>
+                93390, Clichy-sous-Bois.</p>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone téléphone">
+            <a href="tel:+01 43 32 48 02">01 43 32 48 02</a>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone mail">
+            <a href="mailto:equipeclichy@arrimages.org">equipeclichy@arrimages.org</a>
+        </div>
+    </div>
+
+    <div class="contact-container-infos__card">
+        <h4>Sevran - Rougemont</h4>
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone addresse">
+            <p>10 rue du Docteur Schaeffner, <br>
+                93270, Sevran.</p>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone téléphone">
+            <a href="tel:+01 43 85 90 67">01 43 85 90 67</a>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone mail">
+            <a href="mailto:equipesevran@arrimages.org">equipesevran@arrimages.org</a>
+        </div>
+    </div>
+
+    <div class="contact-container-infos__card">
+        <h4>Sevran - Beaudottes</h4>
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone addresse">
+            <p>10 allée de Bougainville, <br>
+                93270, Sevran.</p>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone téléphone">
+            <a href="tel:+01 43 84 83 24">01 43 84 83 24</a>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone mail">
+            <a href="mailto:equipesevran@arrimages.org">equipesevran@arrimages.org</a>
+        </div>
+    </div>
+
+    <div class="contact-container-infos__card">
+        <h4>Montfermeil</h4>
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone addresse">
+            <p>	6 allée Paul Langevin, <br>
+                93370, Montfermeil.</p>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone téléphone">
+            <a href="tel:+01 48 68 44 65">01 48 68 44 65</a>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone mail">
+            <a href="mailto:equipemontfermeil@arrimages.org">equipemontfermeil@arrimages.org</a>
+        </div>
+    </div>
+
+    <div class="contact-container-infos__card">
+        <h4>Tremblay-en-France</h4>
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone addresse">
+            <p>52 rue de Flandres, <br>
+                93290, Tremblay-en-France.</p>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone téléphone">
+            <a href="tel:+	01 71 84 70 33">01 71 84 70 33</a>
+        </div>
+
+        <div class="contact-container-infos__card__item">
+            <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="icone mail">
+            <a href="mailto:equipetremblay@arrimages.org">equipetremblay@arrimages.org</a>
+        </div>
+    </div>
+</div>
+
+<div class="contact-container">
+    <h2><span>Comment</span> nous retrouver ?</h2>
+</div>
+
+<div class="contact-google-map">
+    <h2>Google map API</h2>
+</div>
+
+<div class="contact-container">
+    <h2><span>Contactez</span> nous !</h2>
+</div>
+
+<div class="contact-main-form">
+    <p>Remplissez ce formulaire pour nous contacter, les champs avec <span>*</span> sont obligatoires.</p>
+
+
+    <form action="">
+
+        <div class="input-row-container">
+            <div class="input-row-container__input">
+                <label for="lastname">Nom <span>*</span></label>
+                <input type="text" placeholder="Nom">
+            </div>
+            <div class="input-row-container__input">
+                <label for="firstname">Prénom <span>*</span></label>
+                <input type="text" placeholder="Prénom">
+            </div>
+        </div>
+
+        <div class="input-row-container">
+            <div class="input-row-container__input">
+                <label for="email">E-mail <span>*</span></label>
+                <input type="email" placeholder="E-mail">
+            </div>
+            <div class="input-row-container__input">
+                <label for="object">Sujet de votre message <span>*</span></label>
+                <input type="text" placeholder="Sujet">
+            </div>
+        </div>
+
+        <div class="input-row-container">
+            <div class="input-row-container__input">
+                <label for="message">Message <span>*</span></label>
+                <textarea name="message" id="" placeholder="Entrez votre message ici..."></textarea>
+            </div>
+        </div>
+
+        <button type="submit">Envoyer</button>
+    </form>
+
+</div>
+
+
+{% include 'layout/footer.html.twig' %}
 {% endblock %}

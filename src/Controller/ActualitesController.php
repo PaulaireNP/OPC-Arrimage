@@ -12,7 +12,8 @@ class ActualitesController extends AbstractController
     public function index(): Response
     {
         return $this->render('actualites/index.html.twig', [
-            'controller_name' => 'ActualitesController',
+            'title_one' => 'Actualités',
+            'title_two' => '',
         ]);
     }
 }
