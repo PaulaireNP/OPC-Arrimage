@@ -22,3 +22,16 @@ si vous obtenez un message d'erreur, créez un dossier assets/styles/app.css et 
 Ensuite, installer le Sass-loader : `npm install node-sass sass-loader --save-dev` et activer le Sass-loader dans webpack.
 
 Construction des assets : `npx encore dev` et symfony run npm run dev après cela `symfony run -d npm run watch`.
+
+
+### Back-End
+
+#### Créations des Entités
+#### (Fixtures avec Faker)
+#### Authentication / Login
+#### Hash de mot de passe
+#### Permissions d'accès aux pages selon l'état du user (authentifié ou rôle)
+#### Gestion des entités (make:crud)
+#### Gestion des entités avec des relations
+#### Personnalisation des formulaires (FormType, FileType, ChoiceType...)
+#### Upload de fichiers (voir la doc)
