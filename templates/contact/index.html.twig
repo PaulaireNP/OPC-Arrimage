@@ -12,7 +12,77 @@
     <div class="contact-container__recrute-form">
         <h4><span>Arrimages</span> recrute !</h4>
         <h4>Vous êtes travailleur social ?</h4>
-        <a href="#">Remplir le formulaire</a>
+        <a href="#formulaire-de-recrutement">Remplir le formulaire</a>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="formulaire-de-recrutement" class="modal">
+    <div class="modal__content">
+
+        <div class="contact-main-form">
+            <h1>Formulaire de recrutement</h1>
+            <p>Arrimages recrute des travailleurs sociaux pour compléter ses équipes. Vous êtes travailleur social ? <br>
+                Vous avez envie de rejoindre une organisation dont le travail répond à un enjeu social fort ?</p>
+            <p>Remplissez ce formulaire pour nous contacter, les champs avec <span>*</span> sont obligatoires.</p>
+        
+        
+            <form action="" enctype="multipart/form-data">
+        
+                <div class="input-row-container">
+                    <div class="input-row-container__input">
+                        <label for="lastname">Nom <span>*</span></label>
+                        <input type="text" placeholder="Nom">
+                    </div>
+                    <div class="input-row-container__input">
+                        <label for="firstname">Prénom <span>*</span></label>
+                        <input type="text" placeholder="Prénom">
+                    </div>
+                </div>
+        
+                <div class="input-row-container">
+                    <div class="input-row-container__input">
+                        <label for="email">E-mail <span>*</span></label>
+                        <input type="email" placeholder="E-mail">
+                    </div>
+                    <div class="input-row-container__input">
+                        <label for="recrutementType">Quel est la nature de votre candidatue ? <span>*</span></label>
+                        <select name="recrutementType" id="">
+                            <option selected value="candidature spontanée">
+                                Candidature spontanée
+                            </option>
+                            <option value="demande de stage">
+                                Demande de stage
+                            </option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="input-row-container">
+                    <div class="input-row-container__input">
+                        <label for="message">Message <span>*</span></label>
+                        <textarea name="message" id="" placeholder="Entrez votre message ici..."></textarea>
+                    </div>
+                </div>
+
+                <div class="input-row-container">
+                    <div class="input-row-container__input-checkbox">
+                        <label for="firstname">Données personnelles</label>
+                        <input type="checkbox" placeholder="Prénom">
+                        <p>En soumettant ce formulaire, j’accepte que mes informations soient utilisées uniquement dans le cadre de ma demande et de la relation commerciale éthique personnalisée qui peut en découler.</p>
+                    </div>
+                    <div class="input-row-container__input">
+                        <label for="file">Joindre un fichier <span>*</span> (pdf, doc, docx)</label>
+                        <input type="file" multiple>
+                    </div>
+                </div>
+        
+                <button type="submit">Envoyer</button>
+            </form>
+        
+        </div>
+
+        <a href="{{ path('app_contact')}}" class="modal__close">&times;</a>
     </div>
 </div>
 

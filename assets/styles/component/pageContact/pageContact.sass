@@ -79,6 +79,8 @@
 .contact-main-form
     padding: 30px 50px
 
+    h1
+        color: $dark-grey
     p
         font-size: 18px
 
@@ -92,6 +94,7 @@
         align-items: center
         justify-content: center
         width: 100%
+        margin-bottom: 50px
 
         .input-row-container
             display: flex
@@ -99,10 +102,17 @@
             justify-content: center
             width: 70%
 
+            &__input-checkbox
+                display: flex
+                margin: 10px
+
+                p
+                    font-size: 12px
+
             &__input
                 display: flex
                 flex-direction: column
-                margin: 5px
+                margin: 10px
 
                 input
                     padding: 10px 20px
@@ -112,13 +122,25 @@
                     font-size: 16px
                     outline: none
 
+                select
+                    padding: 10px 20px
+                    width: 350px
+                    border-radius: 10px
+                    border: 3px solid $main-orange
+                    font-size: 16px
+                    outline: none
+                    cursor: pointer
+
+                    option
+                        border: 3px solid black
+
                 label
                     padding: 10px 0
                     font-size: 18px
                     span
                         font-size: 20px
                         color: $main-orange
-                
+
                 textarea
                     padding: 10px 20px
                     width: 80%
@@ -127,8 +149,8 @@
                     font-size: 17px
                     font-family: 'DIN Pro'
                     outline: none
-                    min-width: 658px
-                    max-width: 658px
+                    min-width: 660px
+                    max-width: 660px
                     min-height: 100px
                     max-height: 300px
 
@@ -148,3 +170,49 @@
                 background-color: white
                 color: $main-orange
 
+.modal 
+    visibility: hidden
+    opacity: 0
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    display: flex
+    align-items: end
+    justify-content: center
+    background: rgba(77, 77, 77, 0)
+    transition: all 0.3s ease-in-out
+
+    &:target
+        position: fixed
+        z-index: 10
+        visibility: visible
+        opacity: 1
+
+    &__content
+        border-radius: 4px
+        position: relative
+        width: 100%
+        height: 90vh
+        overflow: scroll
+        background: #F4F4F4
+        padding: 1em 2em
+    
+    &__close
+        position: fixed
+        top: 40px
+        right: 50px
+        font-size: 75px
+        color: $main-orange
+        text-decoration: none
+
+
+@media screen and (max-width: 1162px)
+    .contact-main-form
+        form
+            .input-row-container
+                &__input
+                    textarea
+                        min-width: 300px
+                        max-width: 300px

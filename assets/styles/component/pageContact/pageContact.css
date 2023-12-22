@@ -81,6 +81,9 @@
 .contact-main-form {
   padding: 30px 50px;
 }
+.contact-main-form h1 {
+  color: #404041;
+}
 .contact-main-form p {
   font-size: 18px;
 }
@@ -94,6 +97,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-bottom: 50px;
 }
 .contact-main-form form .input-row-container {
   display: flex;
@@ -101,10 +105,17 @@
   justify-content: center;
   width: 70%;
 }
+.contact-main-form form .input-row-container__input-checkbox {
+  display: flex;
+  margin: 10px;
+}
+.contact-main-form form .input-row-container__input-checkbox p {
+  font-size: 12px;
+}
 .contact-main-form form .input-row-container__input {
   display: flex;
   flex-direction: column;
-  margin: 5px;
+  margin: 10px;
 }
 .contact-main-form form .input-row-container__input input {
   padding: 10px 20px;
@@ -113,6 +124,18 @@
   border: 3px solid #EDA402;
   font-size: 16px;
   outline: none;
+}
+.contact-main-form form .input-row-container__input select {
+  padding: 10px 20px;
+  width: 350px;
+  border-radius: 10px;
+  border: 3px solid #EDA402;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+}
+.contact-main-form form .input-row-container__input select option {
+  border: 3px solid black;
 }
 .contact-main-form form .input-row-container__input label {
   padding: 10px 0;
@@ -130,8 +153,8 @@
   font-size: 17px;
   font-family: "DIN Pro";
   outline: none;
-  min-width: 658px;
-  max-width: 658px;
+  min-width: 660px;
+  max-width: 660px;
   min-height: 100px;
   max-height: 300px;
 }
@@ -150,4 +173,49 @@
 .contact-main-form form button:hover {
   background-color: white;
   color: #EDA402;
+}
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  background: rgba(77, 77, 77, 0);
+  transition: all 0.3s ease-in-out;
+}
+.modal:target {
+  position: fixed;
+  z-index: 10;
+  visibility: visible;
+  opacity: 1;
+}
+.modal__content {
+  border-radius: 4px;
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: scroll;
+  background: #F4F4F4;
+  padding: 1em 2em;
+}
+.modal__close {
+  position: fixed;
+  top: 40px;
+  right: 50px;
+  font-size: 75px;
+  color: #EDA402;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1162px) {
+  .contact-main-form form .input-row-container__input textarea {
+    min-width: 300px;
+    max-width: 300px;
+  }
 }/*# sourceMappingURL=pageContact.css.map */
