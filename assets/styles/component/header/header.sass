@@ -1,3 +1,4 @@
+
 /*header start*/
 
 
@@ -20,8 +21,9 @@
 
   nav
     display: flex
-    justify-content: space-evenly
+    justify-content: space-between
     width: 100%
+    padding: 0 50px 0 50px
 
     .nav-list
       display: flex
@@ -29,12 +31,26 @@
       align-items: center
 
       &__item
-        width: 150px
+        width: 180px
         position: relative
         transition: all 0.3s ease-in-out
+
+        a
+          display: flex
+          justify-content: center
+          align-items: center
+          color: black
+          text-decoration: none
+          width: 180px
+          height: 60px
+          font-size: 18px
+
         &:hover
           background-color: #404041
           color: white
+
+          a 
+            color: white
 
           .nav-list__item__sub-nav
             visibility: visible
@@ -47,18 +63,6 @@
                 background-color: #404041
                 color: white
 
-        a
-          display: flex
-          justify-content: center
-          align-items: center
-          color: black
-          text-decoration: none
-          width: 150px
-          height: 60px
-
-          &:hover
-            color: white
-
         .nav-list__item__sub-nav
           visibility: hidden
           position: absolute
@@ -69,7 +73,7 @@
 
           &__item
             text-align: center
-            width: 150px
+            width: 180px
             transition: all 0.3s ease-in-out
 
     .login-button
@@ -79,17 +83,22 @@
       &__link
         display: flex
         align-items: center
-        justify-content: space-around
         padding: 5px 20px
         border-radius: 30px
         border: 3px solid #EDA402
+        background-color: #EDA402
         text-decoration: none
-        color: #000
+        color: white
         font-size: 16px
+        transition: all 0.3s ease-in-out
+
+        &:hover
+          background-color: #eda202b8
 
         img
+          margin-right: 5px
           height: 30px
-          width: 30px
+          width:  30px
 
   @keyframes slide-in
     0%

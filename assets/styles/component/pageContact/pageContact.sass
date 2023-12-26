@@ -104,10 +104,32 @@
 
             &__input-checkbox
                 display: flex
-                margin: 10px
+                align-items: center
+                margin-right: 30px
+                width: 650px
+                min-width: 350px
 
                 p
                     font-size: 12px
+                    width: 60%
+                    min-width: 300px
+
+                input 
+                    margin: 0 10px
+
+            &__input-file
+                display: flex
+                flex-direction: column
+                margin: 10px
+                width: 60%
+
+                input
+                    padding: 10px 20px
+                    width: 300px
+                    border-radius: 10px
+                    border: 3px dashed $main-orange
+                    font-size: 16px
+                    outline: none
 
             &__input
                 display: flex

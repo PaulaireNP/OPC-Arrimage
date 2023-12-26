@@ -12,7 +12,8 @@ class NosServicesActionsCollectivesController extends AbstractController
     public function index(): Response
     {
         return $this->render('nos_services_actions_collectives/index.html.twig', [
-            'controller_name' => 'NosServicesActionsCollectivesController',
+            'title_one' => 'Actions',
+            'title_two' => 'collectives',
         ]);
     }
 }

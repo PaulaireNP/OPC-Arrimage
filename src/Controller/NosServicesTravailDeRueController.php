@@ -12,7 +12,8 @@ class NosServicesTravailDeRueController extends AbstractController
     public function index(): Response
     {
         return $this->render('nos_services_travail_de_rue/index.html.twig', [
-            'controller_name' => 'NosServicesTravailDeRueController',
+            'title_one' => 'Travail de',
+            'title_two' => 'rue',
         ]);
     }
 }

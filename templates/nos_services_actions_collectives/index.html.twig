@@ -3,18 +3,247 @@
 {% block title %}Hello NosServicesActionsCollectivesController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% include 'layout/header.html.twig' %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% include 'layout/banner.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/src/Controller/NosServicesActionsCollectivesController.php'|file_link(0) }}">src/Controller/NosServicesActionsCollectivesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/templates/nos_services_actions_collectives/index.html.twig'|file_link(0) }}">templates/nos_services_actions_collectives/index.html.twig</a></code></li>
-    </ul>
+<div class="citation-container">
+    <img src="{{ asset('assets/IMG/image/chantier-educatif/chantier-fresque-clichy-sous-bois-ete2018.jpg')}}" alt="">
+
+    <div class="citation-container__item">
+        <h3>« C’est donc bien autour de l’emploi que continue à se jouer une part essentielle du destin social de la grande majorité de la population ».</h3>
+        <p>Robert Castel « L’insécurité sociale, qu’est-ce qu’être protégé ? »La république des idées, Paris / Seuil 2003</p>
+    </div>
 </div>
+
+<div class="actions-co-presentation">
+    <p>Préalable, <br> <br>
+
+        Fin des années 1970, les équipes de travailleurs sociaux sont confrontées au problème de l’emploi des jeunes. <br> <br>
+        
+        Le chômage se densifie, et les comportements des jeunes en situation d’emploi sont souvent inadaptés. Notamment ceux suivis par les équipes d’éducateurs de rue. <br> <br>
+        
+        L’arrêté du 4 juillet 1972 et sa circulaire d’application autorisent les associations de prévention spécialisées à organiser des réponses spécifiques.
+        L’organisation de formes de travail adaptées est possible, soit sous la forme d’ateliers, soit sous la forme de coopératives. <br> <br>
+        
+        Cette activité se développant, les associations ont sollicité l’état et ont obtenu un cadrage qui lui a assuré une visibilité dans un premier temps et une intégration dans le champ de l’insertion par l’économique.</p>
+</div>
+
+<div class="actions-collective-title">
+    <h2><span>Chantiers</span> éducatifs</h2>
+</div>
+
+
+<div class="card-container-left">
+    <div class="card-container-left__card-left">
+        <h3>Dans son histoire, Arrimages a pu organiser des chantiers éducatifs.</h3>
+
+        <div class="card-container-left__card-left__container">
+            <p>En recrutant un éducateur « encadrant technique » en 2013, nous avons pu développer une activité « à notre image ». <br><br>
+
+                Une activité qui permette de s’adapter à la problématique des jeunes en insertion et aux invariants et exigences du travail. « Être prêt, être à l’heure, entendre une consigne, apprendre une technique, se conformer à l’exigence de la commande, la réaliser ».</p>
+            <img src="{{ asset('assets/IMG/illustration/illust-chantiers.png')}}" alt="">
+        </div>
+        
+        <div class="card-container-left__card-left__background"></div>
+    </div>
+</div>
+
+<div class="chantiers-objectifs">
+    <h2>Objectifs</h2>
+
+    <div class="chantiers-objectifs__container">
+        <div class="chantiers-objectifs__container__item">
+            <img src="{{ asset('assets/IMG/Icons/groupe-dutilisateurs.png')}}" alt="">
+            <h3>Participer à un projet collectif</h3>
+        </div>
+        <div class="chantiers-objectifs__container__item">
+            <img src="{{ asset('assets/IMG/Icons/poignee-de-main.png')}}" alt="">
+            <h3>Expérimenter le rapport au travail</h3>
+        </div>
+        <div class="chantiers-objectifs__container__item">
+            <img src="{{ asset('assets/IMG/Icons/soutien-technique.png')}}" alt="">
+            <h3>Apprendre les gestes techniques</h3>
+        </div>
+        <div class="chantiers-objectifs__container__item">
+            <img src="{{ asset('assets/IMG/Icons/motivation.png')}}" alt="">
+            <h3>Mesurer la motivation</h3>
+        </div>
+    </div>
+</div>
+
+<div class="card-container-right">
+    <div class="card-container-right__card-right">
+        <h3>Des principes de fonctionnement</h3>
+        <p>Les chantiers éducatifs préparent les jeunes à l'insertion en agissant en amont des programmes d'activité économique. Axés sur le changement de comportement et la prévention de la marginalisation, ils visent à mesurer les motivations, adapter les comportements au travail, favoriser la socialisation et guider les premiers pas dans le monde professionnel, en mettant l'accent sur les métiers du bâtiment.</p>
+
+        <p>Ces chantiers s'intègrent dans le parcours d'insertion des jeunes en difficulté, favorisant le développement de responsabilités et de liens sociaux. Ils servent à évaluer la cohérence des jeunes par rapport à leur projet d'insertion à moyen ou long terme, tout en les accompagnant dans la compréhension des obstacles à l'emploi. Organisés sur une semaine pour un maximum de 6 jeunes, ils assurent la coordination entre les acteurs du projet et peuvent se répéter pour une durée plus étendue. Ces chantiers représentent une transition clé dans le parcours d'insertion, offrant une approche concrète des réalités du monde du travail.</p>
+        <div class="card-container-right__card-right__background"></div>
+    </div>
+</div>
+
+
+<div class="card-container-left">
+    <div class="card-container-left__card-left">
+        <h3>Qui peut en bénéficier ?</h3>
+        <p>Les chantiers sont destinés à des jeunes de 16 à 25 ans (filles ou garçons) déscolarisés, sans formation ni ressources, ayant ou non un projet professionnel, en marge de toute demande (ou de tout dispositif) d’insertion, résidant dans les quartiers prioritaires retenus par l’Etat. Ceux sur lesquels nos équipes interviennent.</p>
+
+        <p>Il faut dire ici que les jeunes bénéficiaires peuvent être nombreux, sachant que les équipes avec lesquelles nous travaillons œuvrent dans les quartiers prioritaires des zones ciblées par les différentes politiques de la ville.</p>
+
+        <p>Les actions mises en place (notamment des actions collectives) visent à réinscrire les jeunes tant dans les circuits d’échanges économiques, que dans les circuits de relations et de solidarité sociale. <br>
+            Elles favorisent l’adaptation du comportement du jeune sur le plan individuel, familial mais aussi vis-à-vis de la société locale.</p>
+        <div class="card-container-left__card-left__background"></div>
+    </div>
+</div>
+
+<div class="card-container-right">
+    <div class="card-container-right__card-right">
+        <h3>Le positionnement des bénéficiaires</h3>
+        <p>Pour les modalités de travail, des relations régulières sont établies entre les jeunes (suivis pendant au moins 3 mois) et les équipes éducatives pour évaluer leurs motivations et définir des critères objectifs de préparation. Le "travail de rue" favorise des présences sociales de proximité, créant ainsi des relations qui permettent de proposer des actions concrètes alignées sur les aspirations des jeunes à s'améliorer.</p>
+
+        <p>La vérification des pièces administratives de base (CNI, titre de séjour, inscription à la sécurité sociale) est cruciale, mais des réserves peuvent être admises pour les personnes en situation administrative précaire, pouvant constituer un frein à l'insertion professionnelle et à la construction du projet d'insertion.</p>
+
+        <p>Les équipes accompagnent ensuite les jeunes lors d'un bilan de santé à Bobigny ou à Clichy-sous-Bois pour s'assurer de leur aptitude à participer à un chantier d'une semaine et les orienter vers un suivi médical régulier. Le cadre du chantier est formalisé, détaillant les attentes, les contraintes liées au travail physique, la nature du travail, les étapes de réalisation, les impacts personnels et les engagements collectifs pour la semaine.</p>
+
+        <p>Les jeunes sont ensuite accompagnés à une rencontre avec une association intermédiaire pour la signature du contrat de travail. Leur rémunération est basée sur le SMIC horaire pour un maximum de 35 heures par semaine, incluant le temps de travail sur le chantier et un bilan final avec les équipes éducatives et le chef de chantier. En général, le commanditaire organise la réception du chantier avec le groupe de travail, soulignant l'importance de l'aspect rémunéré pour favoriser l'insertion des jeunes.</p>
+        <div class="card-container-right__card-right__background"></div>
+    </div>
+</div>
+
+
+<div class="card-container-left">
+    <div class="card-container-left__card-left">
+        <h3>L’articulation avec l’organisation des équipes</h3>
+        <p>Les chantiers éducatifs sont des activités de production de services. Essentiellement dans le secteur du second œuvre du bâtiment. Elles sont encadrées par un éducateur technique et un éducateur de rue, référent du groupe. Le chef de servie s’assure de la coordination du dispositif. <br>
+            La prestation est facturée au client, les jeunes sont rémunérés sur la base du smic horaire.</p>
+
+        <p>Il s’agit aussi de décompter le temps de travail avec l’encadrant technique, la rémunération étant la contrepartie du travail réel effectué. <br>
+            Par contre, nous ne salarions pas directement les jeunes utilisateurs de ce service, ils le sont à travers une association d’insertion par l’activité économique partenaire.</p>
+
+        <p>Cela permet d’inscrire les personnes dans une démarche dynamique de recherche d’emploi, car celle-ci peut proposer aussi des missions de courtes durées et s’inscrit dans un réseau de partenaires centrés sur l’emploi des jeunes.</p>
+
+        <p>Post chantiers, les relais sont effectués avec les acteurs de l’emploi et de l’insertion pour valoriser cette expérience et permettre aux personnes concernées de trouver leur place dans notre société.</p>
+        <div class="card-container-left__card-left__background"></div>
+    </div>
+</div>
+
+
+
+
+<div class="chantiers-objectifs">
+    <h2><span>Quelques</span> chiffres</h2>
+</div>
+
+<div class="chiffres-container">
+
+    <div class="chiffres-container__bandeau-container-left">
+        <div class="chiffres-container__bandeau-container-left__bandeau-left">
+            <p>En 2014</p>
+        </div>
+    </div>
+    
+
+    <div class="chiffres-container__item-container">
+        <div class="chiffres-container__item-container__item">
+            <img src="{{ asset('assets/IMG/Icons/Icons-chantier-educatif/enfant.png')}}" alt="">
+            <p><span>63 jeunes</span> ont pu travailler</p>
+        </div>
+        <div class="chiffres-container__item-container__item">
+            <img src="{{ asset('assets/IMG/Icons/Icons-chantier-educatif/ouvrier.png')}}" alt="">
+            <p><span>14 chantiers</span> d’une semaine
+                ont été réalisé</p>
+        </div>
+        <div class="chiffres-container__item-container__item">
+            <img src="{{ asset('assets/IMG/Icons/Icons-chantier-educatif/lhorloge.png')}}" alt="">
+            <p><span>1485.5 heures</span> de travail
+                rémunérées</p>
+        </div>
+    </div>
+
+    <div class="chiffres-container__bandeau-container-right">
+        <div class="chiffres-container__bandeau-container-right__bandeau-right">
+            <p>En 2015</p>
+        </div>
+    </div>
+
+
+    <div class="chiffres-container__item-container">
+        <div class="chiffres-container__item-container__item">
+            <img src="{{ asset('assets/IMG/Icons/Icons-chantier-educatif/enfant.png')}}" alt="">
+            <p><span>90 jeunes</span> ont pu travailler</p>
+        </div>
+        <div class="chiffres-container__item-container__item">
+            <img src="{{ asset('assets/IMG/Icons/Icons-chantier-educatif/ouvrier.png')}}" alt="">
+            <p><span>22 chantiers</span> d’une semaine
+                ont été réalisé</p>
+        </div>
+        <div class="chiffres-container__item-container__item">
+            <img src="{{ asset('assets/IMG/Icons/Icons-chantier-educatif/lhorloge.png')}}" alt="">
+            <p><span>2930 heures</span> de travail
+                rémunérées</p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="actions-collective-title">
+    <h2><span>Séjours</span> éducatifs</h2>
+</div>
+
+
+<div class="card-container-left">
+    <div class="card-container-left__card-left">
+        <h3>Dans son histoire, Arrimages a pu organiser des chantiers éducatifs.</h3>
+
+        <div class="card-container-left__card-left__container">
+            <div class="card-container-left__card-left__container__item">
+                <h4>Objectifs</h4>
+                <ul>
+                    <li>Faire un point sur son parcours et son projet de vie</li>
+                    <li>Travailler son rapport au cadre</li>
+                    <li>Développer l’expression et la confiance en soi</li>
+                </ul>
+            </div>
+            <img src="{{ asset('assets/IMG/illustration/illust-se-jours.png')}}" alt="">
+        </div>
+        
+        <div class="card-container-left__card-left__background"></div>
+    </div>
+</div>
+
+
+<div class="chiffres-container">
+
+    <div class="chiffres-container__bandeau-container-left">
+        <div class="chiffres-container__bandeau-container-left__bandeau-left">
+            <p>Titre séjour - date</p>
+        </div>
+    </div>
+    
+    <div class="chiffres-container__presentation-sejour-container">
+        <div class="chiffres-container__presentation-sejour-container__description-img">
+            <p>DESCRIPTION : (obj pédagogique, présentation du séjour...) <br><br>
+
+                Lorem ipsum dolor sit amet consectetur. Purus venenatis ultrices fringilla malesuada amet egestas pharetra platea pellentesque. Non dolor ut quis enim pellentesque ac turpis nunc tortor. Maecenas turpis odio vitae mauris vulputate ligula id risus a. <br><br>
+                
+                 Non sem sed fringilla amet. Nisi arcu vel tincidunt pharetra elit adipiscing elit. Vitae nunc mauris et tristique ac gravida ipsum. Sem sed tortor convallis nec diam nisi odio. <br><br>
+                
+                Risus imperdiet rhoncus consequat lorem at scelerisque tristique. Feugiat proin pellentesque ultricies in donec.</p>
+
+                <img src="{{ asset('assets/IMG/image/arts-plastiques.jpg')}}" alt="">
+        </div>
+
+        <div class="chiffres-container__presentation-sejour-container__img-supplementaire">
+            <img src="{{ asset('assets/IMG/image/arts-plastiques.jpg')}}" alt="">
+            <img src="{{ asset('assets/IMG/image/arts-plastiques.jpg')}}" alt="">
+            <img src="{{ asset('assets/IMG/image/arts-plastiques.jpg')}}" alt="">
+        </div>
+
+    </div>
+    
+</div>
+
+{% include 'layout/footer.html.twig' %}
+
 {% endblock %}

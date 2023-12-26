@@ -26,8 +26,9 @@ body {
 }
 .header nav {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
+  padding: 0 50px 0 50px;
 }
 .header nav .nav-list {
   display: flex;
@@ -35,12 +36,25 @@ body {
   align-items: center;
 }
 .header nav .nav-list__item {
-  width: 150px;
+  width: 180px;
   position: relative;
   transition: all 0.3s ease-in-out;
 }
+.header nav .nav-list__item a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+  width: 180px;
+  height: 60px;
+  font-size: 18px;
+}
 .header nav .nav-list__item:hover {
   background-color: #404041;
+  color: white;
+}
+.header nav .nav-list__item:hover a {
   color: white;
 }
 .header nav .nav-list__item:hover .nav-list__item__sub-nav {
@@ -55,18 +69,6 @@ body {
   background-color: #404041;
   color: white;
 }
-.header nav .nav-list__item a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  text-decoration: none;
-  width: 150px;
-  height: 60px;
-}
-.header nav .nav-list__item a:hover {
-  color: white;
-}
 .header nav .nav-list__item .nav-list__item__sub-nav {
   visibility: hidden;
   position: absolute;
@@ -77,7 +79,7 @@ body {
 }
 .header nav .nav-list__item .nav-list__item__sub-nav__item {
   text-align: center;
-  width: 150px;
+  width: 180px;
   transition: all 0.3s ease-in-out;
 }
 .header nav .login-button {
@@ -87,15 +89,20 @@ body {
 .header nav .login-button__link {
   display: flex;
   align-items: center;
-  justify-content: space-around;
   padding: 5px 20px;
   border-radius: 30px;
   border: 3px solid #EDA402;
+  background-color: #EDA402;
   text-decoration: none;
-  color: #000;
+  color: white;
   font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+.header nav .login-button__link:hover {
+  background-color: rgba(237, 162, 2, 0.7215686275);
 }
 .header nav .login-button__link img {
+  margin-right: 5px;
   height: 30px;
   width: 30px;
 }
@@ -127,7 +134,8 @@ body {
   margin-top: 40px;
 }
 .main-container__title-container h1 {
-  margin-left: 10rem;
+  margin-top: 40px;
+  margin-left: 10%;
 }
 .main-container__title-container h1 span {
   color: #EDA402;
@@ -135,39 +143,37 @@ body {
 .main-container__video-container {
   position: relative;
   width: 100%;
-  height: 90vh;
   overflow: hidden;
 }
 .main-container__video-container__video {
   width: 100%;
   height: auto;
 }
-.main-container__home-btn {
+.main-container__video-container__home-btn {
   position: absolute;
-  bottom: 20px;
+  bottom: 20%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
 }
-.main-container__home-btn__discover-btn {
-  margin-right: 80px;
-  padding: 10px 40px;
-  background-color: white;
-  color: #EDA402;
+.main-container__video-container__home-btn a {
   text-decoration: none;
+  padding: 10px 30px;
+  font-weight: 500;
+  margin: 5px 80px;
+  font-size: 20px;
+  color: #EDA402;
+  background-color: white;
   border: 3px solid #EDA402;
-  border-radius: 20px;
-  font-size: 2rem;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
 }
-.main-container__home-btn__contact-btn {
-  margin-left: 80px;
-  padding: 10px 40px;
-  background-color: white;
-  color: #EDA402;
-  text-decoration: none;
-  border: 3px solid #EDA402;
-  border-radius: 20px;
-  font-size: 2rem;
+.main-container__video-container__home-btn a:hover {
+  background-color: #EDA402;
+  color: white;
 }
 
 .histoire-container {
@@ -562,10 +568,32 @@ body {
 }
 .contact-main-form form .input-row-container__input-checkbox {
   display: flex;
-  margin: 10px;
+  align-items: center;
+  margin-right: 30px;
+  width: 650px;
+  min-width: 350px;
 }
 .contact-main-form form .input-row-container__input-checkbox p {
   font-size: 12px;
+  width: 60%;
+  min-width: 300px;
+}
+.contact-main-form form .input-row-container__input-checkbox input {
+  margin: 0 10px;
+}
+.contact-main-form form .input-row-container__input-file {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 60%;
+}
+.contact-main-form form .input-row-container__input-file input {
+  padding: 10px 20px;
+  width: 300px;
+  border-radius: 10px;
+  border: 3px dashed #EDA402;
+  font-size: 16px;
+  outline: none;
 }
 .contact-main-form form .input-row-container__input {
   display: flex;
@@ -869,6 +897,251 @@ body {
   opacity: 1;
 }
 
+.actions-collective-title {
+  padding: 30px 50px;
+}
+.actions-collective-title h2 {
+  color: #404041;
+  text-transform: uppercase;
+}
+.actions-collective-title h2 span {
+  color: #EDA402;
+}
+
+.actions-co-presentation {
+  padding: 30px 50px;
+}
+.actions-co-presentation p {
+  font-family: "Cormorant Garamond";
+}
+
+.citation-container {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(90deg, #EDA402 0%, rgba(237, 162, 2, 0.6117647059) 100%);
+}
+.citation-container img {
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  top: -300px;
+}
+.citation-container__item {
+  width: 90%;
+}
+.citation-container__item h3 {
+  font-size: 30px;
+  color: white;
+}
+.citation-container__item p {
+  font-weight: 500;
+  color: black;
+}
+
+.card-container-left {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  position: relative;
+}
+.card-container-left__card-left {
+  width: 80%;
+  padding: 20px;
+  color: #404041;
+  background-color: #EDA402;
+  position: relative;
+  border-radius: 0 15px 15px 0;
+  margin-bottom: 50px;
+}
+.card-container-left__card-left p {
+  color: black;
+  font-family: "Cormorant Garamond";
+}
+.card-container-left__card-left__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.card-container-left__card-left__container p {
+  font-family: "Cormorant Garamond";
+}
+.card-container-left__card-left__container img {
+  width: 50%;
+}
+.card-container-left__card-left__background {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: #404041;
+  position: absolute;
+  bottom: -20px;
+  left: 3%;
+  z-index: -1;
+}
+
+.card-container-right {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  position: relative;
+}
+.card-container-right__card-right {
+  width: 80%;
+  padding: 20px;
+  color: #404041;
+  background-color: #EDA402;
+  position: relative;
+  border-radius: 15px 0 0 15px;
+  margin-bottom: 50px;
+}
+.card-container-right__card-right p {
+  color: black;
+  font-family: "Cormorant Garamond";
+}
+.card-container-right__card-right__background {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: #404041;
+  position: absolute;
+  bottom: -20px;
+  right: 3%;
+  z-index: -1;
+}
+
+.chantiers-objectifs {
+  width: 100%;
+  margin-bottom: 50px;
+}
+.chantiers-objectifs h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #404041;
+}
+.chantiers-objectifs h2 span {
+  color: #EDA402;
+}
+.chantiers-objectifs__container {
+  width: 70%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.chantiers-objectifs__container__item {
+  display: flex;
+  align-items: center;
+  margin: 50px 20px;
+  width: 350px;
+}
+.chantiers-objectifs__container__item img {
+  width: 50px;
+  height: 50px;
+  padding: 20px;
+  background-color: #EDA402;
+  border-radius: 15px;
+  margin-right: 20px;
+}
+
+.chiffres-container {
+  width: 100%;
+}
+.chiffres-container__bandeau-container-left {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+.chiffres-container__bandeau-container-left__bandeau-left {
+  width: 60%;
+  padding: 20px;
+  color: #404041;
+  background-color: #EDA402;
+  position: relative;
+  border-radius: 0 15px 15px 0;
+  margin-bottom: 50px;
+}
+.chiffres-container__bandeau-container-left__bandeau-left p {
+  margin-right: 30px;
+  font-size: 20px;
+  text-align: right;
+}
+.chiffres-container__bandeau-container-right {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+.chiffres-container__bandeau-container-right__bandeau-right {
+  width: 60%;
+  padding: 20px;
+  color: #404041;
+  background-color: #EDA402;
+  position: relative;
+  border-radius: 15px 0 0 15px;
+  margin-bottom: 50px;
+}
+.chiffres-container__bandeau-container-right__bandeau-right p {
+  margin-left: 30px;
+  font-size: 20px;
+  text-align: left;
+}
+.chiffres-container__item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+.chiffres-container__item-container__item {
+  margin: 20px 0;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chiffres-container__item-container__item img {
+  width: 50px;
+  height: 50px;
+  padding: 20px;
+  background-color: #EDA402;
+  border-radius: 15px;
+}
+.chiffres-container__item-container__item p span {
+  font-weight: bold;
+}
+.chiffres-container__presentation-sejour-container {
+  padding: 30px 50px;
+}
+.chiffres-container__presentation-sejour-container__description-img {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+.chiffres-container__presentation-sejour-container__description-img p {
+  width: 50%;
+  min-width: 350px;
+  font-family: "Cormorant Garamond";
+}
+.chiffres-container__presentation-sejour-container__description-img img {
+  width: 300px;
+  height: auto;
+}
+.chiffres-container__presentation-sejour-container__img-supplementaire {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.chiffres-container__presentation-sejour-container__img-supplementaire img {
+  width: 350px;
+  height: auto;
+  margin: 10px;
+}
+
 .banner-container {
   background-color: #404041;
   display: flex;
@@ -879,7 +1152,7 @@ body {
   overflow: hidden;
 }
 .banner-container__title {
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -897,6 +1170,6 @@ body {
 .banner-container__img {
   position: absolute;
   top: -40px;
-  left: 30%;
-  width: 70%;
+  left: 40%;
+  width: 60%;
 }/*# sourceMappingURL=app.css.map */

@@ -107,10 +107,32 @@
 }
 .contact-main-form form .input-row-container__input-checkbox {
   display: flex;
-  margin: 10px;
+  align-items: center;
+  margin-right: 30px;
+  width: 650px;
+  min-width: 350px;
 }
 .contact-main-form form .input-row-container__input-checkbox p {
   font-size: 12px;
+  width: 60%;
+  min-width: 300px;
+}
+.contact-main-form form .input-row-container__input-checkbox input {
+  margin: 0 10px;
+}
+.contact-main-form form .input-row-container__input-file {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 60%;
+}
+.contact-main-form form .input-row-container__input-file input {
+  padding: 10px 20px;
+  width: 300px;
+  border-radius: 10px;
+  border: 3px dashed #EDA402;
+  font-size: 16px;
+  outline: none;
 }
 .contact-main-form form .input-row-container__input {
   display: flex;

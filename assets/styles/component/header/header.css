@@ -17,8 +17,9 @@
 }
 .header nav {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
+  padding: 0 50px 0 50px;
 }
 .header nav .nav-list {
   display: flex;
@@ -26,12 +27,25 @@
   align-items: center;
 }
 .header nav .nav-list__item {
-  width: 150px;
+  width: 180px;
   position: relative;
   transition: all 0.3s ease-in-out;
 }
+.header nav .nav-list__item a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+  width: 180px;
+  height: 60px;
+  font-size: 18px;
+}
 .header nav .nav-list__item:hover {
   background-color: #404041;
+  color: white;
+}
+.header nav .nav-list__item:hover a {
   color: white;
 }
 .header nav .nav-list__item:hover .nav-list__item__sub-nav {
@@ -46,18 +60,6 @@
   background-color: #404041;
   color: white;
 }
-.header nav .nav-list__item a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  text-decoration: none;
-  width: 150px;
-  height: 60px;
-}
-.header nav .nav-list__item a:hover {
-  color: white;
-}
 .header nav .nav-list__item .nav-list__item__sub-nav {
   visibility: hidden;
   position: absolute;
@@ -68,7 +70,7 @@
 }
 .header nav .nav-list__item .nav-list__item__sub-nav__item {
   text-align: center;
-  width: 150px;
+  width: 180px;
   transition: all 0.3s ease-in-out;
 }
 .header nav .login-button {
@@ -78,15 +80,20 @@
 .header nav .login-button__link {
   display: flex;
   align-items: center;
-  justify-content: space-around;
   padding: 5px 20px;
   border-radius: 30px;
   border: 3px solid #EDA402;
+  background-color: #EDA402;
   text-decoration: none;
-  color: #000;
+  color: white;
   font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+.header nav .login-button__link:hover {
+  background-color: rgba(237, 162, 2, 0.7215686275);
 }
 .header nav .login-button__link img {
+  margin-right: 5px;
   height: 30px;
   width: 30px;
 }
