@@ -425,7 +425,6 @@ body {
   overflow: hidden;
 }
 .a-propos-partenaires__container {
-  width: -moz-fit-content;
   width: fit-content;
   display: flex;
   overflow: hidden;
@@ -748,7 +747,6 @@ body {
 .footer__container {
   background-color: #F4F4F4;
   width: 100%;
-  height: -moz-fit-content;
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
@@ -1172,4 +1170,6 @@ body {
   top: -40px;
   left: 40%;
   width: 60%;
-}/*# sourceMappingURL=app.css.map */
+}
+
+/*# sourceMappingURL=app.css.map */
