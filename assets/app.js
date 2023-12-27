@@ -8,3 +8,13 @@
 import './styles/app.sass'
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉')
+
+const scrollContainer = document.querySelector('#scrollContainer');
+
+scrollContainer.addEventListener('mouseover', () => {
+    scrollContainer.style.animationPlayState = 'paused';
+});
+
+scrollContainer.addEventListener('mouseout', () => {
+    scrollContainer.style.animationPlayState = 'running';
+});

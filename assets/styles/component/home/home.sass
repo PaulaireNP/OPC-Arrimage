@@ -10,7 +10,8 @@
     margin-top: 40px
 
     h1
-      margin-left: 10rem
+      margin-top: 40px
+      margin-left: 10%
 
       span
         color: #EDA402
@@ -18,40 +19,39 @@
   &__video-container
     position: relative
     width: 100%
-    height: 90vh
     overflow: hidden
 
     &__video
       width: 100%
       height: auto
 
-  &__home-btn
-    position: absolute
-    bottom: 20px
-    left: 50%
-    transform: translateX(-50%)
-    display: flex
+    &__home-btn
+      position: absolute
+      bottom: 20%
+      left: 50%
+      transform: translateX(-50%)
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+      width: 90%
 
-    &__discover-btn
-      margin-right: 80px
-      padding: 10px 40px
-      background-color: white
-      color: #EDA402
-      text-decoration: none
-      border: 3px solid #EDA402
-      border-radius: 20px
-      font-size: 2rem
+      a
+          text-decoration: none
+          padding: 10px 30px
+          font-weight: 500
+          margin: 5px 80px
+          font-size: 20px
+          color: #EDA402
+          background-color: white
+          border: 3px solid #EDA402
+          border-radius: 15px
+          transition: all 0.3s ease-in-out
+
+          &:hover
+              background-color: #EDA402
+              color: white
 
 
-    &__contact-btn
-      margin-left: 80px
-      padding: 10px 40px
-      background-color: white
-      color: #EDA402
-      text-decoration: none
-      border: 3px solid #EDA402
-      border-radius: 20px
-      font-size: 2rem
 
 
   /*home end*/

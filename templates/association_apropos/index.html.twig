@@ -3,18 +3,176 @@
 {% block title %}Hello AssociationAproposController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% include 'layout/header.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/src/Controller/AssociationAproposController.php'|file_link(0) }}">src/Controller/AssociationAproposController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/templates/association_apropos/index.html.twig'|file_link(0) }}">templates/association_apropos/index.html.twig</a></code></li>
-    </ul>
+{% include 'layout/banner.html.twig' %}
+
+<div class="a-propos-presentation-container">
+    <h2><span>Qui</span> sommes nous ?</h2>
+    <p>Arrimages est un établissement social fonctionnant en vertu de la Convention Collective Nationale de travail des établissements et services pour personnes inadaptées et handicapées. Habilité par le Département de la Seine Saint Denis, Arrimages met en œuvre les objectifs du schéma départemental de la protection de l'enfance. 
+        <br> <br>
+    La gestion est confiée à une association déclarée, dont le Conseil d'administration se réunit mensuellement pour traiter des questions de fonctionnement général. Le président délègue à la direction la gestion quotidienne, avec des comptes rendus réguliers aux instances statutaires. 
+        <br> <br>
+    Un dialogue de gestion biannuel a lieu avec les services du Bureau de la Prévention et de la Parentalité, de la Direction de l'Enfance, pour discuter du budget et des comptes administratifs. Les administrateurs de l'association participent à ces échanges.</p>
+
+    <div class="a-propos-presentation-container__content">
+        <div class="a-propos-presentation-container__content__text">
+            <p>Cette démarche éducative se fonde sur les principes suivants :
+                <ul>
+                    <li>Le Non Mandat Nominatif,</li>
+                    <li>La Libre Adhésion des personnes,</li>
+                    <li>Le Respect de la Confidentialité,</li>
+                    <li>La Non-Institutionnalisation des Actions,</li>
+                    <li>Le Travail en Partenariat</li>
+                </ul>
+                
+                Et se développe au travers des pratiques professionnelles suivantes :
+                <ul>
+                    <li>Une Présence Sociale de proximité (travail de rue dans les espaces investis par les jeunes),</li>
+                    <li>Des Accompagnements Éducatifs Individuels,</li>
+                    <li>Des Activités Éducatives Collectives,</li>
+                    <li>Des Actions Collectives Solidaires et de Développement Local</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="a-propos-presentation-container__content__image">
+            <img src="{{ asset('assets/IMG/image/chronique-clichy-montfermeil.jpg')}}" alt="">
+        </div>
+    </div>
+
+    <p>En s’appuyant sur des réseaux croisés de professionnels, au plus près des besoins des habitants et légitimées par leur implication. L’association Arrimages intervient sur 4 territoires : Tremblay-en-France, Sevran, Clichy-sous-Bois, Montfermeil (<a href="#">voir la carte de nos implémentations</a>).</p>
+
+    <div class="a-propos-presentation-container__img-illustrations">
+        <img src="{{ asset('assets/IMG/illustration/histoire.png')}}" alt="">
+        <img src="{{ asset('assets/IMG/illustration/environnement.png')}}" alt="">
+    </div>
+
+    <div class="a-propos-presentation-container__btn">
+        <a href="#">Nos actions</a>
+    </div>
 </div>
+
+<div class="a-propos-presentation-container">
+    <h2><span>Nos</span> missions</h2>
+</div>
+
+<div class="mission-card-container-left">
+    <div class="mission-card-container-left__card-left">
+        <h3>Mission n°1</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt illo assumenda sapiente doloribus architecto amet, qui est quidem consequuntur doloremque error tempore rerum obcaecati debitis. At, exercitationem. Placeat, quae esse.</p>
+        <div class="mission-card-container-left__card-left__background"></div>
+    </div>
+</div>
+
+<div class="mission-card-container-right">
+    <div class="mission-card-container-right__card-right">
+        <h3>Mission n°1</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt illo assumenda sapiente doloribus architecto amet, qui est quidem consequuntur doloremque error tempore rerum obcaecati debitis. At, exercitationem. Placeat, quae esse.</p>
+        <div class="mission-card-container-right__card-right__background"></div>
+    </div>
+</div>
+    
+
+<div class="mission-card-container-left">
+    <div class="mission-card-container-left__card-left">
+        <h3>Mission n°1</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt illo assumenda sapiente doloribus architecto amet, qui est quidem consequuntur doloremque error tempore rerum obcaecati debitis. At, exercitationem. Placeat, quae esse.</p>
+        <div class="mission-card-container-left__card-left__background"></div>
+    </div>
+</div>
+
+<div class="mission-card-container-right">
+    <div class="mission-card-container-right__card-right">
+        <h3>Mission n°1</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt illo assumenda sapiente doloribus architecto amet, qui est quidem consequuntur doloremque error tempore rerum obcaecati debitis. At, exercitationem. Placeat, quae esse.</p>
+        <div class="mission-card-container-right__card-right__background"></div>
+    </div>
+</div>
+
+
+<div class="a-propos-presentation-container">
+    <h2><span>Quelques</span> chiffres</h2>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi nisi amet possimus voluptatem maiores aliquid dolorem facere. In sequi, beatae eveniet, nemo doloremque officiis architecto quo repudiandae assumenda, sint labore! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi nisi amet possimus voluptatem maiores aliquid dolorem facere. In sequi, beatae eveniet, nemo doloremque officiis architecto quo repudiandae assumenda, sint labore! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi nisi amet possimus voluptatem maiores aliquid dolorem facere. In sequi, beatae eveniet, nemo doloremque officiis architecto quo repudiandae assumenda, sint labore! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi nisi amet possimus voluptatem maiores aliquid dolorem facere. In sequi, beatae eveniet, nemo doloremque officiis architecto quo repudiandae assumenda, sint labore! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi nisi amet possimus voluptatem maiores aliquid dolorem facere. In sequi, beatae eveniet, nemo doloremque officiis architecto quo repudiandae assumenda, sint labore! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi nisi amet possimus voluptatem maiores aliquid dolorem facere. In sequi, beatae eveniet, nemo doloremque officiis architecto quo repudiandae assumenda, sint labore! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi nisi amet possimus voluptatem maiores aliquid dolorem facere. In sequi, beatae eveniet, nemo doloremque officiis architecto quo repudiandae assumenda, sint labore! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi nisi amet possimus voluptatem maiores aliquid dolorem facere. In sequi, beatae eveniet, nemo doloremque officiis architecto quo repudiandae assumenda, sint labore! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi nisi amet possimus voluptatem maiores aliquid dolorem facere. In sequi, beatae eveniet, nemo doloremque officiis architecto quo repudiandae assumenda, sint labore!</p>
+</div>
+
+<div class="a-propos-presentation-container">
+    <h2><span>Nos</span> partenaires</h2>
+</div>
+
+<div class="a-propos-partenaires">
+
+    <div class="a-propos-partenaires__container" id="scrollContainer">
+        
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/Logo_Seine_Saint_Denis.svg')}}" alt="">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/logo_cget.svg')}}" alt="">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/Logo_EPT_Grand_Paris_Grand_Est.svg')}}" alt="">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/logo-clichy.svg')}}" alt="">
+        </a>
+        
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/Logo_Montfermeil.svg')}}" alt="">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/Logo_tremblay-en-france.svg')}}" alt="">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/Logo_Sevran.svg')}}" alt="">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/Logo_Ateliers_Medicis.svg')}}" alt="">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/logo-ars.svg')}}" alt="ars">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/logo-c2di.svg')}}" alt="c2di">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/logo-cnape.svg')}}" alt="cnape">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/logo-mission-locale-dHuys.svg')}}" alt="mission locale Huys">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/logo-competences-emploi.svg')}}" alt="competences emploi">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/logo-energie.svg')}}" alt="energie">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/logo-mission-locale.svg')}}" alt="mission locale">
+        </a>
+
+        <a href="#" class="a-propos-partenaires__container__item">
+            <img src="{{ asset('assets/IMG/logoPartenaires/Ministère_de_la_Cohésion_des_territoires.svg')}}" alt="minitère cohésion des territoires">
+        </a>
+
+    </div>
+
+</div>
+
+
+{% include 'layout/footer.html.twig' %}
 {% endblock %}

@@ -6,57 +6,50 @@
 
         <!-- menu.html.twig -->
         <nav>
-            <ul class="nav__nav-list">
-                <li class="nav__nav-list__nav-item">
-                    <a class="nav__nav-list__nav-item__nav-link" href="{{ path('app_home') }}">Accueil
-                    </a>
-                </li>
 
-                <li class="nav__nav-list__nav-item">
-                    <a class="nav__nav-list__nav-item__nav-link" href="{{ path('app_association_apropos') }}">L'association
+            <div class="nav-list">
+                <div class="nav-list__item">
+                    <a href="{{ path('app_home')}}">
+                        Accueil
                     </a>
-                    <ul class="nav__nav-list__nav-item__sub-nav-list">
-                        <li class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item">
-                            <a class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item__sub-nav-link" href="{{ path('app_association_apropos', {'id': 'apropos'}) }}">A Propos
-                            </a>
-                        </li>
-                        <li class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item">
-                            <a class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item__sub-nav-link" href="{{ path('app_association_histoire', {'id': 'notre_histoire'}) }}">Notre Histoire
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                </div>
+                <div class="nav-list__item">
+                    <a href="{{ path('app_association_histoire')}}">
+                        L'association
+                    </a>
+                    <div class="nav-list__item__sub-nav">
+                        <a href="{{ path('app_association_histoire')}}" class="nav-list__item__sub-nav__item">Notre histoire</a>
+                        <a href="{{ path('app_association_apropos')}}" class="nav-list__item__sub-nav__item">A propos</a>
+                    </div>
+                </div>
+                <div class="nav-list__item">
+                    <a href="{{ path('app_nos_services')}}">
+                        Nos services
+                    </a>
+                    <div class="nav-list__item__sub-nav">
+                        <a href="{{ path('app_nos_services_travail_de_rue')}}" class="nav-list__item__sub-nav__item">Travail de rue</a>
+                        <a href="{{ path('app_nos_services_accompagnement_social')}}" class="nav-list__item__sub-nav__item">Accompagnement social</a>
+                        <a href="{{ path('app_nos_services_actions_collectives')}}" class="nav-list__item__sub-nav__item">Actions Collectives</a>
+                        <a href="{{ path('app_nos_services_ateliers')}}" class="nav-list__item__sub-nav__item">Ateliers</a>
+                    </div>
+                </div>
+                <div class="nav-list__item">
+                    <a href="{{ path('app_actualites')}}">
+                        Actualités
+                    </a>
+                </div>
+                <div class="nav-list__item">
+                    <a href="{{ path('app_contact')}}">
+                        Contact
+                    </a>
+                </div>
+            </div>
 
-                <li class="nav__nav-list__nav-item">
-                    <a class="nav__nav-list__nav-item__nav-link" href="{{ path('app_nos_services') }}">Nos Services
-                    </a>
-                    <ul class="nav__nav-list__nav-item__sub-nav-list">
-                        <li class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item">
-                            <a class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item__sub-nav-link" href="{{ path('app_nos_services_travail_de_rue', {'id': 'travail_de_rue'}) }}">Travail de Rue
-                            </a>
-                        </li>
-                        <li class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item">
-                            <a class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item__sub-nav-link" href="{{ path('app_nos_services_accompagnement_social', {'id': 'accompagnement_social'}) }}">Accompagnement Social
-                            </a>
-                        </li>
-                        <li class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item">
-                            <a class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item__sub-nav-link" href="{{ path('app_nos_services_actions_collectives', {'id': 'actions_collectives'}) }}">Actions Collectives
-                            </a>
-                        </li>
-                        <li class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item">
-                            <a class="nav__nav-list__nav-item__sub-nav-list__sub-nav-item__sub-nav-link" href="{{ path('app_nos_services_ateliers', {'id': 'ateliers'}) }}">Ateliers
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav__nav-list__nav-item">
-                    <a class="nav__nav-list__nav-item__nav-link" href="{{ path('app_contact') }}">Contact
-                    </a>
-                </li>
-            </ul>
-
-            <button class="header__login-button">
-                <a class="header__login-link" href="{{ path('app_login') }}">Connexion</a>
+            <button class="login-button">
+                <a class="login-button__link" href="{{ path('app_loginFAUX') }}">
+                    <img src="{{ asset('assets/IMG/Icons/profil.png')}}" alt="">
+                    Connexion
+                </a>
             </button>
         </nav>
 

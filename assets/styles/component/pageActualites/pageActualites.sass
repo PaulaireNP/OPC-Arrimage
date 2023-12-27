@@ -1,0 +1,37 @@
+@import ../../variable
+
+.article_container
+    padding: 30px 50px
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+
+    &__card
+        text-decoration: none
+        width: 350px
+        height: 500px
+        margin: 20px
+        border-radius: 15px
+        background-color: white
+        overflow: hidden
+        box-shadow: 5px 5px 5px #40404153
+
+        &__image
+            height: 30%
+            overflow: hidden
+
+        &__content
+            padding: 0 20px
+
+            &__author
+                color : #898989
+                text-align: center
+
+            &__title
+                color: $main-orange
+                font-size: 25px
+                text-align: center
+
+            &__mini-description
+                color: $dark-grey
+                font-family: "Cormorant Garamond"

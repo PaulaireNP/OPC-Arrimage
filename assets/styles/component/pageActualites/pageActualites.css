@@ -1,0 +1,36 @@
+.article_container {
+  padding: 30px 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.article_container__card {
+  text-decoration: none;
+  width: 350px;
+  height: 500px;
+  margin: 20px;
+  border-radius: 15px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 5px 5px 5px rgba(64, 64, 65, 0.3254901961);
+}
+.article_container__card__image {
+  height: 30%;
+  overflow: hidden;
+}
+.article_container__card__content {
+  padding: 0 20px;
+}
+.article_container__card__content__author {
+  color: #898989;
+  text-align: center;
+}
+.article_container__card__content__title {
+  color: #EDA402;
+  font-size: 25px;
+  text-align: center;
+}
+.article_container__card__content__mini-description {
+  color: #404041;
+  font-family: "Cormorant Garamond";
+}/*# sourceMappingURL=pageActualites.css.map */

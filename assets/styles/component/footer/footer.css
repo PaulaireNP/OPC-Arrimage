@@ -7,12 +7,13 @@
 .footer__container {
   background-color: #F4F4F4;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
   position: relative;
   justify-content: space-around;
-  padding: 20px;
+  padding: 20px 0;
   color: #404041;
 }
 .footer__container__item {
@@ -62,6 +63,4 @@
   color: #F4F4F4;
   padding: 0 7px;
   /*footer end*/
-}
-
-/*# sourceMappingURL=footer.css.map */
+}/*# sourceMappingURL=footer.css.map */

@@ -10,7 +10,8 @@
   margin-top: 40px;
 }
 .main-container__title-container h1 {
-  margin-left: 10rem;
+  margin-top: 40px;
+  margin-left: 10%;
 }
 .main-container__title-container h1 span {
   color: #EDA402;
@@ -18,39 +19,35 @@
 .main-container__video-container {
   position: relative;
   width: 100%;
-  height: 90vh;
   overflow: hidden;
 }
 .main-container__video-container__video {
   width: 100%;
   height: auto;
 }
-.main-container__home-btn {
+.main-container__video-container__home-btn {
   position: absolute;
-  bottom: 20px;
+  bottom: 20%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
 }
-.main-container__home-btn__discover-btn {
-  margin-right: 80px;
-  padding: 10px 40px;
-  background-color: white;
-  color: #EDA402;
+.main-container__video-container__home-btn a {
   text-decoration: none;
-  border: 3px solid #EDA402;
-  border-radius: 20px;
-  font-size: 2rem;
-}
-.main-container__home-btn__contact-btn {
-  margin-left: 80px;
-  padding: 10px 40px;
-  background-color: white;
+  padding: 10px 30px;
+  font-weight: 500;
+  margin: 5px 80px;
+  font-size: 20px;
   color: #EDA402;
-  text-decoration: none;
+  background-color: white;
   border: 3px solid #EDA402;
-  border-radius: 20px;
-  font-size: 2rem;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
 }
-
-/*# sourceMappingURL=home.css.map */
+.main-container__video-container__home-btn a:hover {
+  background-color: #EDA402;
+  color: white;
+}/*# sourceMappingURL=home.css.map */

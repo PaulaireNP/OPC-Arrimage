@@ -12,7 +12,8 @@ class NosServicesAteliersController extends AbstractController
     public function index(): Response
     {
         return $this->render('nos_services_ateliers/index.html.twig', [
-            'controller_name' => 'NosServicesAteliersController',
+            'title_one' => 'Ateliers',
+            'title_two' => '',
         ]);
     }
 }
