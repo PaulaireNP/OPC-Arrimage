@@ -7,13 +7,20 @@
 .footer__container {
   background-color: #F4F4F4;
   width: 100%;
+<<<<<<< HEAD
+=======
   height: -moz-fit-content;
+>>>>>>> aaa3e34acb2d22703669832e89cae0da5fb4cd2b
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
   position: relative;
   justify-content: space-around;
+<<<<<<< HEAD
+  padding: 20px;
+=======
   padding: 20px 0;
+>>>>>>> aaa3e34acb2d22703669832e89cae0da5fb4cd2b
   color: #404041;
 }
 .footer__container__item {
@@ -63,4 +70,10 @@
   color: #F4F4F4;
   padding: 0 7px;
   /*footer end*/
+<<<<<<< HEAD
+}
+
+/*# sourceMappingURL=footer.css.map */
+=======
 }/*# sourceMappingURL=footer.css.map */
+>>>>>>> aaa3e34acb2d22703669832e89cae0da5fb4cd2b
