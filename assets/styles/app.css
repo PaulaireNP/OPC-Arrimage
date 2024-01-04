@@ -106,6 +106,30 @@ body {
   height: 30px;
   width: 30px;
 }
+.header nav .logout-button {
+  background-color: transparent;
+  border: none;
+}
+.header nav .logout-button__link {
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  border-radius: 30px;
+  border: 3px solid #EDA402;
+  background-color: #EDA402;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+.header nav .logout-button__link:hover {
+  background-color: rgba(237, 162, 2, 0.7215686275);
+}
+.header nav .logout-button__link img {
+  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+}
 @keyframes slide-in {
   0% {
     top: -50px;
@@ -1171,5 +1195,204 @@ body {
   left: 40%;
   width: 60%;
 }
+
+/* start navbar Dashboard admin */
+* {
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+}
+
+.main-container-dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  height: 100%;
+  background-color: #404041;
+  color: white;
+}
+.main-container-dashboard__main-navigation {
+  display: flex;
+  flex-direction: column;
+}
+.main-container-dashboard__main-navigation__back-site {
+  display: flex;
+}
+.main-container-dashboard__main-navigation__back-site a {
+  color: white;
+  padding: 15px 0;
+  display: block;
+}
+.main-container-dashboard__main-navigation__back-site a:hover {
+  color: #EDA402;
+}
+.main-container-dashboard__main-navigation__back-site img {
+  padding: 0 20px;
+}
+.main-container-dashboard__main-navigation__title {
+  padding: 20px 35px;
+  color: #EDA402;
+  margin-bottom: 10px;
+}
+.main-container-dashboard__main-navigation__nav-container__nav-item__main-list {
+  color: white;
+  padding: 10px 15px;
+  display: block;
+}
+.main-container-dashboard__main-navigation__nav-container__nav-item__main-list:hover {
+  color: #EDA402;
+}
+.main-container-dashboard__main-navigation__nav-container__nav-item__sub-item {
+  color: white;
+  padding: 10px 15px;
+  display: block;
+  padding-left: 30px;
+  font-size: 0.9em;
+}
+.main-container-dashboard__main-navigation__nav-container__nav-item__sub-item:hover {
+  color: #EDA402;
+}
+.main-container-dashboard__main-navigation__nav-container__barre {
+  width: 80%;
+  height: 2px;
+  margin-left: 15px;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.main-container-dashboard__main-navigation__nav-container__logout-button {
+  display: flex;
+  border: none;
+  background-color: #EDA402;
+  color: white;
+  padding: 10px 25px;
+  margin-left: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.main-container-dashboard__main-navigation__nav-container__logout-button__link {
+  color: inherit;
+  padding: 0 10px;
+  margin-top: 2px;
+  align-items: center;
+  justify-content: center;
+}
+.main-container-dashboard__main-navigation__nav-container__logout-button__link:hover {
+  color: #404041;
+}
+.main-container-dashboard__main-navigation__nav-container__logout-button__img {
+  margin-right: 5px;
+  height: 15px;
+  width: 30px;
+}
+
+/* end navbar Dashboard admin */
+/*start dashboard admin*/
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.dashboard-container__title {
+  text-align: center;
+  color: #404041;
+  margin-bottom: 30px;
+}
+.dashboard-container__first-section {
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+  margin-right: 1%;
+}
+.dashboard-container__first-section__section-title {
+  color: #404041;
+  margin: 20px 0;
+}
+.dashboard-container__first-section__section-blog {
+  border: 3px solid #EDA402;
+  border-radius: 10px;
+  padding: 20px;
+  width: 45%;
+}
+.dashboard-container__first-section__section-blog__list__list-item {
+  height: 30px;
+}
+.dashboard-container__first-section__section-blog__button {
+  background: #EDA402;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 40px;
+  margin-left: 65px;
+  cursor: pointer;
+  display: inline-block;
+}
+.dashboard-container__first-section__section-sector {
+  border: 3px solid #EDA402;
+  border-radius: 10px;
+  padding: 20px;
+  width: 35%;
+}
+.dashboard-container__first-section__section-sector__button {
+  background: #EDA402;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 40px;
+  margin-left: 30px;
+  cursor: pointer;
+  display: inline-block;
+}
+.dashboard-container__second-section {
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+  margin-right: 1%;
+}
+.dashboard-container__second-section__section-title {
+  color: #404041;
+  margin: 20px 0;
+}
+.dashboard-container__second-section__section-documents {
+  border: 3px solid #EDA402;
+  border-radius: 10px;
+  padding: 20px;
+  width: 50%;
+}
+.dashboard-container__second-section__section-documents__list__list-item {
+  height: 30px;
+}
+.dashboard-container__second-section__section-documents__button {
+  background: #EDA402;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 40px;
+  margin-left: 65px;
+  cursor: pointer;
+  display: inline-block;
+}
+.dashboard-container__second-section__section-team-management {
+  border: 3px solid #EDA402;
+  border-radius: 10px;
+  padding: 20px;
+  width: 45%;
+}
+.dashboard-container__second-section__section-team-management__list__list-item {
+  height: 30px;
+}
+.dashboard-container__second-section__section-team-management__button {
+  background: #EDA402;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 40px;
+  margin-left: 65px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/*end dashboard admin*/
 
 /*# sourceMappingURL=app.css.map */

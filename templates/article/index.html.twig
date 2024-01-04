@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+
+    {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
+    <h1>Blog</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Date de publication</th>
+                <th>Auteur</th>
+                <th>Visible</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.description }}</td>
+                <td>{{ article.image }}</td>
+                <td>{{ article.creationDate ? article.creationDate|date('Y-m-d') : '' }}</td>
+                <td>{{ article.author }}</td>
+                <td>{{ article.visible ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_article_show', {'id': article.id}) }}">voir</a>
+                    <a href="{{ path('app_article_edit', {'id': article.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_article_new') }}">Créer un nouveau</a>
+{% endblock %}

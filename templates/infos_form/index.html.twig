@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InfosForm index{% endblock %}
+
+{% block body %}
+    <h1>InfosForm index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Mobile</th>
+                <th>Mail</th>
+                <th>Number</th>
+                <th>Street</th>
+                <th>AdditionalAddress</th>
+                <th>City</th>
+                <th>ZipCode</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for infos_form in infos_forms %}
+            <tr>
+                <td>{{ infos_form.id }}</td>
+                <td>{{ infos_form.lastname }}</td>
+                <td>{{ infos_form.firstname }}</td>
+                <td>{{ infos_form.mobile }}</td>
+                <td>{{ infos_form.mail }}</td>
+                <td>{{ infos_form.number }}</td>
+                <td>{{ infos_form.street }}</td>
+                <td>{{ infos_form.additionalAddress }}</td>
+                <td>{{ infos_form.city }}</td>
+                <td>{{ infos_form.zipCode }}</td>
+                <td>
+                    <a href="{{ path('app_infos_form_show', {'id': infos_form.id}) }}">show</a>
+                    <a href="{{ path('app_infos_form_edit', {'id': infos_form.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_infos_form_new') }}">Create new</a>
+{% endblock %}

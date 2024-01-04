@@ -43,16 +43,35 @@
                         Contact
                     </a>
                 </div>
+
+
+        {% if app.user %}
+
+                <div class="nav-list__item">
+                    <a href="{{ path('app_dashboard_admin') }}">
+                        Dashboard
+                    </a>
+                </div>
             </div>
 
+            <button class="logout-button">
+                <a class="logout-button__link" href="{{ path('app_logout') }}">
+                    <img src="{{ asset('assets/IMG/Icons/profil.png')}}" alt="">
+                    Déconnexion
+                </a>
+            </button>
+
+        {% else %}
+
             <button class="login-button">
-                <a class="login-button__link" href="{{ path('login') }}">
+                <a class="login-button__link" href="{{ path('app_login') }}">
                     <img src="{{ asset('assets/IMG/Icons/profil.png')}}" alt="">
                     Connexion
                 </a>
             </button>
-        </nav>
 
+        {% endif %}
+        </nav>
 
     </header>
 

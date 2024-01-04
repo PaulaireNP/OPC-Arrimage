@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NavBar Dashboard{% endblock %}
+
+{% block body %}
+
+    <div class="main-container-dashboard">
+        <nav class="main-container-dashboard__main-navigation">
+            <!-- Lien pour revenir au site -->
+            <div class="main-container-dashboard__main-navigation__back-site">
+                <img src="{{ asset('assets/IMG/Icons/go-back.svg') }}" alt="Fléche de retour">
+                <a href="{{ path('app_home') }}">
+                    Revenir au site
+                </a>
+            </div>
+
+            <!-- Titre -->
+            <h2 class="main-container-dashboard__main-navigation__title">Arrimages</h2>
+
+            <!-- Conteneur de navigation -->
+            <div class="main-container-dashboard__main-navigation__nav-container">
+                <!-- Item de navigation : Blog -->
+                <div class="main-container-dashboard__main-navigation__nav-container__nav-item">
+                    <ul>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__main-list" href="{{ path('app_article_index') }}">Blog</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Ajouter</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Liste</a></li>
+                    </ul>
+                </div>
+
+                <!-- Item de navigation : Utilisateurs -->
+                <div class="main-container-dashboard__main-navigation__nav-container__nav-item">
+                    <ul>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__main-list" href="{{ path('app_user_index') }}">Utilisateurs</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Ajouter</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Liste</a></li>
+                    </ul>
+                </div>
+
+                <!-- Item de navigation : Messagerie -->
+                <div class="main-container-dashboard__main-navigation__nav-container__nav-item">
+                    <ul>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__main-list" href="{{ path('app_messagerie') }}">Messagerie</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Contact</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Candidatures</a></li>
+                    </ul>
+                </div>
+
+                <!-- Item de navigation : Gestion des équipes -->
+                <div class="main-container-dashboard__main-navigation__nav-container__nav-item">
+                    <ul>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__main-list" href="{{ path('app_gestion_equipe') }}">Gestion des équipes</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Liste</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Ajouter un éducateur</a></li>
+                    </ul>
+                </div>
+
+                <div class="main-container-dashboard__main-navigation__nav-container__barre"></div>
+
+                <!-- Bouton de déconnexion -->
+                <button class="main-container-dashboard__main-navigation__nav-container__logout-button">
+                    <img src="{{ asset('assets/IMG/Icons/power.svg')}}" alt="Power">
+                    <a class="main-container-dashboard__main-navigation__nav-container__logout-button__link" href="{{ path('app_logout') }}">
+                        Déconnexion
+                    </a>
+                </button>
+            </div>
+        </nav>
+    </div>
+{% endblock %}
