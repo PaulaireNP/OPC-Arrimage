@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
+use App\Entity\Documents;
 use App\Entity\InfosForm;
 use App\Entity\Jeune;
 use App\Entity\Secteur;
@@ -18,6 +19,7 @@ class AppFixtures extends Fixture
     const NB_JEUNE = 15;
     const NB_INFOSFORM = 10;
     const NB_ARTICLE = 15;
+    const NB_DOCUMENTS = 10;
 
     public function load(ObjectManager $manager): void
     {
@@ -115,6 +117,17 @@ class AppFixtures extends Fixture
             ->setVisible($faker->boolean(70));
 
             $manager->persist($article);
+        }
+
+        for ($i = 0; $i < self::NB_DOCUMENTS; $i++) {
+        $documents = new Documents();
+        $documents
+            ->setTitle($faker->sentence(1))
+            ->setFile($faker->sentence(2))
+            ->setVisible($faker->boolean(70))
+            ->setCategorie($faker->randomElement(['Association', 'Rapports d activites','Prevention specialise']));
+
+        $manager->persist($documents);
         }
         $manager->flush();
     }

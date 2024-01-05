@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de documents{% endblock %}
+
+{% block body %}
+
+    <div class="main-documents">
+
+        {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
+        <div class="main-documents__container-documents">
+
+            <h1>Documents</h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Fichier</th>
+                        <th>Visible</th>
+                        <th>Categorie</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for document in documents %}
+                    <tr>
+                        <td>{{ document.id }}</td>
+                        <td>{{ document.tile }}</td>
+                        <td>{{ document.file }}</td>
+                        <td>{{ document.visible ? 'Yes' : 'No' }}</td>
+                        <td>{{ document.categorie }}</td>
+                        <td>
+                            <a href="{{ path('app_documents_show', {'id': document.id}) }}">voir</a>
+                            <a href="{{ path('app_documents_edit', {'id': document.id}) }}">modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('app_documents_new') }}">Créer un nouveau</a>
+        </div>
+    </div>
+
+{% endblock %}

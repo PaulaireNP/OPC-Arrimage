@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un Documents{% endblock %}
+
+{% block body %}
+
+    <div class="main-add-documents">
+
+        {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
+        <div class="main-add-documents__container-add-documents">
+
+            <h1>Create new Documents</h1>
+
+            {{ include('documents/_form.html.twig') }}
+
+            <a href="{{ path('app_documents_index') }}">back to list</a>
+
+        </div>
+
+    </div>
+
+{% endblock %}

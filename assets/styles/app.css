@@ -1206,8 +1206,8 @@ body {
 .main-container-dashboard {
   display: flex;
   flex-direction: column;
-  width: 230px;
-  height: 100%;
+  width: 260px;
+  height: 923px;
   background-color: #404041;
   color: white;
 }
@@ -1234,13 +1234,13 @@ body {
   color: #EDA402;
   margin-bottom: 10px;
 }
+.main-container-dashboard__main-navigation__title:hover {
+  color: white;
+}
 .main-container-dashboard__main-navigation__nav-container__nav-item__main-list {
   color: white;
   padding: 10px 15px;
   display: block;
-}
-.main-container-dashboard__main-navigation__nav-container__nav-item__main-list:hover {
-  color: #EDA402;
 }
 .main-container-dashboard__main-navigation__nav-container__nav-item__sub-item {
   color: white;
@@ -1290,35 +1290,46 @@ body {
 /* end navbar Dashboard admin */
 /*start dashboard admin*/
 .dashboard-container {
+  display: flex;
+}
+.dashboard-container__table {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
 }
-.dashboard-container__title {
+.dashboard-container__table__title {
+  color: #404041;
   text-align: center;
+}
+.dashboard-container__table__first-title {
+  display: flex;
+  gap: 375px;
+  margin-top: 60px;
+}
+.dashboard-container__table__first-title__section-title1 {
   color: #404041;
-  margin-bottom: 30px;
+  margin-top: 80px;
 }
-.dashboard-container__first-section {
-  display: inline-block;
-  vertical-align: top;
-  width: 49%;
-  margin-right: 1%;
-}
-.dashboard-container__first-section__section-title {
+.dashboard-container__table__first-title__section-title2 {
   color: #404041;
-  margin: 20px 0;
+  margin-left: 430px;
 }
-.dashboard-container__first-section__section-blog {
+.dashboard-container__table__first-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+  align-items: center;
+}
+.dashboard-container__table__first-section__section-blog {
   border: 3px solid #EDA402;
   border-radius: 10px;
   padding: 20px;
-  width: 45%;
+  width: 300px;
 }
-.dashboard-container__first-section__section-blog__list__list-item {
+.dashboard-container__table__first-section__section-blog__list__list-item {
   height: 30px;
 }
-.dashboard-container__first-section__section-blog__button {
+.dashboard-container__table__first-section__section-blog__button {
   background: #EDA402;
   color: white;
   border: none;
@@ -1328,13 +1339,15 @@ body {
   cursor: pointer;
   display: inline-block;
 }
-.dashboard-container__first-section__section-sector {
+.dashboard-container__table__first-section__section-sector {
   border: 3px solid #EDA402;
   border-radius: 10px;
   padding: 20px;
-  width: 35%;
+  width: 60%;
+  margin-bottom: 70px;
+  margin-left: 50px;
 }
-.dashboard-container__first-section__section-sector__button {
+.dashboard-container__table__first-section__section-sector__button {
   background: #EDA402;
   color: white;
   border: none;
@@ -1344,26 +1357,34 @@ body {
   cursor: pointer;
   display: inline-block;
 }
-.dashboard-container__second-section {
-  display: inline-block;
-  vertical-align: top;
-  width: 49%;
-  margin-right: 1%;
+.dashboard-container__table__second-title {
+  display: flex;
+  gap: 305px;
+  margin-top: 80px;
 }
-.dashboard-container__second-section__section-title {
+.dashboard-container__table__second-title__section-title3 {
   color: #404041;
-  margin: 20px 0;
 }
-.dashboard-container__second-section__section-documents {
+.dashboard-container__table__second-title__section-title4 {
+  color: #404041;
+}
+.dashboard-container__table__second-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+  align-items: center;
+}
+.dashboard-container__table__second-section__section-documents {
   border: 3px solid #EDA402;
   border-radius: 10px;
   padding: 20px;
-  width: 50%;
+  width: 90%;
 }
-.dashboard-container__second-section__section-documents__list__list-item {
+.dashboard-container__table__second-section__section-documents__list__list-item {
   height: 30px;
 }
-.dashboard-container__second-section__section-documents__button {
+.dashboard-container__table__second-section__section-documents__button {
   background: #EDA402;
   color: white;
   border: none;
@@ -1373,16 +1394,18 @@ body {
   cursor: pointer;
   display: inline-block;
 }
-.dashboard-container__second-section__section-team-management {
+.dashboard-container__table__second-section__section-team-management {
   border: 3px solid #EDA402;
   border-radius: 10px;
   padding: 20px;
-  width: 45%;
+  width: 70%;
+  margin-bottom: 28px;
+  margin-left: 50px;
 }
-.dashboard-container__second-section__section-team-management__list__list-item {
+.dashboard-container__table__second-section__section-team-management__list__list-item {
   height: 30px;
 }
-.dashboard-container__second-section__section-team-management__button {
+.dashboard-container__table__second-section__section-team-management__button {
   background: #EDA402;
   color: white;
   border: none;
@@ -1394,5 +1417,41 @@ body {
 }
 
 /*end dashboard admin*/
+/*start liste article*/
+.main-blog {
+  display: flex;
+}
+
+/*end liste article*/
+/*start add article*/
+.main-add-article {
+  display: flex;
+}
+
+/*end add article*/
+/*start list user*/
+.main-user {
+  display: flex;
+}
+
+/*end list user*/
+/*start new user*/
+.main-new-user {
+  display: flex;
+}
+
+/*end new user*/
+/*start list documents*/
+.main-documents {
+  display: flex;
+}
+
+/*end list documents*/
+/*start add documents*/
+.main-add-documents {
+  display: flex;
+}
+
+/*end add documents*/
 
 /*# sourceMappingURL=app.css.map */

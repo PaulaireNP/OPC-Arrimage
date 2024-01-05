@@ -3,9 +3,20 @@
 {% block title %}Nouvel Article{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouvel Article</h1>
 
-    {{ include('article/_form.html.twig') }}
+    <div class="main-add-article">
 
-    <a href="{{ path('app_article_index') }}">Retour à la liste</a>
+        {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
+        <div class="main-add-article__container-new">
+
+            <h1>Créer un nouvel Article</h1>
+
+            {{ include('article/_form.html.twig') }}
+
+            <a href="{{ path('app_article_index') }}">Retour à la liste</a>
+
+        </div>
+
+    </div>
 {% endblock %}

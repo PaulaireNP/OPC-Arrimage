@@ -4,63 +4,90 @@
 
 {% block body %}
 
-    {% include 'layout/navbarDashboardAdmin.html.twig' %}
-
     <div class="dashboard-container">
 
-        <h1 class="dashboard-container__title">Tableau de bord</h1>
+        {% include 'layout/navbarDashboardAdmin.html.twig' %}
 
-        <div class="dashboard-container__first-section">
+        <div class="dashboard-container__table">
 
-            <h2 class="dashboard-container__first-section__section-title">Blog</h2>
-            <div class="dashboard-container__first-section__section-blog">
-                <ul class="dashboard-container__first-section__section-blog__list">
-                    <li class="dashboard-container__first-section__section-blog__list__list-item">Nb d'articles :</li>
-                    <li class="dashboard-container__first-section__section-blog__list__list-item">Nb d'articles visibles :</li>
-                    <li class="dashboard-container__first-section__section-blog__list__list-item">Nb d'articles non visibles :</li>
-                </ul>
-                <button class="dashboard-container__first-section__section-blog__button">
-                    <a href="{{ path('app_article_index') }}" class="dashboard-container__first-section__section-blog__button__link">Voir plus</a>
-                </button>
+            <h1 class="dashboard-container__table__title">Tableau de bord</h1>
+
+            <div class="dashboard-container__table__first-title">
+
+                <h2 class="dashboard-container__table__section-title1">Blog</h2>
+
+                <h2 class="dashboard-container__table__section-title2">Secteur</h2>
+
             </div>
 
-            <h2 class="dashboard-container__first-section__section-title">Secteur</h2>
-            <div class="dashboard-container__first-section__section-sector">
-                <ul class="dashboard-container__first-section__section-sector__list">
-                    <li class="dashboard-container__first-section__section-sector__list__list-item">Nb de secteur :</li>
-                </ul>
-                <button class="dashboard-container__first-section__section-sector__button">
-                    <a href="{{ path('app_secteur_index') }}" class="dashboard-container__first-section__section-sector__button__link">Voir plus</a>
-                </button>
+            <div class="dashboard-container__table__first-section">
+
+                <div class="dashboard-container__table__first-section__section-blog">
+
+                    <ul class="dashboard-container__table__first-section__section-blog__list">
+                        <li class="dashboard-container__table__first-section__section-blog__list__list-item">Nb d'articles :</li>
+                        <li class="dashboard-container__table__first-section__section-blog__list__list-item">Nb d'articles visibles :</li>
+                        <li class="dashboard-container__table__first-section__section-blog__list__list-item">Nb d'articles non visibles :</li>
+                    </ul>
+
+                    <button class="dashboard-container__table__first-section__section-blog__button">
+
+                        <a href="{{ path('app_article_index') }}" class="dashboard-container__table__first-section__section-blog__button__link">Voir plus</a>
+                    </button>
+
+                </div>
+
+                <div class="dashboard-container__table__first-section__section-sector">
+
+                    <ul class="dashboard-container__table__first-section__section-sector__list">
+                        <li class="dashboard-container__table__first-section__section-sector__list__list-item">Nb de secteur :</li>
+                    </ul>
+
+                    <button class="dashboard-container__table__first-section__section-sector__button">
+                        <a href="{{ path('app_secteur_index') }}" class="dashboard-container__table__first-section__section-sector__button__link">Voir plus</a>
+                    </button>
+
+                </div>
+
             </div>
 
-        </div>
+            <div class="dashboard-container__table__second-title">
 
-        <div class="dashboard-container__second-section">
+                <h2 class="dashboard-container__table__section-title3">Documents</h2>
 
-            <h2 class="dashboard-container__second-section__section-title">Documents</h2>
-            <div class="dashboard-container__second-section__section-documents">
-                <ul class="dashboard-container__second-section__section-documents__list">
-                    <li class="dashboard-container__second-section__section-documents__list__list-item">Nb de docs association :</li>
-                    <li class="dashboard-container__second-section__section-documents__list__list-item">Nb de rapports d’activités :</li>
-                    <li class="dashboard-container__second-section__section-documents__list__list-item">Nb de docs Prévention spécialisé :</li>
-                </ul>
-                <button class="dashboard-container__second-section__section-documents__button">
-                    <a href="" class="dashboard-container__second-section__section-documents__button__link">Voir plus</a>
-                </button>
+                <h2 class="dashboard-container__table__section-title4">Gestion des équipes</h2>
+
             </div>
 
-            <h2 class="dashboard-container__second-section__section-title">Gestion des équipes</h2>
-            <div class="dashboard-container__second-section__section-team-management">
-                <ul class="dashboard-container__second-section__section-team-management__list">
-                    <li class="dashboard-container__second-section__section-team-management__list__list-item">Nb d’éducateur totale :</li>
-                    <li class="dashboard-container__second-section__section-team-management__list__list-item">Nb de centre au totale :</li>
-                </ul>
-                <button class="dashboard-container__second-section__section-team-management__button">
-                    <a href="{{ path('app_gestion_equipe') }}" class="dashboard-container__second-section__section-team-management__button__link">Voir plus</a>
-                </button>
-            </div>
+            <div class="dashboard-container__table__second-section">
 
+                <div class="dashboard-container__table__second-section__section-documents">
+
+                    <ul class="dashboard-container__table__second-section__section-documents__list">
+                        <li class="dashboard-container__table__second-section__section-documents__list__list-item">Nb de docs association :</li>
+                        <li class="dashboard-container__table__second-section__section-documents__list__list-item">Nb de rapports d’activités :</li>
+                        <li class="dashboard-container__table__second-section__section-documents__list__list-item">Nb de docs Prévention spécialisé :</li>
+                    </ul>
+
+                    <button class="dashboard-container__table__second-section__section-documents__button">
+                        <a href="" class="dashboard-container__table__second-section__section-documents__button__link">Voir plus</a>
+                    </button>
+
+                </div>
+
+                <div class="dashboard-container__table__second-section__section-team-management">
+
+                    <ul class="dashboard-container__table__second-section__section-team-management__list">
+                        <li class="dashboard-container__table__second-section__section-team-management__list__list-item">Nb d’éducateurs total :</li>
+                        <li class="dashboard-container__table__second-section__section-team-management__list__list-item">Nb de centres au total :</li>
+                    </ul>
+
+                    <button class="dashboard-container__table__second-section__section-team-management__button">
+                        <a href="{{ path('app_gestion_equipe') }}" class="dashboard-container__table__second-section__section-team-management__button__link">Voir plus</a>
+                    </button>
+
+                </div>
+            </div>
         </div>
     </div>
 

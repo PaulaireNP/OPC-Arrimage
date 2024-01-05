@@ -2,34 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Documents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class DocumentsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-           // ->add('roles')
-            ->add('password')
-            ->add('lastname')
-            ->add('firstname')
-            ->add('mobile')
-            ->add('street')
-            ->add('additionalAddress')
-            ->add('city')
-            ->add('zipCode')
-            ->add('number')
+            ->add('tile')
+            ->add('file')
+            ->add('visible')
+            ->add('categorie')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Documents::class,
         ]);
     }
 }

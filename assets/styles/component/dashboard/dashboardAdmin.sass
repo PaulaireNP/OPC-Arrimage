@@ -1,113 +1,135 @@
 /*start dashboard admin*/
 
 .dashboard-container
-  max-width: 1200px
-  margin: 0 auto
-  padding: 20px
+  display: flex
 
-  &__title
-    text-align: center
-    color: #404041
-    margin-bottom: 30px
+  &__table
+    max-width: 1200px
+    margin: 0 auto
 
-  &__first-section
-    display: inline-block
-    vertical-align: top
-    width: 49%
-    margin-right: 1%
-
-    &__section-title
+    &__title
       color: #404041
-      margin: 20px 0
+      text-align: center
 
-    &__section-blog
-      border: 3px solid #EDA402
-      border-radius: 10px
-      padding: 20px
-      width: 45%
+    &__first-title
+      display: flex
+      gap: 375px
+      margin-top: 60px
 
-      &__list
+      &__section-title1
+        color: #404041
+        margin-top: 80px
 
-        &__list-item
-          height: 30px
+      &__section-title2
+        color: #404041
+        margin-left: 430px
 
-      &__button
-        background: #EDA402
-        color: white
-        border: none
-        border-radius: 8px
-        padding: 12px 40px
-        margin-left: 65px
-        cursor: pointer
-        display: inline-block
+    &__first-section
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      gap: 30px
+      margin-bottom: 50px
+      align-items: center
 
-    &__section-sector
-      border: 3px solid #EDA402
-      border-radius: 10px
-      padding: 20px
-      width: 35%
+      &__section-blog
+        border: 3px solid #EDA402
+        border-radius: 10px
+        padding: 20px
+        width: 300px
 
-      &__button
-        background: #EDA402
-        color: white
-        border: none
-        border-radius: 8px
-        padding: 12px 40px
-        margin-left: 30px
-        cursor: pointer
-        display: inline-block
+        &__list
 
-  &__second-section
-    display: inline-block
-    vertical-align: top
-    width: 49%
-    margin-right: 1%
+          &__list-item
+            height: 30px
 
-    &__section-title
-      color: #404041
-      margin: 20px 0
+        &__button
+          background: #EDA402
+          color: white
+          border: none
+          border-radius: 8px
+          padding: 12px 40px
+          margin-left: 65px
+          cursor: pointer
+          display: inline-block
 
-    &__section-documents
-      border: 3px solid #EDA402
-      border-radius: 10px
-      padding: 20px
-      width: 50%
+      &__section-sector
+        border: 3px solid #EDA402
+        border-radius: 10px
+        padding: 20px
+        width: 60%
+        margin-bottom: 70px
+        margin-left: 50px
 
-      &__list
+        &__button
+          background: #EDA402
+          color: white
+          border: none
+          border-radius: 8px
+          padding: 12px 40px
+          margin-left: 30px
+          cursor: pointer
+          display: inline-block
 
-        &__list-item
-          height: 30px
+    &__second-title
+      display: flex
+      gap: 305px
+      margin-top: 80px
 
-      &__button
-        background: #EDA402
-        color: white
-        border: none
-        border-radius: 8px
-        padding: 12px 40px
-        margin-left: 65px
-        cursor: pointer
-        display: inline-block
+      &__section-title3
+        color: #404041
 
-    &__section-team-management
-      border: 3px solid #EDA402
-      border-radius: 10px
-      padding: 20px
-      width: 45%
+      &__section-title4
+        color: #404041
 
-      &__list
+    &__second-section
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      gap: 30px
+      margin-bottom: 50px
+      align-items: center
 
-        &__list-item
-          height: 30px
+      &__section-documents
+        border: 3px solid #EDA402
+        border-radius: 10px
+        padding: 20px
+        width: 90%
 
-      &__button
-        background: #EDA402
-        color: white
-        border: none
-        border-radius: 8px
-        padding: 12px 40px
-        margin-left: 65px
-        cursor: pointer
-        display: inline-block
+        &__list
 
+          &__list-item
+            height: 30px
+
+        &__button
+          background: #EDA402
+          color: white
+          border: none
+          border-radius: 8px
+          padding: 12px 40px
+          margin-left: 65px
+          cursor: pointer
+          display: inline-block
+
+      &__section-team-management
+        border: 3px solid #EDA402
+        border-radius: 10px
+        padding: 20px
+        width: 70%
+        margin-bottom: 28px
+        margin-left: 50px
+
+        &__list
+
+          &__list-item
+            height: 30px
+
+        &__button
+          background: #EDA402
+          color: white
+          border: none
+          border-radius: 8px
+          padding: 12px 40px
+          margin-left: 65px
+          cursor: pointer
+          display: inline-block
 
 /*end dashboard admin*/
