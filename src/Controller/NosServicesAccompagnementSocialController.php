@@ -12,7 +12,8 @@ class NosServicesAccompagnementSocialController extends AbstractController
     public function index(): Response
     {
         return $this->render('nos_services_accompagnement_social/index.html.twig', [
-            'controller_name' => 'NosServicesAccompagnementSocialController',
+            'title_one' => 'Accompagnement',
+            'title_two' => 'social',
         ]);
     }
 }

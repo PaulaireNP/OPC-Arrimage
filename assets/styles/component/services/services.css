@@ -1,0 +1,90 @@
+.main-services-container {
+  text-align: center;
+  padding: 30px 0 0 0;
+}
+.main-services-container h2 {
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 500;
+}
+.main-services-container__services {
+  padding: 30px 0;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.main-services-container__services__item {
+  background-color: #EDA402;
+  border-radius: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 30px;
+  width: 350px;
+  height: 350px;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+.main-services-container__services__item h3 {
+  position: absolute;
+  font-size: 25px;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+.main-services-container__services__item img {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100px;
+  width: 100px;
+  transition: all 0.5s ease-in-out;
+}
+.main-services-container__services__item__hidden-text {
+  width: 290px;
+  position: absolute;
+  top: 35%;
+  left: -150%;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.main-services-container__services__item__hidden-text p {
+  text-align: left;
+  font-family: "Cormorant Garamond";
+  margin-bottom: 40px;
+}
+.main-services-container__services__item__hidden-text a {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 3px solid white;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 5px 30px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.main-services-container__services__item__hidden-text a:hover {
+  background-color: white;
+  color: #EDA402;
+}
+.main-services-container__services__item:hover {
+  background-color: #EDA402;
+}
+.main-services-container__services__item:hover h3 {
+  top: 5%;
+  opacity: 0;
+}
+.main-services-container__services__item:hover img {
+  top: 5%;
+}
+.main-services-container__services__item:hover .main-services-container__services__item__hidden-text {
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+}/*# sourceMappingURL=services.css.map */

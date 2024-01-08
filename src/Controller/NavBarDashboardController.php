@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LoginController extends AbstractController
+class NavBarDashboardController extends AbstractController
 {
-    #[Route('/login', name: 'app_login')]
+    #[Route('/nav/bar/dashboard', name: 'app_nav_bar_dashboard')]
     public function index(): Response
     {
-        return $this->render('login/index.html.twig', [
-            'controller_name' => 'LoginController',
+        return $this->render('navbarDashboardAdmin.sass.html.twig', [
+            'controller_name' => 'NavBarDashboardController',
         ]);
     }
 }

@@ -1,0 +1,154 @@
+.a-propos-presentation-container {
+  padding: 30px 50px;
+}
+.a-propos-presentation-container h2 {
+  color: #404041;
+  text-transform: uppercase;
+}
+.a-propos-presentation-container h2 span {
+  color: #EDA402;
+}
+.a-propos-presentation-container p {
+  font-family: "Cormorant Garamond";
+}
+.a-propos-presentation-container__content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.a-propos-presentation-container__content__text {
+  width: 50%;
+  font-family: "Cormorant Garamond";
+}
+.a-propos-presentation-container__content__image {
+  width: 40%;
+  height: 350px;
+  overflow: hidden;
+}
+.a-propos-presentation-container__img-illustrations {
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.a-propos-presentation-container__img-illustrations img {
+  width: 30%;
+  height: inherit;
+}
+.a-propos-presentation-container__btn {
+  text-align: center;
+  margin: 20px 0;
+}
+.a-propos-presentation-container__btn a {
+  padding: 10px 30px;
+  border: 3px solid #EDA402;
+  text-decoration: none;
+  color: #EDA402;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+}
+.a-propos-presentation-container__btn a:hover {
+  background-color: #EDA402;
+  color: white;
+}
+
+.mission-card-container-left {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  position: relative;
+}
+.mission-card-container-left__card-left {
+  width: 80%;
+  padding: 20px;
+  color: #404041;
+  background-color: #EDA402;
+  position: relative;
+  border-radius: 0 15px 15px 0;
+  margin-bottom: 50px;
+}
+.mission-card-container-left__card-left p {
+  color: black;
+}
+.mission-card-container-left__card-left__background {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: #404041;
+  position: absolute;
+  bottom: -20px;
+  left: 3%;
+  z-index: -1;
+}
+
+.mission-card-container-right {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  position: relative;
+}
+.mission-card-container-right__card-right {
+  width: 80%;
+  padding: 20px;
+  color: #404041;
+  background-color: #EDA402;
+  position: relative;
+  border-radius: 15px 0 0 15px;
+  margin-bottom: 50px;
+}
+.mission-card-container-right__card-right p {
+  color: black;
+}
+.mission-card-container-right__card-right__background {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: #404041;
+  position: absolute;
+  bottom: -20px;
+  right: 3%;
+  z-index: -1;
+}
+
+.a-propos-partenaires {
+  width: 100%;
+  border-top: 3px solid #EDA402;
+  padding: 15px 0;
+  overflow: hidden;
+}
+.a-propos-partenaires__container {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  overflow: hidden;
+  animation: scrollAnimation 30s linear infinite;
+}
+@keyframes scrollAnimation {
+  from {
+    transform: translateX(3%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.a-propos-partenaires__container__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #404041;
+  border-radius: 100%;
+  background-color: white;
+  height: 140px;
+  width: 140px;
+  margin: 0 4px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.a-propos-partenaires__container__item:hover {
+  background-color: #EDA402;
+}
+.a-propos-partenaires__container__item img {
+  width: 85%;
+}/*# sourceMappingURL=pageApropos.css.map */

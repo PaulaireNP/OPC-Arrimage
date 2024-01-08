@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel Article{% endblock %}
+
+{% block body %}
+
+    <div class="main-add-article">
+
+        {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
+        <div class="main-add-article__container-new">
+
+            <h1>Créer un nouvel Article</h1>
+
+            {{ include('article/_form.html.twig') }}
+
+            <a href="{{ path('app_article_index') }}">Retour à la liste</a>
+
+        </div>
+
+    </div>
+{% endblock %}

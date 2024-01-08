@@ -12,7 +12,8 @@ class AssociationHistoireController extends AbstractController
     public function index(): Response
     {
         return $this->render('association_histoire/index.html.twig', [
-            'controller_name' => 'AssociationHistoireController',
+            'title_one' => 'Notre',
+            'title_two' => 'Histoire',
         ]);
     }
 }

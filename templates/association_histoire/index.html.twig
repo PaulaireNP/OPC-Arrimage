@@ -5,28 +5,110 @@
 {% block body %}
 
     {% include 'layout/header.html.twig' %}
-    <div>
-        <div>
+
+    {% include 'layout/banner.html.twig' %}
+
+    <div class="histoire-container">
+        <div class="histoire-container__intro">
             <h1>Il était une fois <span>ARRIMAGES</span></h1>
         </div>
 
-        <div>
-            <h3>Dans les <span>années 80</span> à Gagny</h3>
-            <p>La confédération syndicale des familles, la mairie et des habitants du quartier des peupliers avaient souhaité l’implantation d’une équipe de prévention au service des habitants.
-                Une adjointe au maire (nous n’avons plus le nom en tête) avait suivi le dossier d’implantation. L’action fut positionnée dans le « quartier des peupliers » à Gagny.
-                Il regroupait des difficultés que les élus et les habitants souhaitaient dépasser par un travail de nature social, et non une action d’animation socio-culturelle.
-            </p>
-            <p>
-                Au départ, il s’agissait de rendre la parole aux habitants en créant des services de proximité (Halte garderie, centre de loisirs, ludothèque). Les initiatives des habitants et des volontaires pour animer la ludothèque et l’aide aux devoirs, ont contribué à ancrer les services proposés dans cette géographie circonscrite.
-                La structuration des activités a été renforcée par l’arrivée de professionnels. Une orthophoniste, une éducatrice, une assistante sociale et une secrétaire, sont venues épauler le directeur. L’équipe s’est étoffée de postes éducatifs par la suite.
-                Le rapport avec les habitants était très fort, les relations sociales étaient très dures.
-                René DIAS en a été le premier directeur.
-            </p>
+        <div class="histoire-container__first">
+
+            <div class="histoire-container__first__image">
+                <img src="{{ asset('assets/IMG/image/chronique-clichy-montfermeil.jpg')}}" alt="">
+            </div>
+            
+            <div class="histoire-container__first__text-content">
+                <h3>Dans les <span>années 80</span> à Gagny</h3>
+                <p>La confédération syndicale des familles, la mairie et des habitants du quartier des peupliers avaient souhaité l’implantation d’une équipe de prévention au service des habitants.
+                    Une adjointe au maire (nous n’avons plus le nom en tête) avait suivi le dossier d’implantation. L’action fut positionnée dans le « quartier des peupliers » à Gagny.
+                    Il regroupait des difficultés que les élus et les habitants souhaitaient dépasser par un travail de nature social, et non une action d’animation socio-culturelle.
+                </p>
+                <p>
+                    Au départ, il s’agissait de rendre la parole aux habitants en créant des services de proximité (Halte garderie, centre de loisirs, ludothèque). Les initiatives des habitants et des volontaires pour animer la ludothèque et l’aide aux devoirs, ont contribué à ancrer les services proposés dans cette géographie circonscrite.
+                    La structuration des activités a été renforcée par l’arrivée de professionnels. Une orthophoniste, une éducatrice, une assistante sociale et une secrétaire, sont venues épauler le directeur. L’équipe s’est étoffée de postes éducatifs par la suite.
+                    Le rapport avec les habitants était très fort, les relations sociales étaient très dures.
+                    René DIAS en a été le premier directeur.
+                </p>
+            </div>
         </div>
 
+        <div class="histoire-container__second">
+            <h3>« Une autre chance » <span>à Sevran dans les années 1990</span>, le quartier Pont Blanc Montceleux,</h3>
 
+            <div class="histoire-container__second__info-container">
+                <div class="histoire-container__second__info-container__text">
+                    <p>L’association « Une autre Chance » est née de la volonté du Maire de Sevran, Bernard Vergnaud, qui à l’époque, était aussi conseiller général du canton.
+                        Il avait souhaité l’implantation d’une équipe de prévention spécialisée dans le quartier Pont-Blanc / Montceleux.
+                        Un quartier populaire qui cumulait plusieurs indicateurs sociaux dégradés. Soit en terme de jeunesse inoccupée, de familles nombreuses et/ou monoparentales, et de taux de chômage important.
+                        Un diagnostic social a été réalisé, le conseil général a crée les lignes de budget spécifique.
+                        C’est à cela que l’on doit une équipe sur cette ville.
+                        Sevran était une ville très bien équipée pour l’époque.
+                        Des structures municipales et associatives existaient déjà, le travail de prévention primaire et secondaire était important. L’action portée par l’association « une autre chance » a été de renforcer ce qui existait par un travail de rue important.
+                        A cette période les entreprises qui occupaient les friches n’avaient pas encore périclitées. Cela permettait de financer une bonne part des activités municipales et donc de répondre localement à une demande sociale déjà importante.</p>
+                </div>
+
+                <div class="histoire-container__second__info-container__image">
+                    <img src="{{ asset('assets/IMG/image/chronique-clichy-montfermeil.jpg')}}" alt="">
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="histoire-container__third">
+            <h3>1995, <span>naissance d’ « Arrimages »</span> par la fusion des deux entités</h3>
+            <div class="histoire-container__third__info-container">
+                <div class="histoire-container__third__info-container__text">
+                    <p>L’association « Une autre Chance » est née de la volonté du Maire de Sevran, Bernard Vergnaud, qui à l’époque, était aussi conseiller général du canton.
+                        Il avait souhaité l’implantation d’une équipe de prévention spécialisée dans le quartier Pont-Blanc / Montceleux.
+                        Un quartier populaire qui cumulait plusieurs indicateurs sociaux dégradés. Soit en terme de jeunesse inoccupée, de familles nombreuses et/ou monoparentales, et de taux de chômage important.
+                        Un diagnostic social a été réalisé, le conseil général a crée les lignes de budget spécifique.
+                        C’est à cela que l’on doit une équipe sur cette ville.
+                        Sevran était une ville très bien équipée pour l’époque.
+                        Des structures municipales et associatives existaient déjà, le travail de prévention primaire et secondaire était important. L’action portée par l’association « une autre chance » a été de renforcer ce qui existait par un travail de rue important.
+                        A cette période les entreprises qui occupaient les friches n’avaient pas encore périclitées. Cela permettait de financer une bonne part des activités municipales et donc de répondre localement à une demande sociale déjà importante.</p>
+                </div>
+
+                <div class="histoire-container__third__info-container__image">
+                    <img src="{{ asset('assets/IMG/image/chronique-clichy-montfermeil.jpg')}}" alt="">
+                </div>
+            </div>
+
+            <div class="histoire-container__third__info-container">
+                <div class="histoire-container__third__info-container__image">
+                    <img src="{{ asset('assets/IMG/image/chronique-clichy-montfermeil.jpg')}}" alt="">
+                </div>
+
+                <div class="histoire-container__third__info-container__text">
+                    <p>L’association « Une autre Chance » est née de la volonté du Maire de Sevran, Bernard Vergnaud, qui à l’époque, était aussi conseiller général du canton.
+                        Il avait souhaité l’implantation d’une équipe de prévention spécialisée dans le quartier Pont-Blanc / Montceleux.
+                        Un quartier populaire qui cumulait plusieurs indicateurs sociaux dégradés. Soit en terme de jeunesse inoccupée, de familles nombreuses et/ou monoparentales, et de taux de chômage important.
+                        Un diagnostic social a été réalisé, le conseil général a crée les lignes de budget spécifique.
+                        C’est à cela que l’on doit une équipe sur cette ville.
+                        Sevran était une ville très bien équipée pour l’époque.
+                        Des structures municipales et associatives existaient déjà, le travail de prévention primaire et secondaire était important. L’action portée par l’association « une autre chance » a été de renforcer ce qui existait par un travail de rue important.
+                        A cette période les entreprises qui occupaient les friches n’avaient pas encore périclitées. Cela permettait de financer une bonne part des activités municipales et donc de répondre localement à une demande sociale déjà importante.</p>
+                </div>
+
+                <p>L’association « Une autre Chance » est née de la volonté du Maire de Sevran, Bernard Vergnaud, qui à l’époque, était aussi conseiller général du canton.
+                    Il avait souhaité l’implantation d’une équipe de prévention spécialisée dans le quartier Pont-Blanc / Montceleux.
+                    Un quartier populaire qui cumulait plusieurs indicateurs sociaux dégradés. Soit en terme de jeunesse inoccupée, de familles nombreuses et/ou monoparentales, et de taux de chômage important.
+                    Un diagnostic social a été réalisé, le conseil général a crée les lignes de budget spécifique.
+                    C’est à cela que l’on doit une équipe sur cette ville.
+                    Sevran était une ville très bien équipée pour l’époque.
+                    Des structures municipales et associatives existaient déjà, le travail de prévention primaire et secondaire était important. L’action portée par l’association « une autre chance » a été de renforcer ce qui existait par un travail de rue important.
+                    A cette période les entreprises qui occupaient les friches n’avaient pas encore périclitées. Cela permettait de financer une bonne part des activités municipales et donc de répondre localement à une demande sociale déjà importante.</p>
+            </div>
+        </div>
 
     </div>
+
+    <div class="histoire-btn-container">
+        <a href="#">à propos de nous</a>
+        <a href="#">Voir nos rapports d'activité</a>
+    </div>
+
 
 
 

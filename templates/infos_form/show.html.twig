@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InfosForm{% endblock %}
+
+{% block body %}
+    <h1>InfosForm</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ infos_form.id }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ infos_form.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ infos_form.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Mobile</th>
+                <td>{{ infos_form.mobile }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ infos_form.mail }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ infos_form.number }}</td>
+            </tr>
+            <tr>
+                <th>Street</th>
+                <td>{{ infos_form.street }}</td>
+            </tr>
+            <tr>
+                <th>AdditionalAddress</th>
+                <td>{{ infos_form.additionalAddress }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ infos_form.city }}</td>
+            </tr>
+            <tr>
+                <th>ZipCode</th>
+                <td>{{ infos_form.zipCode }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_infos_form_index') }}">back to list</a>
+
+    <a href="{{ path('app_infos_form_edit', {'id': infos_form.id}) }}">edit</a>
+
+    {{ include('infos_form/_delete_form.html.twig') }}
+{% endblock %}

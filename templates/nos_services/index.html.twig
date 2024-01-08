@@ -3,18 +3,50 @@
 {% block title %}Hello NosServicesController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% include 'layout/header.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/src/Controller/NosServicesController.php'|file_link(0) }}">src/Controller/NosServicesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/templates/nos_services/index.html.twig'|file_link(0) }}">templates/nos_services/index.html.twig</a></code></li>
-    </ul>
+{% include 'layout/banner.html.twig' %}
+
+<div class="main-services-container">
+    <h2>L’éducateur en prévention spécialisée</h2>
+    <h4>Les grandes fonctions travaillées</h4>
+
+    <div class="main-services-container__services">
+        <div class="main-services-container__services__item">
+            <h3>Travail de rue</h3>
+            <img src="{{ asset('assets/IMG/Icons/groupe-dutilisateurs.png')}}" alt="">
+            <div class="main-services-container__services__item__hidden-text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex fugiat voluptates in nihil. Accusantium minima amet quaerat corporis consectetur culpa. Distinctio laudantium, labore ipsa similique tempore sed. Quam, alias.</p>
+                <a href="{{ path('app_nos_services_travail_de_rue')}}">Voir plus</a>
+            </div>
+        </div>
+        <div class="main-services-container__services__item">
+            <h3>Accompagnement social</h3>
+            <img src="{{ asset('assets/IMG/Icons/groupe-dutilisateurs.png')}}" alt="">
+            <div class="main-services-container__services__item__hidden-text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex fugiat voluptates in nihil. Accusantium minima amet quaerat corporis consectetur culpa. Distinctio laudantium, labore ipsa similique tempore sed. Quam, alias.</p>
+                <a href="{{ path('app_nos_services_accompagnement_social')}}">Voir plus</a>
+            </div>
+        </div>
+        <div class="main-services-container__services__item">
+            <h3>Action collectives</h3>
+            <img src="{{ asset('assets/IMG/Icons/groupe-dutilisateurs.png')}}" alt="">
+            <div class="main-services-container__services__item__hidden-text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex fugiat voluptates in nihil. Accusantium minima amet quaerat corporis consectetur culpa. Distinctio laudantium, labore ipsa similique tempore sed. Quam, alias.</p>
+                <a href="{{ path('app_nos_services_actions_collectives')}}">Voir plus</a>
+            </div>
+        </div>
+        <div class="main-services-container__services__item">
+            <h3>Ateliers</h3>
+            <img src="{{ asset('assets/IMG/Icons/groupe-dutilisateurs.png')}}" alt="">
+            <div class="main-services-container__services__item__hidden-text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex fugiat voluptates in nihil. Accusantium minima amet quaerat corporis consectetur culpa. Distinctio laudantium, labore ipsa similique tempore sed. Quam, alias.</p>
+                <a href="{{ path('app_nos_services_ateliers')}}">Voir plus</a>
+            </div>
+        </div>
+    </div>
 </div>
+
+{% include 'layout/footer.html.twig' %}
 {% endblock %}

@@ -1,0 +1,31 @@
+.banner-container {
+  background-color: #404041;
+  display: flex;
+  width: 100%;
+  margin-top: 60px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+.banner-container__title {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+.banner-container__title h1 {
+  color: #F4F4F4;
+  font-weight: 500;
+  font-size: 45px;
+  text-transform: uppercase;
+}
+.banner-container__title h1 span {
+  color: #EDA402;
+}
+.banner-container__img {
+  position: absolute;
+  top: -40px;
+  left: 40%;
+  width: 60%;
+}/*# sourceMappingURL=banner.css.map */

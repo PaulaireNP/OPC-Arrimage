@@ -1,0 +1,151 @@
+@import ../../variable
+
+.a-propos-presentation-container
+    padding: 30px 50px
+
+    h2
+        color: $dark-grey
+        text-transform: uppercase
+
+        span
+            color: $main-orange
+
+    p
+        font-family: "Cormorant Garamond"
+
+    &__content
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+
+        &__text
+            width: 50%
+            font-family: "Cormorant Garamond"
+
+        &__image
+            width: 40%
+            height: 350px
+            overflow: hidden
+
+    &__img-illustrations
+        margin: 30px 0
+        display: flex
+        justify-content: space-around
+        flex-wrap: wrap
+
+        img
+            width: 30%
+            height: inherit
+
+    &__btn
+        text-align: center
+        margin: 20px 0
+
+        a
+            padding: 10px 30px
+            border: 3px solid $main-orange
+            text-decoration: none
+            color: $main-orange
+            font-weight: 700
+            font-size: 20px
+            border-radius: 15px
+            transition: all 0.3s ease-in-out
+
+            &:hover
+                background-color: $main-orange
+                color: white
+
+.mission-card-container-left
+    width: 100%
+    display: flex
+    justify-content: left
+    position: relative
+
+    &__card-left
+        width: 80%
+        padding: 20px
+        color: $dark-grey
+        background-color: $main-orange
+        position: relative
+        border-radius: 0 15px 15px 0
+        margin-bottom: 50px
+
+        p
+            color: black
+
+        &__background
+            width: 100%
+            height: 100%
+            border-radius: 15px
+            background-color: $dark-grey
+            position: absolute
+            bottom: -20px
+            left: 3%
+            z-index: -1
+
+.mission-card-container-right
+    width: 100%
+    display: flex
+    justify-content: right
+    position: relative
+
+    &__card-right
+        width: 80%
+        padding: 20px
+        color: $dark-grey
+        background-color: $main-orange
+        position: relative
+        border-radius: 15px 0 0 15px
+        margin-bottom: 50px
+
+        p
+            color: black
+
+        &__background
+            width: 100%
+            height: 100%
+            border-radius: 15px
+            background-color: $dark-grey
+            position: absolute
+            bottom: -20px
+            right: 3%
+            z-index: -1
+
+.a-propos-partenaires
+    width: 100%
+    border-top: 3px solid $main-orange
+    padding: 15px 0
+    overflow: hidden
+
+    &__container
+        width: fit-content
+        display: flex
+        overflow: hidden
+        animation: scrollAnimation 30s linear infinite
+
+        @keyframes scrollAnimation
+            from
+                transform: translateX(3%)
+            to
+                transform: translateX(-100%)
+
+
+
+        &__item
+            display: flex
+            justify-content: center
+            align-items: center
+            border: 2px solid $dark-grey
+            border-radius: 100%
+            background-color: white
+            height: 140px
+            width:  140px
+            margin: 0 4px
+            overflow: hidden
+            transition: all 0.3s ease-in-out
+
+            &:hover
+                background-color: $main-orange
+
+            img
+                width: 85%
