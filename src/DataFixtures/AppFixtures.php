@@ -35,7 +35,7 @@ class AppFixtures extends Fixture
             ->setMobile($faker->phoneNumber)
             ->setnumber($faker->buildingNumber)
             ->setStreet($faker->streetName)
-            ->setAdditionalAddress($faker->paragraph())
+            ->setAdditionalAddress($faker->paragraph(1))
             ->setCity($faker->city)
             ->setZipCode($faker->postcode);
 
@@ -52,7 +52,7 @@ class AppFixtures extends Fixture
                 ->setMobile($faker->phoneNumber)
                 ->setnumber($faker->buildingNumber)
                 ->setStreet($faker->streetName)
-                ->setAdditionalAddress($faker->paragraph())
+                ->setAdditionalAddress($faker->paragraph(1))
                 ->setCity($faker->city)
                 ->setZipCode($faker->postcode);
 
@@ -67,7 +67,7 @@ class AppFixtures extends Fixture
             ->setMail($faker->email)
             ->setnumber($faker->buildingNumber)
             ->setStreet($faker->streetName)
-            ->setAdditionalAddress($faker->paragraph())
+            ->setAdditionalAddress($faker->paragraph(1))
             ->setCity($faker->city)
             ->setZipCode($faker->postcode);
 
@@ -83,7 +83,7 @@ class AppFixtures extends Fixture
             ->setMail($faker->email)
             ->setnumber($faker->buildingNumber)
             ->setStreet($faker->streetName)
-            ->setAdditionalAddress($faker->paragraph())
+            ->setAdditionalAddress($faker->paragraph(1))
             ->setCity($faker->city)
             ->setZipCode($faker->postcode);
 
@@ -99,7 +99,7 @@ class AppFixtures extends Fixture
             ->setMail($faker->email)
             ->setnumber($faker->buildingNumber)
             ->setStreet($faker->streetName)
-            ->setAdditionalAddress($faker->paragraph())
+            ->setAdditionalAddress($faker->paragraph(1))
             ->setCity($faker->city)
             ->setZipCode($faker->postcode);
 
@@ -113,6 +113,7 @@ class AppFixtures extends Fixture
             ->setDescription($faker->sentence(3))
             ->setImage($faker->image())
             ->setCreationDate($faker->dateTimeBetween('-6 months', '-1 month'))
+            ->setUpdateDate($faker->dateTimeBetween('-1 month', 'Now'))
             ->setAuthor('David')
             ->setVisible($faker->boolean(70));
 

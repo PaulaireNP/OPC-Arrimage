@@ -7,5 +7,7 @@
 
     {{ include('secteur/_form.html.twig') }}
 
-    <a href="{{ path('app_secteur_index') }}">back to list</a>
+    <button onclick="window.location.href='{{ path('app_jeune_index') }}'" class="quitter">
+        Quitter sans sauvegarder
+    </button>
 {% endblock %}
