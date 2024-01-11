@@ -3,11 +3,50 @@
 {% block title %}Modifier un utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Modifier un utilisateur</h1>
+    <h1>Modifier un éducateur</h1>
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="formulaire">
+        <form name="form-edit-user" action="{{ path('app_user_edit', {'id': user.id}) }}" method="post">
+            <div>
+                <label for="user_email" class="required">email</label>
+                <input value={{ user.email }} type="email" id="user_email" name="user-email" required="required">
+            </div>
+            <div>
+                <label for="user_lastname" class="required">Nom</label>
+                <input value={{ user.lastname }} type="text" id="user_lastname" name="user-lastname" required="required">
+            </div>
+            <div>
+                <label for="user_firstname" class="required">Prénom</label>
+                <input value={{ user.firstname }} type="text" id="user_firstname" name="user-firstname" required="required">
+            </div>
+            <div>
+                <label for="user_mobile" class="required">Téléphone</label>
+                <input value={{ user.mobile }} type="tel" id="user_mobile" name="user-mobile" required="required">
+            </div>
+            <div>
+                <label for="user_secteur" class="required">Secteur</label>
+                <select id="user_secteur" name="user-secteur" required="required">
+                    <option value="Sélectionner un secteur" disabled></option>
+                    {% for secteur in secteurs %}
+                        <option value="{{ secteur.id }}" {% if secteur.id == user.secteur.id %}selected="selected"{% endif %}>
+                            {{ secteur.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <input type="password" name='motDePasse1' placeholder="Mot de passe">
+                <input type="password" name='motDePasse2' placeholder="Confirmez votre mot de passe">
+            </div>
+            <div>
+                <input type="submit">
+            </div>
+        </form>
+    </div>
 
-    <a href="{{ path('app_user_index') }}">Retour à la liste</a>
+    <button onclick="window.location.href='{{ path('app_user_index') }}'" class="quitter">
+        Quitter sans sauvegarder
+    </button>
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

@@ -3,9 +3,19 @@
 {% block title %}New Jeune{% endblock %}
 
 {% block body %}
-    <h1>Create new Jeune</h1>
 
-    {{ include('jeune/_form.html.twig') }}
+    <div class="main-add-jeune">
 
-    <a href="{{ path('app_jeune_index') }}">back to list</a>
+        {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
+        <div class="container-add-jeune">
+
+            <h1>Create new Jeune</h1>
+
+            {{ include('jeune/_form.html.twig') }}
+
+            <a href="{{ path('app_jeune_index') }}">back to list</a>
+
+        </div>
+    </div>
 {% endblock %}

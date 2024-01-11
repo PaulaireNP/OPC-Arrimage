@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -37,20 +38,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $mobile = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $street = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $creationDate = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $additionalAddress = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $lastModification = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $city = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $zipCode = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $number = null;
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Secteur $secteur = null;
 
     public function getId(): ?int
     {
@@ -158,62 +154,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getStreet(): ?string
+    public function getCreationDate(): ?\DateTimeInterface
     {
-        return $this->street;
+        return $this->creationDate;
     }
 
-    public function setStreet(?string $street): static
+    public function setCreationDate(\DateTimeInterface $creationDate): static
     {
-        $this->street = $street;
+        $this->creationDate = $creationDate;
 
         return $this;
     }
 
-    public function getAdditionalAddress(): ?string
+    public function getLastModification(): ?\DateTimeInterface
     {
-        return $this->additionalAddress;
+        return $this->lastModification;
     }
 
-    public function setAdditionalAddress(?string $additionalAddress): static
+    public function setLastModification(\DateTimeInterface $lastModification): static
     {
-        $this->additionalAddress = $additionalAddress;
+        $this->lastModification = $lastModification;
 
         return $this;
     }
 
-    public function getCity(): ?string
+    public function getSecteur(): ?Secteur
     {
-        return $this->city;
+        return $this->secteur;
     }
 
-    public function setCity(?string $city): static
+    public function setSecteur(?Secteur $secteur): static
     {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function getZipCode(): ?string
-    {
-        return $this->zipCode;
-    }
-
-    public function setZipCode(?string $zipCode): static
-    {
-        $this->zipCode = $zipCode;
-
-        return $this;
-    }
-
-    public function getNumber(): ?string
-    {
-        return $this->number;
-    }
-
-    public function setNumber(?string $number): static
-    {
-        $this->number = $number;
+        $this->secteur = $secteur;
 
         return $this;
     }

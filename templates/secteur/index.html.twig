@@ -3,6 +3,13 @@
 {% block title %}Secteur index{% endblock %}
 
 {% block body %}
+
+<div class="main-secteur">
+
+    {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
+    <div class="main-secteur__container-secteur">
+
     <h1>Secteur index</h1>
 
     <table class="table">
@@ -46,4 +53,8 @@
     </table>
 
     <a href="{{ path('app_secteur_new') }}">Create new</a>
+
+    </div>
+
+</div>
 {% endblock %}
