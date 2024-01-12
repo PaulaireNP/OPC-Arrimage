@@ -183,6 +183,53 @@ Les Entités qui ont reçu un crud sont les suivante :
 - Documents.php
 - Article.php
 
-#### Gestion des entités avec des relations
-#### Personnalisation des formulaires (FormType, FileType, ChoiceType...)
+#### Gestion des entités avec des relations.
+
+Relation entre la table User et Secteur pour pouvoir récupèrer tous les secteurs.
+
+#### Personnalisation des formulaires (FormType, FileType, ChoiceType...).
+
+Pour le formType de User j'ai ajouté le code suivant :
+
+```
+public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('email', EmailType::class, [
+                'label' => 'email',
+            ])
+           // ->add('roles')
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'first_options' => ['label' => 'Mot de passe', 'hash_property_path' => 'password',],
+                'second_options' => ['label' => 'Confirmer le mot de passe'],
+                'mapped' => false,
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Regex([
+                        'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/',
+                        'message' => 'Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre, un caractère spécial et au moins 8 caractères.'
+                    ])
+                ]
+           ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom',
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+            ])
+            ->add('mobile', TelType::class, [
+                'label' => 'Téléphone',
+            ])
+            ->add('secteur', EntityType::class, [
+                'class' => Secteur::class,
+                'choice_label' => 'name',
+                'placeholder' => 'Sélectionner un secteur',
+            ])
+        ;
+    }
+```
+
+Ceci va consister à préparer le formulaire en lui ajoutant des Type comme pour le champ email, j'ai mis un EmailType qui va indiquer à l'utilisateur qu'il faut remplir par un email.
+
 #### Upload de fichiers (voir la doc)
