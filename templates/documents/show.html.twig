@@ -12,12 +12,13 @@
                 <td>{{ document.id }}</td>
             </tr>
             <tr>
-                <th>Tile</th>
-                <td>{{ document.tile }}</td>
+                <th>Title</th>
+                <td>{{ document.title }}</td>
             </tr>
             <tr>
                 <th>File</th>
                 <td>{{ document.file }}</td>
+                <td><a href="/uploads/documents/{{ document.file }}">télécharger</a></td>
             </tr>
             <tr>
                 <th>Visible</th>

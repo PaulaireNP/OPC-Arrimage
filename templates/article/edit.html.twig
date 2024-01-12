@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Modifier Article</h1>
-    <img src="/uploads/{{ article.image }}">
+    <img src="/uploads/articles/{{ article.image }}">
     {{ include('article/_form.html.twig', {'button_label': 'Enregistrer les modifications'}) }}
 
 

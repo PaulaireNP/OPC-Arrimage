@@ -28,7 +28,7 @@ class ArticleType extends AbstractType
                             'image/jpeg',
                             'image/png',
                         ],
-                        'mimeTypesMessage' => 'Sorry, only JPG, JPEG & PNG files are allowed.',
+                        'mimeTypesMessage' => 'Désolé, seulement les fichiers de type JPG, JPEG & PNG sont acceptés.',
                     ])
                 ],
             ])

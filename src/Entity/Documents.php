@@ -30,14 +30,14 @@ class Documents
         return $this->id;
     }
 
-    public function getTile(): ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(?string $tile): static
+    public function setTitle(?string $title): static
     {
-        $this->title = $tile;
+        $this->title = $title;
 
         return $this;
     }

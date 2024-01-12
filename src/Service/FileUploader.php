@@ -13,14 +13,29 @@ class FileUploader
         private SluggerInterface $slugger,
         ) {}
 
-    public function upload(UploadedFile $file): string
+    public function uploadArticles(UploadedFile $file): string
     {
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFilename);
         $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
 
         try {
-            $file->move($this->getTargetDirectory(), $fileName);
+            $file->move($this->getTargetDirectory().'articles/', $fileName);
+        } catch (FileException $e) {
+            #todo ... handle exception if something happens during file upload
+        }
+
+        return $fileName;
+    }
+
+    public function uploadDocument(UploadedFile $file): string
+    {
+        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFilename = $this->slugger->slug($originalFilename);
+        $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+        try {
+            $file->move($this->getTargetDirectory().'documents/', $fileName);
         } catch (FileException $e) {
             #todo ... handle exception if something happens during file upload
         }

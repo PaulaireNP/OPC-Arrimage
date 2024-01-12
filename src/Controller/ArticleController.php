@@ -36,7 +36,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $image = $form -> get('image') -> getData();
             if($image){
-                $article->setImage($fileUploader->upload($image));
+                $article->setImage($fileUploader->uploadArticles($image));
             }
             $article -> setCreationDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $article -> setUpdateDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
@@ -69,7 +69,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $image = $form -> get('image') -> getData();
             if($image){
-                $article->setImage($fileUploader->upload($image));
+                $article->setImage($fileUploader->uploadArticles($image));
             }
             $article -> setUpdateDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $entityManager->flush();
