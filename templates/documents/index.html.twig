@@ -16,7 +16,7 @@
 
                 <div style="display:flex; justify-content: space-between;">
                     <h2>L'association</h2>
-                    <button style="height: 20px; align-self: center" name="asso" onclick="window.location.href='{{ path('app_documents_new') }}'" class="ajouter">
+                    <button style="height: 20px; align-self: center" name="asso" onclick="window.location.href='{{ path('app_documents_new', {'category': 'Association'}) }}'" class="ajouter">
                         Ajouter un document
                     </button>
                 </div>
@@ -66,8 +66,8 @@
             <div>
 
                 <div style="display:flex; justify-content: space-between;">
-                    <h2>Prévention spécialisé</h2>
-                    <button style="height: 20px; align-self: center" name="asso" onclick="window.location.href='{{ path('app_documents_new') }}'" class="ajouter">
+                    <h2>Prévention spécialisée</h2>
+                    <button style="height: 20px; align-self: center" name="asso" onclick="window.location.href='{{ path('app_documents_new', {'category': 'Preventionspecialisee'}) }}'" class="ajouter">
                         Ajouter un document
                     </button>
                 </div>
@@ -86,7 +86,7 @@
                     </thead>
                     <tbody>
                     {% for document in documents %}
-                        {% if document.categorie =='Prevention specialise' %}
+                        {% if document.categorie =='Preventionspecialisee' %}
                             <tr>
                                 <td><a href="{{ path('app_documents_show', {'id': document.id}) }}">Voir</a></td>
                                 <td>{{ document.id }}</td>
@@ -118,7 +118,7 @@
 
                 <div style="display:flex; justify-content: space-between;">
                     <h2>Rapports d'activités</h2>
-                    <button style="height: 20px; align-self: center" name="asso" onclick="window.location.href='{{ path('app_documents_new') }}'" class="ajouter">
+                    <button style="height: 20px; align-self: center" name="asso" onclick="window.location.href='{{ path('app_documents_new', {'category': 'Rapportsdactivites'}) }}'" class="ajouter">
                         Ajouter un document
                     </button>
                 </div>
@@ -137,7 +137,7 @@
                     </thead>
                     <tbody>
                     {% for document in documents %}
-                        {% if document.categorie =='Rapports d activites' %}
+                        {% if document.categorie =='Rapportsdactivites' %}
                             <tr>
                                 <td><a href="{{ path('app_documents_show', {'id': document.id}) }}">Voir</a></td>
                                 <td>{{ document.id }}</td>

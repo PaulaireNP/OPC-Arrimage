@@ -10,39 +10,36 @@
 
     <div class="article_container">
         {% for article in articles %}
-            {% if article.visible %}
-                <a href="/{{ article.id }}" class="article_container__card">
-                    <div class="article_container__card__image">
-                        <img src="{{ asset('/uploads/articles/' ~ article.image) }}" alt="">
+            <a href="/{{ article.id }}" class="article_container__card">
+                <div class="article_container__card__image">
+                    <img src="{{ asset('/uploads/articles/' ~ article.image) }}" alt="">
+                </div>
+
+                <div class="article_container__card__content">
+                    <div class="article_container__card__content__author">
+                        <p>Auteur | {{ article.creationDate|date('d/m/Y H:i') }}</p>
                     </div>
 
-                    <div class="article_container__card__content">
-                        <div class="article_container__card__content__author">
-                            <p>Auteur | {{ article.creationDate|date('d/m/Y H:i') }}</p>
-                        </div>
-
-                        <div class="article_container__card__content__title">
-                            <h4>{{ article.title }}</h4>
-                        </div>
-
-                        <div class="article_container__card__content__mini-description">
-                            <p>{{ article.description }}</p>
-                        </div>
+                    <div class="article_container__card__content__title">
+                        <h4>{{ article.title }}</h4>
                     </div>
-                </a>
-            {% endif %}
-        {% endfor %}
-    </div>
 
-    <div class="pagination">
-        {% set totalPages = (totalItems / perPage)|round(0, 'ceil') %}
-        {% for page in 1..totalPages %}
-            <a href="{{ path('app_actualites', {'page': page}) }}" class="{{ page == currentPage ? 'active' : '' }}">
-                {{ page }}
+                    <div class="article_container__card__content__mini-description">
+                        <p>{{ article.description }}</p>
+                    </div>
+                </div>
             </a>
         {% endfor %}
+        <div class="pagination">
+            {% set totalPages = (totalItems / perPage)|round(0, 'ceil') %}
+            {% for page in 1..totalPages %}
+                <a href="{{ path('app_actualites', {'page': page}) }}" class="{{ page == currentPage ? 'active' : '' }}">
+                    {{ page }}
+                </a>
+            {% endfor %}
+        </div>
     </div>
 
-
+    {% include 'layout/footer.html.twig' %}
 {% endblock %}
 

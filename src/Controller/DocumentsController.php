@@ -23,18 +23,21 @@ class DocumentsController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_documents_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
+    #[Route('/new{category}', name: 'app_documents_new', methods: ['GET', 'POST'],)]
+    public function new(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, $category = null): Response
     {
         $document = new Documents();
+        $document->setCategorie($category);
         $form = $this->createForm(DocumentsType::class, $document);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $form -> get('file') -> getData();
             if($file){
                 $document->setFile($fileUploader->uploadDocument($file));
             }
+
             $entityManager->persist($document);
             $entityManager->flush();
 
@@ -44,6 +47,7 @@ class DocumentsController extends AbstractController
         return $this->render('documents/new.html.twig', [
             'document' => $document,
             'form' => $form,
+            'category' => $category
         ]);
     }
 

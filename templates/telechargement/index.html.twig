@@ -1,20 +1,93 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TelechargementController!{% endblock %}
+{% block title %}Téléchargements{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% include 'layout/header.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/src/Controller/TelechargementController.php'|file_link(0) }}">src/Controller/TelechargementController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Desktop/Arrimages/templates/telechargement/navbarDashboardAdmin.sass.html.twig'|file_link(0) }}">templates/telechargement/index.html.twig</a></code></li>
-    </ul>
-</div>
+{#    {% include 'layout/banner.html.twig' %}#}
+
+    <div class="container-downloads">
+        <h1 class="downloads__title">Liste des téléchargements</h1>
+
+        <div class="downloads__info">
+            <div class="downloads__info__div-assoc">
+                <h2 class="downloads__info__div-assoc .titre">L'association</h2>
+                {% if totalAssoc < 6 %}
+                    <ul class="downloads__info__div-assoc__list">
+                    {% for document in docAssoc %}
+                        <li class="downloads__info__div-assoc__item item"><a href="/uploads/documents/{{ document.file }}" class="downloads__info__div-assoc__item__link link">{{ document.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% if totalAssoc >= 6 %}
+                <select id="menu" class="downloads__info__div-rappo__list" onchange="downloadFile()">
+                    <option value="" selected>Année</option>
+                    {% for document in docAssoc %}
+                        <option value="/uploads/documents/{{ document.file }}">{{ document.title }}</option>
+                    {% endfor %}
+                </select>
+                <script>
+                    function downloadFile() {
+                        let menu = document.getElementById("menu");
+                        window.location.href = menu.options[menu.selectedIndex].value;
+                    }
+                </script>
+                {% endif %}
+            </div>
+            <div class="downloads__info__div-rappo">
+                <h2 class="downloads__info__div-rappo .titre">Rapports d'activités</h2>
+                {% if totalRappo < 6 %}
+                    <ul class="downloads__info__div-rappo">
+                    {% for document in docRappo %}
+                        <li class="downloads__info__div-assoc__item item"><a href="/uploads/documents/{{ document.file }}" class="downloads__info__div-assoc__item__link link">{{ document.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% if totalRappo >= 6 %}
+                    <select id="menu" class="downloads__info__div-rappo__list" onchange="downloadFile()">
+                        <option value="" selected>Année</option>
+                        {% for document in docRappo %}
+                            <option value="/uploads/documents/{{ document.file }}">{{ document.title }}</option>
+                        {% endfor %}
+                    </select>
+                    <script>
+                        function downloadFile() {
+                            let menu = document.getElementById("menu");
+                            window.location.href = menu.options[menu.selectedIndex].value;
+                        }
+                    </script>
+                {% endif %}
+            </div>
+        </div>
+        <div class="downloads__div-preve">
+            <h2 class="downloads__info__div-preve .titre">Prevention spécialisé</h2>
+            {% if totalPreve < 6 %}
+                <ul class="downloads__info__div-preve">
+                {% for document in docPreve %}
+                    <li class="downloads__info__div-preve__item item"><a href="/uploads/documents/{{ document.file }}" class="downloads__info__div-preve__item__link link">{{ document.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if totalPreve >= 6 %}
+                <select id="menu" class="downloads__info__div-rappo__list" onchange="downloadFile()">
+                    <option value="" selected>Année</option>
+                    {% for document in docPreve %}
+                        <option value="/uploads/documents/{{ document.file }}">{{ document.title }}</option>
+                    {% endfor %}
+                </select>
+                <script>
+                    function downloadFile() {
+                        let menu = document.getElementById("menu");
+                        window.location.href = menu.options[menu.selectedIndex].value;
+                    }
+                </script>
+            {% endif %}
+        </div>
+    </div>
+
+    {% include 'layout/footer.html.twig' %}
+
 {% endblock %}
+
