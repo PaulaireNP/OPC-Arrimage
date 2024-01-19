@@ -73,19 +73,63 @@ class AppFixtures extends Fixture
         }
 
         for ($i = 0; $i < self::NB_JEUNE; $i++) {
-        $jeune = new Jeune();
-        $jeune
-            ->setLastname($faker->lastName())
-            ->setFirstname($faker->firstName())
-            ->setMobile($faker->phoneNumber)
-            ->setMail($faker->email)
-            ->setnumber($faker->buildingNumber)
-            ->setStreet($faker->streetName)
-            ->setAdditionalAddress($faker->paragraph())
-            ->setCity($faker->city)
-            ->setZipCode($faker->postcode);
+            $jeune = new Jeune();
+            $jeune
+                ->setLastname($faker->lastName())
+                ->setFirstname($faker->firstName())
+                ->setMobile($faker->phoneNumber)
+                ->setMail($faker->email)
+                ->setnumber($faker->buildingNumber)
+                ->setStreet($faker->streetName)
+                ->setAdditionalAddress($faker->paragraph())
+                ->setCity($faker->city)
+                ->setZipCode($faker->postcode)
+                ->setCreationDate($faker->dateTimeBetween('-6 months', 'Now'))
+                ->setLastModification($faker->dateTimeBetween('-6 months', 'Now'))
+                ->setSecteur($faker->randomElement($secteurs))
+                ->setReferentEduc($faker->randomElement([$user]))
+                ->setCoreferentEduc($faker->randomElement([$user]))
+                ->setAncien($faker->boolean(70))
+                ->setRegulier($faker->boolean(70))
+                ->setPolySuivi($faker->randomElement(['Administratif', 'Judiciaire']))
+                ->setCivilite($faker->numberBetween(0, 2))
+                ->setDob($faker->dateTimeBetween('-6 months', 'Now'))
+                ->setQuartier($faker->randomElement(['Clichy-sous-bois', 'Sevran-Rougemont', 'Sevran-Beaudottes', 'Montfermeil', 'Tremblay-en-France']))
+                ->setReseaux($faker->randomElement(['Famille', 'Amis', 'Autres']))
+                ->setRencontre($faker->numberBetween(0, 5))
+                ->setRencontrePrecision($faker->paragraph(1))
+                ->setSituationPrecision($faker->paragraph(1));
 
-        $manager->persist($jeune);
+            // Génére les actions collectives en JSON
+            $actionsCollectives = [];
+            for ($j = 0; $j < $faker->numberBetween(1, 5); $j++) {
+                $action = [
+                    'type' => $faker->randomElement(['Chantier pédagogique', 'Séjour', 'Chantier éducatif', 'Sortie']),
+                    'description' => $faker->sentence
+                ];
+                $actionsCollectives[] = $action;
+            }
+            $jeune
+                ->setActionsCollectives((array)json_encode($actionsCollectives))
+                ->setActionsCollectivesPrecision($faker->paragraph());
+
+                // Génére la problématique en JSON
+                $problematiques = [];
+                for ($k = 0; $k < $faker->numberBetween(1, 3); $k++) {
+                    $problematique = [
+                        'type' => $faker->randomElement(['Scolarité', 'Santé', 'Insertion', 'Justice']),
+                        'details' => $faker->sentence
+                    ];
+                    $problematiques[] = $problematique;
+                }
+                $jeune
+                ->setProblematique((array)json_encode($problematiques))
+                ->setProblematiquePrecision($faker->paragraph(1))
+                ->setCompteRendu($faker->paragraph(3))
+                ->setDemandeJeune($faker->paragraph(3));
+
+
+            $manager->persist($jeune);
         }
 
         for ($i = 0; $i < self::NB_INFOSFORM; $i++) {

@@ -1,4 +1,23 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+{{ form_start(userForm, {'attr': {'class': 'dashboard__body__form'}}) }}
+        {{ form_row(userForm.email, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.password, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.lastname, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.firstname, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.mobile, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.secteur, {'attr': {'class': 'dashboard__body__form__select'}}) }}
+
+<div id="users-container">
+    <div class="user-form">
+
+
+    </div>
+</div>
+
+<button type="button" id="add-user">Ajouter un Éducateur</button>
+
+<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(userForm) }}
+
+
+

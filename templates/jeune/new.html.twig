@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Jeune{% endblock %}
+{% block title %}Fiche de liaison Jeune{% endblock %}
 
 {% block body %}
 
@@ -10,11 +10,15 @@
 
         <div class="container-add-jeune">
 
-            <h1>Create new Jeune</h1>
+            <h1>Créer un nouveau Jeune</h1>
+
+            <div>
+                <p>Date : {{ date|date('d/m/Y') }} </p>
+            </div>
 
             {{ include('jeune/_form.html.twig') }}
 
-            <a href="{{ path('app_jeune_index') }}">back to list</a>
+            <button type="button" onclick="window.location.href='{{ path('app_jeune_index') }}'">Quitter sans sauvegarder</button>
 
         </div>
     </div>

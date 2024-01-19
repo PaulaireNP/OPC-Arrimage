@@ -12,11 +12,11 @@
 
             <h1>Créer un nouvel utilisateur</h1>
 
-                <div id="formContainer">
-                    {{ include('user/_form.html.twig') }}
-                </div>
+            <div id="formContainer">
+                {{ include('user/_multipleForm.html.twig') }}
+            </div>
 
-                <button type="button" onclick="window.location.href='{{ path('app_user_index') }}'">Quitter sans sauvegarder</button>
+            <button type="button" onclick="window.location.href='{{ path('app_user_index') }}'">Quitter sans sauvegarder</button>
 
         </div>
 

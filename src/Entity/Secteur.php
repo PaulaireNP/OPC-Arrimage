@@ -42,9 +42,13 @@ class Secteur
     #[ORM\OneToMany(mappedBy: 'secteur', targetEntity: User::class)]
     private Collection $users;
 
+    #[ORM\OneToMany(mappedBy: 'secteur', targetEntity: Jeune::class)]
+    private Collection $jeunes;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->jeunes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -172,6 +176,36 @@ class Secteur
             // set the owning side to null (unless already changed)
             if ($user->getSecteur() === $this) {
                 $user->setSecteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Jeune>
+     */
+    public function getJeunes(): Collection
+    {
+        return $this->jeunes;
+    }
+
+    public function addJeune(Jeune $jeune): static
+    {
+        if (!$this->jeunes->contains($jeune)) {
+            $this->jeunes->add($jeune);
+            $jeune->setSecteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJeune(Jeune $jeune): static
+    {
+        if ($this->jeunes->removeElement($jeune)) {
+            // set the owning side to null (unless already changed)
+            if ($jeune->getSecteur() === $this) {
+                $jeune->setSecteur(null);
             }
         }
 

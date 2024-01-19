@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Jeune;
 use App\Form\JeuneType;
 use App\Repository\JeuneRepository;
+use DateTime;
+use DateTimeZone;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,10 +28,13 @@ class JeuneController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $jeune = new Jeune();
+        $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
         $form = $this->createForm(JeuneType::class, $jeune);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $jeune-> setCreationDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
+            $jeune-> setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $entityManager->persist($jeune);
             $entityManager->flush();
 
@@ -39,6 +44,7 @@ class JeuneController extends AbstractController
         return $this->render('jeune/new.html.twig', [
             'jeune' => $jeune,
             'form' => $form,
+            'date' => $date,
         ]);
     }
 
@@ -57,6 +63,7 @@ class JeuneController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $jeune-> setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $entityManager->flush();
 
             return $this->redirectToRoute('app_jeune_index', [], Response::HTTP_SEE_OTHER);

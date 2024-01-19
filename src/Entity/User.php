@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -47,6 +49,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'users')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Secteur $secteur = null;
+
+    #[ORM\OneToMany(mappedBy: 'referentEduc', targetEntity: Jeune::class)]
+    private Collection $jeunes;
+
+    #[ORM\OneToMany(mappedBy: 'coreferentEduc', targetEntity: Jeune::class)]
+    private Collection $cojeunes;
+
+    public function __construct()
+    {
+        $this->jeunes = new ArrayCollection();
+        $this->cojeunes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -186,6 +200,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSecteur(?Secteur $secteur): static
     {
         $this->secteur = $secteur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Jeune>
+     */
+    public function getJeunes(): Collection
+    {
+        return $this->jeunes;
+    }
+
+    public function addJeune(Jeune $jeune): static
+    {
+        if (!$this->jeunes->contains($jeune)) {
+            $this->jeunes->add($jeune);
+            $jeune->setReferentEduc($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJeune(Jeune $jeune): static
+    {
+        if ($this->jeunes->removeElement($jeune)) {
+            // set the owning side to null (unless already changed)
+            if ($jeune->getReferentEduc() === $this) {
+                $jeune->setReferentEduc(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Jeune>
+     */
+    public function getCojeunes(): Collection
+    {
+        return $this->cojeunes;
+    }
+
+    public function addCojeune(Jeune $cojeune): static
+    {
+        if (!$this->cojeunes->contains($cojeune)) {
+            $this->cojeunes->add($cojeune);
+            $cojeune->setCoreferentEduc($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCojeune(Jeune $cojeune): static
+    {
+        if ($this->cojeunes->removeElement($cojeune)) {
+            // set the owning side to null (unless already changed)
+            if ($cojeune->getCoreferentEduc() === $this) {
+                $cojeune->setCoreferentEduc(null);
+            }
+        }
 
         return $this;
     }

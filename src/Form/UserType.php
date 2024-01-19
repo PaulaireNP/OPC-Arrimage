@@ -6,7 +6,7 @@ use App\Entity\Secteur;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -23,26 +23,33 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'label' => 'email',
+                'required' => true,
             ])
            // ->add('roles')
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'Password', 'hash_property_path' => 'password',],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options' => ['label' => 'Mot de passe', 'hash_property_path' => 'password',],
+                'second_options' => ['label' => 'Confirmer le mot de passe'],
                 'mapped' => false,
                 'constraints' => [
                     new Assert\NotBlank(),
-                    new Assert\Length(['min' => 8])
+                    new Assert\Regex([
+                        'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/',
+                        'message' => 'Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre, un caractère spécial et au moins 8 caractères.'
+                    ])
                 ]
            ])
             ->add('lastname', TextType::class, [
                 'label' => 'Nom',
+                'required' => true,
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',
+                'required' => true,
             ])
             ->add('mobile', TelType::class, [
                 'label' => 'Téléphone',
+                'required' => true,
             ])
             ->add('secteur', EntityType::class, [
                 'class' => Secteur::class,

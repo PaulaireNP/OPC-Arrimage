@@ -21,9 +21,11 @@ class UserController extends AbstractController
 {
     private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher){
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
         $this->passwordHasher = $passwordHasher;
     }
+
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
@@ -31,7 +33,6 @@ class UserController extends AbstractController
             'users' => $userRepository->findAll(),
         ]);
     }
-
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -40,10 +41,6 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $motdepasse = $form -> get('password') -> getData();
-            $user -> setPassword($this -> passwordHasher ->hashPassword($user, $motdepasse));
-            $user -> setCreationDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
-            $user -> setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -55,7 +52,6 @@ class UserController extends AbstractController
             'form' => $form,
         ]);
     }
-
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
@@ -68,20 +64,22 @@ class UserController extends AbstractController
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if (isset ($_POST["user-email"], $_POST["user-lastname"], $_POST["user-firstname"], $_POST["user-mobile"], $_POST["user-secteur"])) {
-            if (isset($_POST["motDePasse1"],$_POST["motDePasse2"])) {
+            if (isset($_POST["motDePasse1"], $_POST["motDePasse2"])) {
                 if ($_POST["motDePasse1"] == $_POST["motDePasse2"]) {
                     $user->setPassword($this->passwordHasher->hashPassword($user, $_POST["motDePasse1"]));
                 }
             }
-            $user ->setEmail($_POST["user-email"]);
+            $user->setEmail($_POST["user-email"]);
             $user->setLastname($_POST["user-lastname"]);
             $user->setFirstname($_POST["user-firstname"]);
             $user->setMobile($_POST["user-mobile"]);
-            $user -> setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
+            $user->setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $secteurId = $_POST["user-secteur"];
             $secteur = $entityManager->getRepository(Secteur::class)->find($secteurId);
             if ($secteur) {
                 $user->setSecteur($secteur);
+            } else {
+                #todo gestion d'erreurs + log
             }
             $entityManager->flush();
 
@@ -98,11 +96,49 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+    #[Route('/multipleNew', name: 'app_multiple_new', methods: ['GET', 'POST'])]
+    public function multipleNew(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $users = [];
+        for ($i = 0; $i < 5; $i++) {
+            $users[] = new User();
+        }
+
+        $forms = [];
+        $error = null;
+
+        foreach ($users as $key => $user) {
+            $forms[$key] = $this->createForm(UserType::class, $user);
+            $forms[$key]->handleRequest($request);
+
+            if ($forms[$key]->isSubmitted() && $forms[$key]->isValid()) {
+                try {
+                    $entityManager->persist($user);
+                    $entityManager->flush();
+                } catch (\Exception $e) {
+                    $error = 'Une erreur est survenue lors de la création d\'un utilisateur.';
+                    break; // Arrête la boucle en cas d'erreur
+                }
+            }
+        }
+
+        $formViews = [];
+        foreach ($forms as $form) {
+            $formViews[] = $form->createView();
+        }
+
+        return $this->render('user/multipleForm.html.twig', [
+            'formViews' => $formViews,
+            'error' => $error,
+        ]);
     }
 }
