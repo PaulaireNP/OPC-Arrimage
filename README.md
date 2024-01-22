@@ -1,8 +1,7 @@
 # Arrimages
-## 🛠️ Technologies utilisées
-- [Symfony](https://symfony.com/)
-- [Twig](https://twig.symfony.com/)
-- [Sass](https://sass-lang.com/)
+## Technologies utilisés :
+Language : HTML, CSS, Sass, JavaScript, PHP, Twig
+Framework : symfony --webapp -version=6.4
 ## 🛠️ Installer les Dépendances
 [Installer Symfony](https://symfony.com/doc/current/setup.html/).
 
