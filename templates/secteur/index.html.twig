@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Secteur index{% endblock %}
+{% block title %}Liste des Secteurs{% endblock %}
 
 {% block body %}
 
@@ -10,21 +10,21 @@
 
     <div class="main-secteur__container-secteur">
 
-    <h1>Secteur index</h1>
+    <h1>Liste des Secteurs</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Mobile</th>
-                <th>Mail</th>
-                <th>Number</th>
-                <th>Street</th>
-                <th>AdditionalAddress</th>
-                <th>City</th>
-                <th>ZipCode</th>
-                <th>actions</th>
+                <th>Email</th>
+                <th>Numéro de rue</th>
+                <th>Rue</th>
+                <th>Complément d'adresse</th>
+                <th>Ville</th>
+                <th>Code Postal</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -40,8 +40,8 @@
                 <td>{{ secteur.city }}</td>
                 <td>{{ secteur.zipCode }}</td>
                 <td>
-                    <a href="{{ path('app_secteur_show', {'id': secteur.id}) }}">show</a>
-                    <a href="{{ path('app_secteur_edit', {'id': secteur.id}) }}">edit</a>
+                    <a href="{{ path('app_secteur_show', {'id': secteur.id}) }}">Voir</a>
+                    <a href="{{ path('app_secteur_edit', {'id': secteur.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -52,7 +52,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_secteur_new') }}">Create new</a>
+    <a href="{{ path('app_secteur_new') }}">Créer un nouveau secteur</a>
 
     </div>
 

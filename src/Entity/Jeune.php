@@ -51,6 +51,9 @@ class Jeune
     private ?bool $ancien = null;
 
     #[ORM\Column]
+    private ?bool $nouveau = null;
+
+    #[ORM\Column]
     private ?bool $regulier = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -254,6 +257,18 @@ class Jeune
     public function setAncien(bool $ancien): static
     {
         $this->ancien = $ancien;
+
+        return $this;
+    }
+
+    public function isNouveau(): ?bool
+    {
+        return $this->nouveau;
+    }
+
+    public function setNouveau(bool $nouveau): static
+    {
+        $this->nouveau = $nouveau;
 
         return $this;
     }

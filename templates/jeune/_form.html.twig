@@ -1,4 +1,33 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    {{ form_row(form.polySuivi) }}
+    {{ form_row(form.civilite) }}
+    {{ form_row(form.lastname) }}
+    {{ form_row(form.firstname) }}
+    {{ form_row(form.dob) }}
+    {{ form_row(form.mobile) }}
+    {{ form_row(form.mail) }}
+    {{ form_row(form.number) }}
+    {{ form_row(form.street) }}
+    {{ form_row(form.additionalAddress) }}
+    {{ form_row(form.city) }}
+    {{ form_row(form.zipCode) }}
+    {{ form_row(form.quartier) }}
+    {{ form_row(form.reseaux) }}
+    {{ form_row(form.secteur) }}
+    {{ form_row(form.referentEduc) }}
+    {{ form_row(form.coreferentEduc) }}
+    {{ form_row(form.rencontre) }}
+    {{ form_row(form.rencontrePrecision) }}
+    {{ form_row(form.situation) }}
+    {{ form_row(form.situationPrecision) }}
+    {{ form_row(form.actionsCollectives) }}
+    {{ form_row(form.actionsCollectivesPrecision) }}
+    {{ form_row(form.compteRendu) }}
+    {{ form_row(form.demandeJeune) }}
+    {{ form_row(form.problematique) }}
+    {{ form_row(form.problematiquePrecision) }}
+
+<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+
 {{ form_end(form) }}

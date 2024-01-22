@@ -51,8 +51,27 @@ class JeuneController extends AbstractController
     #[Route('/{id}', name: 'app_jeune_show', methods: ['GET'])]
     public function show(Jeune $jeune): Response
     {
+        $situations = [
+            1 => 'CNI/Titre de séjour',
+            2 => 'Carte vitale',
+            3 => 'AME',
+            4 => 'Scolarisé',
+            5 => 'Déscolarisé',
+            6 => 'En emploi (à préciser)',
+            7 => 'MLE (conseiller réf.)',
+            8 => 'Pôle emploi',
+            9 => 'Minima-sociaux(RSA, API...)',
+            10 => 'PJJ(Educ. réf.)',
+            11 => 'SPIP (Réfèrent)',
+            12 => 'Entreprise intermédiaire',
+            0 => 'Autres',
+        ];
+
+        $situationValue = $jeune->getSituation();
+
         return $this->render('jeune/show.html.twig', [
             'jeune' => $jeune,
+
         ]);
     }
 

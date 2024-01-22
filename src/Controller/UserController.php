@@ -37,10 +37,13 @@ class UserController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+        $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user-> setCreationDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
+            $user-> setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -49,7 +52,8 @@ class UserController extends AbstractController
 
         return $this->render('user/new.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'userForm' => $form,
+            'date' => $date,
         ]);
     }
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
@@ -102,43 +106,5 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
-    }
-
-
-    #[Route('/multipleNew', name: 'app_multiple_new', methods: ['GET', 'POST'])]
-    public function multipleNew(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $users = [];
-        for ($i = 0; $i < 5; $i++) {
-            $users[] = new User();
-        }
-
-        $forms = [];
-        $error = null;
-
-        foreach ($users as $key => $user) {
-            $forms[$key] = $this->createForm(UserType::class, $user);
-            $forms[$key]->handleRequest($request);
-
-            if ($forms[$key]->isSubmitted() && $forms[$key]->isValid()) {
-                try {
-                    $entityManager->persist($user);
-                    $entityManager->flush();
-                } catch (\Exception $e) {
-                    $error = 'Une erreur est survenue lors de la création d\'un utilisateur.';
-                    break; // Arrête la boucle en cas d'erreur
-                }
-            }
-        }
-
-        $formViews = [];
-        foreach ($forms as $form) {
-            $formViews[] = $form->createView();
-        }
-
-        return $this->render('user/multipleForm.html.twig', [
-            'formViews' => $formViews,
-            'error' => $error,
-        ]);
     }
 }
