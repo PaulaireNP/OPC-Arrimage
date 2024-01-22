@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Secteur{% endblock %}
+{% block title %}Modifier un Secteur{% endblock %}
 
 {% block body %}
-    <h1>Edit Secteur</h1>
+    <h1>Modifier un Secteur</h1>
 
-    {{ include('secteur/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('secteur/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('app_secteur_index') }}">back to list</a>
+    <a href="{{ path('app_secteur_index') }}">Quitter sans sauvegarder</a>
 
     <button onclick="window.location.href='{{ path('app_jeune_index') }}'" class="quitter">
         Quitter sans sauvegarder

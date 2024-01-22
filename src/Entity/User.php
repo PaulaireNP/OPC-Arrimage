@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -37,20 +40,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $mobile = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $street = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $creationDate = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $additionalAddress = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $lastModification = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $city = null;
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Secteur $secteur = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $zipCode = null;
+    #[ORM\OneToMany(mappedBy: 'referentEduc', targetEntity: Jeune::class)]
+    private Collection $jeunes;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $number = null;
+    #[ORM\OneToMany(mappedBy: 'coreferentEduc', targetEntity: Jeune::class)]
+    private Collection $cojeunes;
+
+    public function __construct()
+    {
+        $this->jeunes = new ArrayCollection();
+        $this->cojeunes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -158,62 +168,98 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getStreet(): ?string
+    public function getCreationDate(): ?\DateTimeInterface
     {
-        return $this->street;
+        return $this->creationDate;
     }
 
-    public function setStreet(?string $street): static
+    public function setCreationDate(\DateTimeInterface $creationDate): static
     {
-        $this->street = $street;
+        $this->creationDate = $creationDate;
 
         return $this;
     }
 
-    public function getAdditionalAddress(): ?string
+    public function getLastModification(): ?\DateTimeInterface
     {
-        return $this->additionalAddress;
+        return $this->lastModification;
     }
 
-    public function setAdditionalAddress(?string $additionalAddress): static
+    public function setLastModification(\DateTimeInterface $lastModification): static
     {
-        $this->additionalAddress = $additionalAddress;
+        $this->lastModification = $lastModification;
 
         return $this;
     }
 
-    public function getCity(): ?string
+    public function getSecteur(): ?Secteur
     {
-        return $this->city;
+        return $this->secteur;
     }
 
-    public function setCity(?string $city): static
+    public function setSecteur(?Secteur $secteur): static
     {
-        $this->city = $city;
+        $this->secteur = $secteur;
 
         return $this;
     }
 
-    public function getZipCode(): ?string
+    /**
+     * @return Collection<int, Jeune>
+     */
+    public function getJeunes(): Collection
     {
-        return $this->zipCode;
+        return $this->jeunes;
     }
 
-    public function setZipCode(?string $zipCode): static
+    public function addJeune(Jeune $jeune): static
     {
-        $this->zipCode = $zipCode;
+        if (!$this->jeunes->contains($jeune)) {
+            $this->jeunes->add($jeune);
+            $jeune->setReferentEduc($this);
+        }
 
         return $this;
     }
 
-    public function getNumber(): ?string
+    public function removeJeune(Jeune $jeune): static
     {
-        return $this->number;
+        if ($this->jeunes->removeElement($jeune)) {
+            // set the owning side to null (unless already changed)
+            if ($jeune->getReferentEduc() === $this) {
+                $jeune->setReferentEduc(null);
+            }
+        }
+
+        return $this;
     }
 
-    public function setNumber(?string $number): static
+    /**
+     * @return Collection<int, Jeune>
+     */
+    public function getCojeunes(): Collection
     {
-        $this->number = $number;
+        return $this->cojeunes;
+    }
+
+    public function addCojeune(Jeune $cojeune): static
+    {
+        if (!$this->cojeunes->contains($cojeune)) {
+            $this->cojeunes->add($cojeune);
+            $cojeune->setCoreferentEduc($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCojeune(Jeune $cojeune): static
+    {
+        if ($this->cojeunes->removeElement($cojeune)) {
+            // set the owning side to null (unless already changed)
+            if ($cojeune->getCoreferentEduc() === $this) {
+                $cojeune->setCoreferentEduc(null);
+            }
+        }
 
         return $this;
     }

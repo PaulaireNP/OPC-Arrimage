@@ -3,7 +3,7 @@
 {% block title %}Utilisateurs{% endblock %}
 
 {% block body %}
-    <h1>Utilisateurs</h1>
+    <h1>Équipes</h1>
 
     <table class="table">
         <tbody>
@@ -36,31 +36,19 @@
                 <td>{{ user.mobile }}</td>
             </tr>
             <tr>
-                <th>Rue</th>
-                <td>{{ user.street }}</td>
-            </tr>
-            <tr>
-                <th>Complément d'adresse</th>
-                <td>{{ user.additionalAddress }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ user.city }}</td>
-            </tr>
-            <tr>
-                <th>Code postal</th>
-                <td>{{ user.zipCode }}</td>
-            </tr>
-            <tr>
-                <th>Numéro</th>
-                <td>{{ user.number }}</td>
+                <th>Secteur</th>
+                <td>{{ user.secteur.name }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_index') }}">Retour à la liste</a>
+    <button onclick="window.location.href='{{ path('app_user_index') }}'" class="back">
+        Revenir à la liste
+    </button>
 
-    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+    <button onclick="window.location.href='{{ path('app_user_edit', {'id': user.id}) }}'" class="modifier">
+        Modifier
+    </button>
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

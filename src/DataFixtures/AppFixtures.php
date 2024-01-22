@@ -14,23 +14,41 @@ use Faker\Factory as FakerFactory;
 
 class AppFixtures extends Fixture
 {
-    const NB_USER = 19;
+    const NB_USER = 9;
     const NB_SECTEUR = 5;
-    const NB_JEUNE = 15;
+    const NB_JEUNE = 10;
     const NB_INFOSFORM = 10;
-    const NB_ARTICLE = 15;
+    const NB_ARTICLE = 10;
     const NB_DOCUMENTS = 10;
 
     public function load(ObjectManager $manager): void
     {
         $faker = FakerFactory::create('fr_FR');
 
+        $secteurNames = ['Clichy-sous-bois', 'Sevran-Rougemont', 'Sevran-Beaudottes', 'Montfermeil', 'Tremblay-en-France'];
+        $secteurs = [];
+        foreach ($secteurNames as $secteurName) {
+            $secteur = new Secteur();
+            $secteur
+                ->setName($secteurName)
+                ->setMobile($faker->phoneNumber)
+                ->setMail($faker->email)
+                ->setnumber($faker->buildingNumber)
+                ->setStreet($faker->streetName)
+                ->setAdditionalAddress($faker->paragraph())
+                ->setCity($faker->city)
+                ->setZipCode($faker->postcode);
+
+            $manager->persist($secteur);
+            $secteurs[] = $secteur;
+        }
+
         $userAdmin1 = new User();
         $userAdmin1
             ->setEmail('admin@admin.com')
-            ->setFirstName('Illan')
-            ->setLastName('Cheltiel')
-            ->setPassword('$2y$13$MS/eOiG62OpuRNFaYH7ZQ.D2GbTHFv3BiSh29HEuFXNWCvJKe.g0S') /*admin */
+            ->setFirstName('David')
+            ->setLastName('Mehard')
+            ->setPassword('$2y$13$MS/eOiG62OpuRNFaYH7ZQ.D2GbTHFv3BiSh29HEuFXNWCvJKe.g0S') /* admin */
             ->setRoles(['ROLE_ADMIN'])
             ->setMobile($faker->phoneNumber)
             ->setnumber($faker->buildingNumber)
@@ -38,6 +56,9 @@ class AppFixtures extends Fixture
             ->setAdditionalAddress($faker->paragraph(1))
             ->setCity($faker->city)
             ->setZipCode($faker->postcode);
+            ->setCreationDate($faker->dateTimeBetween('-6 months', 'Now'))
+            ->setLastModification($faker->dateTimeBetween('-6 months', 'Now'))
+            ->setSecteur($faker->randomElement($secteurs));
 
         $manager->persist($userAdmin1);
 
@@ -55,9 +76,13 @@ class AppFixtures extends Fixture
                 ->setAdditionalAddress($faker->paragraph(1))
                 ->setCity($faker->city)
                 ->setZipCode($faker->postcode);
+                ->setCreationDate($faker->dateTimeBetween('-6 months', 'Now'))
+                ->setLastModification($faker->dateTimeBetween('-6 months', 'Now'))
+                ->setSecteur($faker->randomElement($secteurs));
 
         $manager->persist($user);
         }
+
 
         for ($i = 0; $i < self::NB_SECTEUR; $i++) {
         $secteur = new Secteur();
@@ -88,6 +113,66 @@ class AppFixtures extends Fixture
             ->setZipCode($faker->postcode);
 
         $manager->persist($jeune);
+          
+        for ($i = 0; $i < self::NB_JEUNE; $i++) {
+            $jeune = new Jeune();
+            $jeune
+                ->setLastname($faker->lastName())
+                ->setFirstname($faker->firstName())
+                ->setMobile($faker->phoneNumber)
+                ->setMail($faker->email)
+                ->setnumber($faker->buildingNumber)
+                ->setStreet($faker->streetName)
+                ->setAdditionalAddress($faker->paragraph())
+                ->setCity($faker->city)
+                ->setZipCode($faker->postcode)
+                ->setCreationDate($faker->dateTimeBetween('-6 months', 'Now'))
+                ->setLastModification($faker->dateTimeBetween('-6 months', 'Now'))
+                ->setSecteur($faker->randomElement($secteurs))
+                ->setReferentEduc($faker->randomElement([$user]))
+                ->setCoreferentEduc($faker->randomElement([$user]))
+                ->setAncien($faker->boolean(70))
+                ->setRegulier($faker->boolean(70))
+                ->setPolySuivi($faker->randomElement(['Administratif', 'Judiciaire']))
+                ->setCivilite($faker->numberBetween(0, 2))
+                ->setDob($faker->dateTimeBetween('-6 months', 'Now'))
+                ->setQuartier($faker->randomElement(['Clichy-sous-bois', 'Sevran-Rougemont', 'Sevran-Beaudottes', 'Montfermeil', 'Tremblay-en-France']))
+                ->setReseaux($faker->randomElement(['Famille', 'Amis', 'Autres']))
+                ->setRencontre($faker->numberBetween(0, 5))
+                ->setRencontrePrecision($faker->paragraph(1))
+                ->setSituationPrecision($faker->paragraph(1));
+
+            // Génére les actions collectives en JSON
+            $actionsCollectives = [];
+            for ($j = 0; $j < $faker->numberBetween(1, 5); $j++) {
+                $action = [
+                    'type' => $faker->randomElement(['Chantier pédagogique', 'Séjour', 'Chantier éducatif', 'Sortie']),
+                    'description' => $faker->sentence
+                ];
+                $actionsCollectives[] = $action;
+            }
+            $jeune
+                ->setActionsCollectives((array)json_encode($actionsCollectives))
+                ->setActionsCollectivesPrecision($faker->paragraph());
+
+                // Génére la problématique en JSON
+                $problematiques = [];
+                for ($k = 0; $k < $faker->numberBetween(1, 3); $k++) {
+                    $problematique = [
+                        'type' => $faker->randomElement(['Scolarité', 'Santé', 'Insertion', 'Justice']),
+                        'details' => $faker->sentence
+                    ];
+                    $problematiques[] = $problematique;
+                }
+                $jeune
+                ->setProblematique((array)json_encode($problematiques))
+                ->setProblematiquePrecision($faker->paragraph(1))
+                ->setCompteRendu($faker->paragraph(3))
+                ->setDemandeJeune($faker->paragraph(3));
+
+
+            $manager->persist($jeune);
+
         }
 
         for ($i = 0; $i < self::NB_INFOSFORM; $i++) {

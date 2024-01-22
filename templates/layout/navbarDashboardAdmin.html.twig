@@ -33,8 +33,8 @@
                 <!-- Item de navigation : Utilisateurs -->
                 <div class="main-container-dashboard__main-navigation__nav-container__nav-item">
                     <ul>
-                        <li class="main-container-dashboard__main-navigation__nav-container__nav-item__main-list">Utilisateurs</li>
-                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="{{ path('app_user_new') }}">Ajouter</a></li>
+                        <li class="main-container-dashboard__main-navigation__nav-container__nav-item__main-list">Gestion des équipes</li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="{{ path('app_user_new') }}">Ajouter un éducateur</a></li>
                         <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="{{ path('app_user_index') }}">Liste</a></li>
                     </ul>
                 </div>
@@ -51,9 +51,17 @@
                 <!-- Item de navigation : Gestion des équipes -->
                 <div class="main-container-dashboard__main-navigation__nav-container__nav-item">
                     <ul>
-                        <li class="main-container-dashboard__main-navigation__nav-container__nav-item__main-list">Gestion des équipes</li>
-                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Liste</a></li>
-                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="">Ajouter un éducateur</a></li>
+                        <li class="main-container-dashboard__main-navigation__nav-container__nav-item__main-list">Jeune</li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="{{ path('app_jeune_index') }}">Liste</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="{{ path('app_jeune_new') }}">Ajouter un jeune</a></li>
+                    </ul>
+                </div>
+
+                <div class="main-container-dashboard__main-navigation__nav-container__nav-item">
+                    <ul>
+                        <li class="main-container-dashboard__main-navigation__nav-container__nav-item__main-list">Secteurs</li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="{{ path('app_secteur_new') }}">Ajouter</a></li>
+                        <li><a class="main-container-dashboard__main-navigation__nav-container__nav-item__sub-item" href="{{ path('app_secteur_index') }}">Liste</a></li>
                     </ul>
                 </div>
 

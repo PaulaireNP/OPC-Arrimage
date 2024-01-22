@@ -1,51 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jeune index{% endblock %}
+{% block title %}Liste Jeune{% endblock %}
 
 {% block body %}
-    <h1>Jeune index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Lastname</th>
-                <th>Firstname</th>
-                <th>Mobile</th>
-                <th>Mail</th>
-                <th>Number</th>
-                <th>Street</th>
-                <th>AdditionalAddress</th>
-                <th>City</th>
-                <th>ZipCode</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for jeune in jeunes %}
-            <tr>
-                <td>{{ jeune.id }}</td>
-                <td>{{ jeune.lastname }}</td>
-                <td>{{ jeune.firstname }}</td>
-                <td>{{ jeune.mobile }}</td>
-                <td>{{ jeune.mail }}</td>
-                <td>{{ jeune.number }}</td>
-                <td>{{ jeune.street }}</td>
-                <td>{{ jeune.additionalAddress }}</td>
-                <td>{{ jeune.city }}</td>
-                <td>{{ jeune.zipCode }}</td>
-                <td>
-                    <a href="{{ path('app_jeune_show', {'id': jeune.id}) }}">show</a>
-                    <a href="{{ path('app_jeune_edit', {'id': jeune.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="main-jeune">
 
-    <a href="{{ path('app_jeune_new') }}">Create new</a>
+        {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
+        <div class="container-jeune">
+
+            <h1>Liste Jeune</h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Mobile</th>
+                        <th>Mail</th>
+                        <th>Number</th>
+                        <th>Street</th>
+                        <th>AdditionalAddress</th>
+                        <th>City</th>
+                        <th>ZipCode</th>
+                        <th>Date de création</th>
+                        <th>Dernière modification</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for jeune in jeunes %}
+                    <tr>
+                        <td>{{ jeune.id }}</td>
+                        <td>{{ jeune.lastname }}</td>
+                        <td>{{ jeune.firstname }}</td>
+                        <td>{{ jeune.mobile }}</td>
+                        <td>{{ jeune.mail }}</td>
+                        <td>{{ jeune.number }}</td>
+                        <td>{{ jeune.street }}</td>
+                        <td>{{ jeune.additionalAddress }}</td>
+                        <td>{{ jeune.city }}</td>
+                        <td>{{ jeune.zipCode }}</td>
+                        <td>{{ jeune.creationDate ? jeune.creationDate|date('Y-m-d H:i'): ''}}</td>
+                        <td>{{ jeune.lastModification ? jeune.lastModification|date('Y-m-d H:i'): ''}}</td>
+                        <td>
+                            <a href="{{ path('app_jeune_show', {'id': jeune.id}) }}">Voir</a>
+                            <a href="{{ path('app_jeune_edit', {'id': jeune.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="11">Aucun utilisateurs trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('app_jeune_new') }}">Créer un nouveau Jeune</a>
+
+        </div>
+
+    </div>
 {% endblock %}
