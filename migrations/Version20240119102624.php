@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240105105342 extends AbstractMigration
+final class Version20240119102624 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20240105105342 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE documents (id INT AUTO_INCREMENT NOT NULL, tile VARCHAR(255) DEFAULT NULL, file VARCHAR(255) DEFAULT NULL, visible TINYINT(1) DEFAULT NULL, categorie VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE jeune CHANGE actions_collectives actions_collectives LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE situation situation LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE problematique problematique LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\'');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE documents');
+        $this->addSql('ALTER TABLE jeune CHANGE situation situation JSON NOT NULL, CHANGE actions_collectives actions_collectives JSON NOT NULL, CHANGE problematique problematique JSON NOT NULL');
     }
 }

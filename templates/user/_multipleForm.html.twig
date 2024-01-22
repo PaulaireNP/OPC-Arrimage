@@ -1,0 +1,58 @@
+
+{% for userForm in users %}
+    {{ form_start(userForm.multipleForm) }}
+    {{ form_row(userForm.multipleForm.email, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.multipleForm.password, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.multipleForm.lastname, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.multipleForm.firstname, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.multipleForm.mobile, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+        {{ form_row(userForm.multipleForm.secteur, {'attr': {'class': 'dashboard__body__form__select'}}) }}
+
+    {{ form_end(userForm.multipleForm) }}
+{% endfor %}
+{#{{ form_start(userForm, {'attr': {'class': 'dashboard__body__form'}}) }}#}
+{#        {{ form_row(userForm.email, {'attr': {'class': 'dashboard__body__form__input'}}) }}#}
+{#        {{ form_row(userForm.password, {'attr': {'class': 'dashboard__body__form__input'}}) }}#}
+{#        {{ form_row(userForm.lastname, {'attr': {'class': 'dashboard__body__form__input'}}) }}#}
+{#        {{ form_row(userForm.firstname, {'attr': {'class': 'dashboard__body__form__input'}}) }}#}
+{#        {{ form_row(userForm.mobile, {'attr': {'class': 'dashboard__body__form__input'}}) }}#}
+{#        {{ form_row(userForm.secteur, {'attr': {'class': 'dashboard__body__form__select'}}) }}#}
+
+{#<div id="users-container">#}
+{#    <div class="user-form">#}
+
+
+{#    </div>#}
+{#</div>#}
+
+{#<button type="button" id="add-user">Ajouter un Éducateur</button>#}
+
+{#<button class="btn">{{ button_label|default('Sauvegarder') }}</button>#}
+{#{{ form_end(userForm) }}#}
+
+<script>
+    let usersContainer = document.getElementById('users-container');
+    let index = usersContainer.querySelectorAll('.user-form').length;
+
+    // Ajout dynamique d'un champ Éducateur
+    document.getElementById('add-user').addEventListener('click', function() {
+        let userFormTemplate = `{{ form_start(userForm, {'attr': {'class': 'dashboard__body__form'}}) }}
+            {{ form_row(userForm.email, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+            {{ form_row(userForm.password, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+            {{ form_row(userForm.lastname, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+            {{ form_row(userForm.firstname, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+            {{ form_row(userForm.mobile, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+            {{ form_row(userForm.secteur, {'attr': {'class': 'dashboard__body__form__input'}}) }}
+            {{ form_end(userForm) }}`;
+
+        // Créez un nouvel élément div pour contenir le nouveau formulaire
+        let newFormContainer = document.createElement('div');
+        newFormContainer.className = 'user-form';
+        newFormContainer.innerHTML = userFormTemplate.replace(/__name__/g, index);
+
+        // Ajoutez le nouveau formulaire dans le conteneur d'utilisateurs
+        usersContainer.appendChild(newFormContainer);
+
+        index++;
+    });
+</script>

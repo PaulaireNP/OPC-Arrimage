@@ -1,11 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Secteur{% endblock %}
+{% block title %}Nouveau Secteur{% endblock %}
 
 {% block body %}
-    <h1>Create new Secteur</h1>
 
-    {{ include('secteur/_form.html.twig') }}
+<div class="main-add-secteur">
 
-    <a href="{{ path('app_secteur_index') }}">back to list</a>
+    {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
+    <div class="main-add-secteur__container-add-secteur">
+
+        <h1>Créer un nouveau Secteur</h1>
+
+        {{ include('secteur/_form.html.twig') }}
+
+        <a href="{{ path('app_secteur_index') }}">Quitter sans sauvegarder</a>
+
+    </div>
+
+</div>
+
 {% endblock %}

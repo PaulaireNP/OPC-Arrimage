@@ -1207,7 +1207,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 260px;
-  height: 923px;
+  height: 1030px;
   background-color: #404041;
   color: white;
 }
@@ -1453,5 +1453,29 @@ body {
 }
 
 /*end add documents*/
+/*start list jeune*/
+.main-jeune {
+  display: flex;
+}
+
+/*end list jeune*/
+/*start add jeune*/
+.main-add-jeune {
+  display: flex;
+}
+
+/*end add jeune*/
+/*start list secteur*/
+.main-secteur {
+  display: flex;
+}
+
+/*end list secteur*/
+/*start add secteur*/
+.main-add-secteur {
+  display: flex;
+}
+
+/*end add secteur*/
 
 /*# sourceMappingURL=app.css.map */
