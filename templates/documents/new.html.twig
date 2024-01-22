@@ -11,10 +11,12 @@
         <div class="main-add-documents__container-add-documents">
 
             <h1>Create new Documents</h1>
-
             {{ include('documents/_form.html.twig') }}
 
-            <a href="{{ path('app_documents_index') }}">back to list</a>
+
+            <button onclick="window.location.href='{{ path('app_documents_index') }}'" class="quitter">
+                Quitter sans sauvegarder
+            </button>
 
         </div>
 

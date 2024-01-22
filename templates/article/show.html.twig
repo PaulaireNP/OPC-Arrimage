@@ -21,11 +21,17 @@
             </tr>
             <tr>
                 <th>Image</th>
+                <img src="/uploads/articles/{{ article.image }}">
                 <td>{{ article.image }}</td>
             </tr>
+
             <tr>
                 <th>Date de publication</th>
-                <td>{{ article.creationDate ? article.creationDate|date('Y-m-d') : '' }}</td>
+                <td>{{ article.creationDate ? article.creationDate|date('Y-m-d H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date de la dernière modification</th>
+                <td>{{ article.updateDate ? article.updateDate|date('Y-m-d H:i') : '' }}</td>
             </tr>
             <tr>
                 <th>Auteur</th>

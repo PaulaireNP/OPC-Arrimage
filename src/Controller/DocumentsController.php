@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Documents;
 use App\Form\DocumentsType;
 use App\Repository\DocumentsRepository;
+use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,14 +23,21 @@ class DocumentsController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_documents_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/new{category}', name: 'app_documents_new', methods: ['GET', 'POST'],)]
+    public function new(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader, $category = null): Response
     {
         $document = new Documents();
+        $document->setCategorie($category);
         $form = $this->createForm(DocumentsType::class, $document);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form -> get('file') -> getData();
+            if($file){
+                $document->setFile($fileUploader->uploadDocument($file));
+            }
+
             $entityManager->persist($document);
             $entityManager->flush();
 
@@ -39,6 +47,7 @@ class DocumentsController extends AbstractController
         return $this->render('documents/new.html.twig', [
             'document' => $document,
             'form' => $form,
+            'category' => $category
         ]);
     }
 
@@ -51,12 +60,16 @@ class DocumentsController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_documents_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Documents $document, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Documents $document, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(DocumentsType::class, $document);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form -> get('file') -> getData();
+            if($file){
+                $document->setFile($fileUploader->uploadDocument($file));
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('app_documents_index', [], Response::HTTP_SEE_OTHER);

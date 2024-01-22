@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ArticleType extends AbstractType
 {
@@ -14,8 +16,22 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('image')
-            ->add('creationDate')
+            ->add('image', FileType::class, [
+                'label' => 'Image (jpg,jpeg,png)',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '50000k',
+                        'mimeTypes' => [
+                            'image/jpg',
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Désolé, seulement les fichiers de type JPG, JPEG & PNG sont acceptés.',
+                    ])
+                ],
+            ])
             ->add('author')
             ->add('visible')
         ;

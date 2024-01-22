@@ -51,9 +51,15 @@ class AppFixtures extends Fixture
             ->setPassword('$2y$13$MS/eOiG62OpuRNFaYH7ZQ.D2GbTHFv3BiSh29HEuFXNWCvJKe.g0S') /* admin */
             ->setRoles(['ROLE_ADMIN'])
             ->setMobile($faker->phoneNumber)
+            ->setnumber($faker->buildingNumber)
+            ->setStreet($faker->streetName)
+            ->setAdditionalAddress($faker->paragraph(1))
+            ->setCity($faker->city)
+            ->setZipCode($faker->postcode);
             ->setCreationDate($faker->dateTimeBetween('-6 months', 'Now'))
             ->setLastModification($faker->dateTimeBetween('-6 months', 'Now'))
             ->setSecteur($faker->randomElement($secteurs));
+
         $manager->persist($userAdmin1);
 
         for ($i = 0; $i < self::NB_USER; $i++) {
@@ -65,6 +71,11 @@ class AppFixtures extends Fixture
                 ->setPassword('$2y$13$OZp.F8JwLXAshXwmX39xTOfAaph8fvNSSM93MrAiTIGNDgqLQAc/e') /*user */
                 ->setRoles(['ROLE_USER'])
                 ->setMobile($faker->phoneNumber)
+                ->setnumber($faker->buildingNumber)
+                ->setStreet($faker->streetName)
+                ->setAdditionalAddress($faker->paragraph(1))
+                ->setCity($faker->city)
+                ->setZipCode($faker->postcode);
                 ->setCreationDate($faker->dateTimeBetween('-6 months', 'Now'))
                 ->setLastModification($faker->dateTimeBetween('-6 months', 'Now'))
                 ->setSecteur($faker->randomElement($secteurs));
@@ -72,6 +83,37 @@ class AppFixtures extends Fixture
         $manager->persist($user);
         }
 
+
+        for ($i = 0; $i < self::NB_SECTEUR; $i++) {
+        $secteur = new Secteur();
+        $secteur
+            ->setName($faker->sentence())
+            ->setMobile($faker->phoneNumber)
+            ->setMail($faker->email)
+            ->setnumber($faker->buildingNumber)
+            ->setStreet($faker->streetName)
+            ->setAdditionalAddress($faker->paragraph(1))
+            ->setCity($faker->city)
+            ->setZipCode($faker->postcode);
+
+        $manager->persist($secteur);
+        }
+
+        for ($i = 0; $i < self::NB_JEUNE; $i++) {
+        $jeune = new Jeune();
+        $jeune
+            ->setLastname($faker->lastName())
+            ->setFirstname($faker->firstName())
+            ->setMobile($faker->phoneNumber)
+            ->setMail($faker->email)
+            ->setnumber($faker->buildingNumber)
+            ->setStreet($faker->streetName)
+            ->setAdditionalAddress($faker->paragraph(1))
+            ->setCity($faker->city)
+            ->setZipCode($faker->postcode);
+
+        $manager->persist($jeune);
+          
         for ($i = 0; $i < self::NB_JEUNE; $i++) {
             $jeune = new Jeune();
             $jeune
@@ -130,6 +172,7 @@ class AppFixtures extends Fixture
 
 
             $manager->persist($jeune);
+
         }
 
         for ($i = 0; $i < self::NB_INFOSFORM; $i++) {
@@ -141,7 +184,7 @@ class AppFixtures extends Fixture
             ->setMail($faker->email)
             ->setnumber($faker->buildingNumber)
             ->setStreet($faker->streetName)
-            ->setAdditionalAddress($faker->paragraph())
+            ->setAdditionalAddress($faker->paragraph(1))
             ->setCity($faker->city)
             ->setZipCode($faker->postcode);
 
@@ -155,6 +198,7 @@ class AppFixtures extends Fixture
             ->setDescription($faker->sentence(3))
             ->setImage($faker->image())
             ->setCreationDate($faker->dateTimeBetween('-6 months', '-1 month'))
+            ->setUpdateDate($faker->dateTimeBetween('-1 month', 'Now'))
             ->setAuthor('David')
             ->setVisible($faker->boolean(70));
 
