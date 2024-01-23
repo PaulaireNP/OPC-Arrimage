@@ -90,6 +90,7 @@ class AppFixtures extends Fixture
                 ->setReferentEduc($faker->randomElement([$user]))
                 ->setCoreferentEduc($faker->randomElement([$user]))
                 ->setAncien($faker->boolean(70))
+                ->setNouveau($faker->boolean(70))
                 ->setRegulier($faker->boolean(70))
                 ->setPolySuivi($faker->randomElement(['Administratif', 'Judiciaire']))
                 ->setCivilite($faker->numberBetween(0, 2))
