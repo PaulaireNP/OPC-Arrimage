@@ -14,7 +14,9 @@
 
             {{ include('article/_form.html.twig') }}
 
-            <a href="{{ path('app_article_index') }}">Retour à la liste</a>
+            <button onclick="window.location.href='{{ path('app_jeune_index') }}'" class="quitter">
+                Quitter sans sauvegarder
+            </button>
 
         </div>
 

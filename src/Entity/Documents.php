@@ -13,16 +13,16 @@ class Documents
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $title = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $file = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
     private ?bool $visible = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $categorie = null;
 
     public function getId(): ?int
@@ -30,14 +30,14 @@ class Documents
         return $this->id;
     }
 
-    public function getTile(): ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(?string $tile): static
+    public function setTitle(?string $title): static
     {
-        $this->title = $tile;
+        $this->title = $title;
 
         return $this;
     }
