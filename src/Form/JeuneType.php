@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -17,6 +18,8 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -27,17 +30,29 @@ class JeuneType extends AbstractType
     {
 
         $builder
-            ->add('ancien', CheckboxType::class, [
-                'label' => 'Ancien',
-                'required' => false,
+            ->add('accompagnement', ChoiceType::class, [
+                'label' => 'Accompagnement',
+                'required' => true,
+                'expanded' => true,
+                'choices' => [
+                    'Ancien' => 0,
+                    'Nouveau' => 1,
+                ],
+                'attr' => [
+                    'class' => 'accompagnement-choice',
+                ],
             ])
-            ->add('nouveau', CheckboxType::class, [
-                'label' => 'Nouveau',
-                'required' => false,
-            ])
-            ->add('regulier', CheckboxType::class, [
-                'label' => 'Régulier',
-                'required' => false,
+            ->add('typeAccompagnement', ChoiceType::class, [
+                'label' => false,
+                'required' => true,
+                'expanded' => true,
+                'choices' => [
+                    'Ponctuel' => 2,
+                    'Régulier' => 3,
+                ],
+                'attr' => [
+                    'class' => 'type-accompagnement',
+                ],
             ])
             ->add('polySuivi', ChoiceType::class, [
                 'label' => 'Poly suivi',
@@ -101,31 +116,15 @@ class JeuneType extends AbstractType
                     ])
                 ]
             ])
-            ->add('number', NumberType::class, [
-                'label' => 'Numéro de rue',
-                'required' => true,
-                'attr' => [
-                'placeholder' => 'Ex: 123',
-                ],
-                'constraints' => [
-                new Assert\NotBlank([
-                    'message' => 'Veuillez entrer un numéro de rue.',
-                ]),
-                new Assert\Regex([
-                    'pattern' => '/^\d+[a-zA-Z]?$/',
-                    'message' => 'Veuillez entrer un numéro de rue valide.',
-                ]),
-            ],
-            ])
             ->add('street', TextType::class, [
-                'label' => 'Rue',
+                'label' => 'Adresse',
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'Ex: Rue des Fleurs',
+                    'placeholder' => 'Ex: 18 Rue des Fleurs',
                 ],
                 'constraints' => [
                     new Assert\NotBlank([
-                        'message' => 'Veuillez entrer le nom de la rue.',
+                        'message' => 'Veuillez entrer le numéro et le nom de la rue.',
                     ]),
                 ],
             ])
@@ -171,11 +170,23 @@ class JeuneType extends AbstractType
                     'placeholder' => 'Entrez le nom du quartier',
                 ],
             ])
-            ->add('reseaux', TextType::class, [
-                'label' => 'Réseaux',
+            ->add('reseaux', ChoiceType::class, [
+                'label' => 'Réseaux sociaux',
+                'required' => false,
+                'choices' => [
+                    'Facebook' => 'facebook',
+                    'Instagram' => 'instagram',
+                    'Snapchat' => 'snapchat',
+                    'X' => 'x',
+                    'Autres' => 'autres',
+                ],
+                'placeholder' => 'Choisissez un réseau',
+            ])
+            ->add('reseauxPrecision', TextType::class, [
+                'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Entrez les réseaux',
+                    'placeholder' => 'Précisez',
                 ],
             ])
             ->add('secteur', EntityType::class, [
@@ -228,11 +239,6 @@ class JeuneType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Précisez',
                 ],
-                'constraints' => [
-                    new Assert\NotBlank([
-                        'message' => 'Veuillez préciser.',
-                    ]),
-                ],
             ])
             ->add('situation', ChoiceType::class, [
                 'label' => 'Situation',
@@ -267,11 +273,6 @@ class JeuneType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Précisez',
                 ],
-                'constraints' => [
-                    new Assert\NotBlank([
-                        'message' => 'Veuillez préciser.',
-                    ]),
-                ],
             ])
             ->add('actionsCollectives', ChoiceType::class, [
                 'label' => 'Actions collectives',
@@ -292,11 +293,6 @@ class JeuneType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Précisez',
-                ],
-                'constraints' => [
-                    new Assert\NotBlank([
-                        'message' => 'Veuillez préciser.',
-                    ]),
                 ],
             ])
             ->add('compteRendu', TextareaType::class, [
@@ -351,11 +347,6 @@ class JeuneType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Précisez',
-                ],
-                'constraints' => [
-                    new Assert\NotBlank([
-                        'message' => 'Veuillez préciser.',
-                    ]),
                 ],
             ]);
     }

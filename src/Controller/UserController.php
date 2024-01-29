@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Secteur;
 use App\Entity\User;
+use App\Form\UserCollectionType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use DateTime;
@@ -37,14 +38,18 @@ class UserController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+        $users = array_fill(0, 5, new User());
+        $form = $this->createForm(UserCollectionType::class, ['users' => $users]);
         $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
-        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user-> setCreationDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
-            $user-> setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
-            $entityManager->persist($user);
+            foreach ($form->get('users')->getData() as $user) {
+                $user-> setCreationDate(creationDate: new DateTime('now', new DateTimeZone('Europe/Paris')));
+                $user-> setLastModification(lastModification: new DateTime('now', new DateTimeZone('Europe/Paris')));
+
+                $entityManager->persist($user);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
@@ -52,7 +57,7 @@ class UserController extends AbstractController
 
         return $this->render('user/new.html.twig', [
             'user' => $user,
-            'userForm' => $form,
+            'userForm' => $form->createView(),
             'date' => $date,
         ]);
     }

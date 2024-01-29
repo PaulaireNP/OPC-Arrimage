@@ -14,18 +14,17 @@ use Faker\Factory as FakerFactory;
 
 class AppFixtures extends Fixture
 {
-    const NB_USER = 9;
-    const NB_SECTEUR = 5;
-    const NB_JEUNE = 10;
-    const NB_INFOSFORM = 10;
-    const NB_ARTICLE = 10;
-    const NB_DOCUMENTS = 10;
+    const NB_USER = 5;
+    const NB_JEUNE = 5;
+    const NB_INFOSFORM = 5;
+    const NB_ARTICLE = 5;
+    const NB_DOCUMENTS = 5;
 
     public function load(ObjectManager $manager): void
     {
         $faker = FakerFactory::create('fr_FR');
 
-        $secteurNames = ['Clichy-sous-bois', 'Sevran-Rougemont', 'Sevran-Beaudottes', 'Montfermeil', 'Tremblay-en-France'];
+        $secteurNames = ['Clichy-sous-bois', 'Sevran', 'Montfermeil', 'Tremblay-en-France'];
         $secteurs = [];
         foreach ($secteurNames as $secteurName) {
             $secteur = new Secteur();
@@ -33,8 +32,7 @@ class AppFixtures extends Fixture
                 ->setName($secteurName)
                 ->setMobile($faker->phoneNumber)
                 ->setMail($faker->email)
-                ->setnumber($faker->buildingNumber)
-                ->setStreet($faker->streetName)
+                ->setStreet($faker->address())
                 ->setAdditionalAddress($faker->paragraph())
                 ->setCity($faker->city)
                 ->setZipCode($faker->postcode);
@@ -79,8 +77,7 @@ class AppFixtures extends Fixture
                 ->setFirstname($faker->firstName())
                 ->setMobile($faker->phoneNumber)
                 ->setMail($faker->email)
-                ->setnumber($faker->buildingNumber)
-                ->setStreet($faker->streetName)
+                ->setStreet($faker->address())
                 ->setAdditionalAddress($faker->paragraph())
                 ->setCity($faker->city)
                 ->setZipCode($faker->postcode)
@@ -89,9 +86,8 @@ class AppFixtures extends Fixture
                 ->setSecteur($faker->randomElement($secteurs))
                 ->setReferentEduc($faker->randomElement([$user]))
                 ->setCoreferentEduc($faker->randomElement([$user]))
-                ->setAncien($faker->boolean(70))
-                ->setNouveau($faker->boolean(70))
-                ->setRegulier($faker->boolean(70))
+                ->setAccompagnement($faker->numberBetween(0, 1))
+                ->setTypeAccompagnement($faker->numberBetween(2, 3))
                 ->setPolySuivi($faker->randomElement(['Administratif', 'Judiciaire']))
                 ->setCivilite($faker->numberBetween(0, 2))
                 ->setDob($faker->dateTimeBetween('-6 months', 'Now'))

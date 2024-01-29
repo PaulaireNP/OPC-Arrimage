@@ -7,8 +7,6 @@
 
     {{ include('secteur/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('app_secteur_index') }}">Quitter sans sauvegarder</a>
-
     <button onclick="window.location.href='{{ path('app_jeune_index') }}'" class="quitter">
         Quitter sans sauvegarder
     </button>

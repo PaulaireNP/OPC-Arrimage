@@ -25,9 +25,6 @@ class Secteur
     private ?string $mail = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $number = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $street = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -88,18 +85,6 @@ class Secteur
     public function setMail(?string $mail): static
     {
         $this->mail = $mail;
-
-        return $this;
-    }
-
-    public function getNumber(): ?string
-    {
-        return $this->number;
-    }
-
-    public function setNumber(?string $number): static
-    {
-        $this->number = $number;
 
         return $this;
     }

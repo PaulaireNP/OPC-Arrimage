@@ -12,6 +12,14 @@
                 <td>{{ jeune.id }}</td>
             </tr>
             <tr>
+                <th>Accompagnement</th>
+                <td>{{ jeune.accompagnement == '0' ? 'Ancien' : jeune.accompagnement == '1' ? 'Nouveau'}}</td>
+            </tr>
+            <tr>
+                <th>Type d'accompagnement</th>
+                <td>{{ jeune.typeAccompagnement == '2' ? 'Ponctuel' : jeune.typeAccompagnement == '3' ? 'Régulier'}}</td>
+            </tr>
+            <tr>
                 <th>Poly Suivi</th>
                 <td>{{ jeune.polySuivi ? 'Administratif' : 'Judiciaire' }}</td>
             </tr>
@@ -40,11 +48,7 @@
                 <td>{{ jeune.mail }}</td>
             </tr>
             <tr>
-                <th>Numéro</th>
-                <td>{{ jeune.number }}</td>
-            </tr>
-            <tr>
-                <th>Rue</th>
+                <th>Adresse</th>
                 <td>{{ jeune.street }}</td>
             </tr>
             <tr>
@@ -64,24 +68,31 @@
                 <td>{{ jeune.quartier }}</td>
             </tr>
             <tr>
-                <th>Réseaux</th>
+                <th>Réseaux sociaux</th>
                 <td>{{ jeune.reseaux }}</td>
             </tr>
             <tr>
+                <th>Réseau sociaux précision</th>
+                <td>{{ jeune.reseauxPrecision }}</td>
+            <tr>
                 <th>Secteur</th>
-                <td>{{ jeune.secteur.name }}</td> {# Assurez-vous que 'secteur' est une relation et 'name' est le champ approprié #}
+                <td>{{ jeune.secteur.name }}</td>
             </tr>
             <tr>
                 <th>Référent éducatif</th>
-                <td>{{ jeune.referentEduc.lastname }}</td> {# De même, assurez-vous que c'est la bonne propriété #}
+                <td>{{ jeune.referentEduc.firstname }}</td>
             </tr>
             <tr>
                 <th>Co-référent éducatif</th>
-                <td>{{ jeune.coreferentEduc }}</td>
+                {% if jeune.coreferentEduc %}
+                    <td>{{ jeune.coreferentEduc.firstname }}</td>
+                {% else %}
+                    <td>Aucun</td>
+                {% endif %}
             </tr>
             <tr>
                 <th>Rencontre</th>
-                <td>{{ jeune.rencontre }}</td> {# Vous devrez adapter cette ligne en fonction de la manière dont vous stockez et affichez les valeurs #}
+                <td>{{ jeune.getRencontreAsStrings }}</td>
             </tr>
             <tr>
                 <th>Précision de la rencontre</th>
@@ -89,7 +100,10 @@
             </tr>
             <tr>
                 <th>Situation</th>
-                <td>{{ jeune.situation }}</td> {# De même, adaptez en fonction de la représentation de votre situation #}
+                <td>{% for situation in jeune.getSituationAsStrings %}
+                        {{ situation }}<br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Précision de la situation</th>
@@ -97,7 +111,10 @@
             </tr>
             <tr>
                 <th>Actions collectives</th>
-                <td>{{ jeune.actionsCollectives }}</td> {# Adaptez selon la représentation des actions collectives #}
+                <td>{% for actions in jeune.getActionsCollectivesAsStrings %}
+                        {{ actions }}<br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Précision des actions collectives</th>
@@ -113,7 +130,10 @@
             </tr>
             <tr>
                 <th>Problématique</th>
-                <td>{{ jeune.problematique }}</td> {# Adaptez selon la représentation de la problématique #}
+                <td>{% for problematique in jeune.getProblematiqueAsStrings %}
+                        {{ problematique }}<br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Précision de la problématique</th>
@@ -122,9 +142,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_jeune_index') }}">Retour à la liste</a>
+    <button onclick="window.location.href='{{ path('app_jeune_index') }}'">Quitter sans sauvegarder</button>
 
-    <a href="{{ path('app_jeune_edit', {'id': jeune.id}) }}">Modifier</a>
+    <button onclick="window.location.href='{{ path('app_jeune_edit', {'id': jeune.id}) }}'">Modifier</button>
 
     {{ include('jeune/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,5 +1,7 @@
 {{ form_start(form) }}
 
+    {{ form_row(form.accompagnement) }}
+    {{ form_row(form.typeAccompagnement) }}
     {{ form_row(form.polySuivi) }}
     {{ form_row(form.civilite) }}
     {{ form_row(form.lastname) }}
@@ -7,13 +9,13 @@
     {{ form_row(form.dob) }}
     {{ form_row(form.mobile) }}
     {{ form_row(form.mail) }}
-    {{ form_row(form.number) }}
     {{ form_row(form.street) }}
     {{ form_row(form.additionalAddress) }}
     {{ form_row(form.city) }}
     {{ form_row(form.zipCode) }}
     {{ form_row(form.quartier) }}
     {{ form_row(form.reseaux) }}
+    {{ form_row(form.reseauxPrecision) }}
     {{ form_row(form.secteur) }}
     {{ form_row(form.referentEduc) }}
     {{ form_row(form.coreferentEduc) }}
@@ -29,5 +31,47 @@
     {{ form_row(form.problematiquePrecision) }}
 
 <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+
+{#Script pour le formulaire Accompagnement#}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const accompagnementChoices = document.querySelectorAll('.accompagnement-choice input');
+        const typeAccompagnementDiv = document.querySelector('.type-accompagnement');
+
+        function updateTypeAccompagnementDisplay() {
+            const selectedValue = document.querySelector('.accompagnement-choice input:checked').value;
+            if (selectedValue === '0') { // Ancien
+                typeAccompagnementDiv.style.display = 'block';
+            } else { // Nouveau
+                typeAccompagnementDiv.style.display = 'none';
+            }
+        }
+
+        accompagnementChoices.forEach(function(choice) {
+            choice.addEventListener('change', updateTypeAccompagnementDisplay);
+        });
+
+        updateTypeAccompagnementDisplay(); // Pour initialiser l'affichage lors du chargement de la page
+    });
+</script>
+
+{#Script pour le formulaire Réseaux#}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const reseauxSelect = document.getElementById('jeune_reseaux');
+        const reseauxPrecisionField = document.getElementById('jeune_reseauxPrecision');
+
+        function togglePrecisionField() {
+            if (reseauxSelect.value === 'autres') {
+                reseauxPrecisionField.style.display = 'block';
+            } else {
+                reseauxPrecisionField.style.display = 'none';
+            }
+        }
+
+        reseauxSelect.addEventListener('change', togglePrecisionField);
+        togglePrecisionField(); // Pour définir l'état initial
+    });
+</script>
 
 {{ form_end(form) }}
