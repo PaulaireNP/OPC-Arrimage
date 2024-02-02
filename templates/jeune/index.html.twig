@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste Jeune{% endblock %}
+{% block title %}Liste générale{% endblock %}
 
 {% block body %}
 
@@ -16,15 +16,15 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Secteur</th>
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Mobile</th>
-                        <th>Mail</th>
-                        <th>Number</th>
-                        <th>Street</th>
-                        <th>AdditionalAddress</th>
-                        <th>City</th>
-                        <th>ZipCode</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+                        <th>Complément d'adresse</th>
+                        <th>Ville</th>
+                        <th>Code postal</th>
                         <th>Date de création</th>
                         <th>Dernière modification</th>
                         <th>Actions</th>
@@ -34,11 +34,11 @@
                 {% for jeune in jeunes %}
                     <tr>
                         <td>{{ jeune.id }}</td>
+                        <td>{{ jeune.secteur.name }}</td>
                         <td>{{ jeune.lastname }}</td>
                         <td>{{ jeune.firstname }}</td>
                         <td>{{ jeune.mobile }}</td>
                         <td>{{ jeune.mail }}</td>
-                        <td>{{ jeune.number }}</td>
                         <td>{{ jeune.street }}</td>
                         <td>{{ jeune.additionalAddress }}</td>
                         <td>{{ jeune.city }}</td>

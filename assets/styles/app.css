@@ -1465,6 +1465,10 @@ body {
 }
 
 /*end add jeune*/
+.type-accompagnement {
+  display: none;
+}
+
 /*start list secteur*/
 .main-secteur {
   display: flex;

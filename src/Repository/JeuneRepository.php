@@ -21,20 +21,44 @@ class JeuneRepository extends ServiceEntityRepository
         parent::__construct($registry, Jeune::class);
     }
 
-//    /**
-//     * @return Jeune[] Returns an array of Jeune objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('j')
-//            ->andWhere('j.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('j.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Jeune[] Returns an array of Jeune objects
+     */
+    public function findBySecteur($value): array
+    {
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.secteur = :val')
+            ->setParameter('val', $value)
+            ->orderBy('j.lastModification', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByReferentEduc($value): array
+    {
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.referentEduc = :val')
+            ->setParameter('val', $value)
+            ->orderBy('j.lastModification', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByCoReferentEduc($value): array
+    {
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.coreferentEduc = :val')
+            ->setParameter('val', $value)
+            ->orderBy('j.lastModification', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
 //    public function findOneBySomeField($value): ?Jeune
 //    {

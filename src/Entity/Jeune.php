@@ -27,9 +27,6 @@ class Jeune
     private ?string $mail = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $number = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $street = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -46,18 +43,6 @@ class Jeune
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $lastModification = null;
-
-    #[ORM\Column]
-    private ?bool $ancien = null;
-
-    #[ORM\Column]
-    private ?bool $nouveau = null;
-
-    #[ORM\Column]
-    private ?bool $regulier = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $polySuivi = null;
 
     #[ORM\Column]
     private ?int $civilite = null;
@@ -88,9 +73,6 @@ class Jeune
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $rencontrePrecision = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $situationPrecision = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $actionsCollectivesPrecision = null;
 
@@ -100,9 +82,6 @@ class Jeune
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $demandeJeune = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $problematiquePrecision = null;
-
     #[ORM\Column(type: Types::ARRAY)]
     private array $situation = [];
 
@@ -111,6 +90,21 @@ class Jeune
 
     #[ORM\Column(type: Types::ARRAY)]
     private array $problematique = [];
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $situationPrecision = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $ProblematiquePrecision = null;
+
+    #[ORM\Column]
+    private ?int $accompagnement = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $typeAccompagnement = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $reseauxPrecision = null;
 
     public function getId(): ?int
     {
@@ -161,18 +155,6 @@ class Jeune
     public function setMail(?string $mail): static
     {
         $this->mail = $mail;
-
-        return $this;
-    }
-
-    public function getNumber(): ?string
-    {
-        return $this->number;
-    }
-
-    public function setNumber(?string $number): static
-    {
-        $this->number = $number;
 
         return $this;
     }
@@ -245,54 +227,6 @@ class Jeune
     public function setLastModification(\DateTimeInterface $lastModification): static
     {
         $this->lastModification = $lastModification;
-
-        return $this;
-    }
-
-    public function isAncien(): ?bool
-    {
-        return $this->ancien;
-    }
-
-    public function setAncien(bool $ancien): static
-    {
-        $this->ancien = $ancien;
-
-        return $this;
-    }
-
-    public function isNouveau(): ?bool
-    {
-        return $this->nouveau;
-    }
-
-    public function setNouveau(bool $nouveau): static
-    {
-        $this->nouveau = $nouveau;
-
-        return $this;
-    }
-
-    public function isRegulier(): ?bool
-    {
-        return $this->regulier;
-    }
-
-    public function setRegulier(bool $regulier): static
-    {
-        $this->regulier = $regulier;
-
-        return $this;
-    }
-
-    public function getPolySuivi(): ?string
-    {
-        return $this->polySuivi;
-    }
-
-    public function setPolySuivi(?string $polySuivi): static
-    {
-        $this->polySuivi = $polySuivi;
 
         return $this;
     }
@@ -385,6 +319,17 @@ class Jeune
     {
         return $this->rencontre;
     }
+    public function getRencontreAsStrings(): string {
+        $mapping = [
+            1 => 'PS',
+            2 => 'Famille',
+            3 => 'Copain',
+            4 => 'Collège',
+            5 => 'Partenaire',
+            0 => 'Autres',
+        ];
+        return $mapping[$this->rencontre] ?? 'Inconnu';
+    }
 
     public function setRencontre(int $rencontre): static
     {
@@ -401,18 +346,6 @@ class Jeune
     public function setRencontrePrecision(?string $rencontrePrecision): static
     {
         $this->rencontrePrecision = $rencontrePrecision;
-
-        return $this;
-    }
-
-    public function getSituationPrecision(): ?string
-    {
-        return $this->situationPrecision;
-    }
-
-    public function setSituationPrecision(string $situationPrecision): static
-    {
-        $this->situationPrecision = $situationPrecision;
 
         return $this;
     }
@@ -453,21 +386,34 @@ class Jeune
         return $this;
     }
 
-    public function getProblematiquePrecision(): ?string
-    {
-        return $this->problematiquePrecision;
-    }
-
-    public function setProblematiquePrecision(string $problematiquePrecision): static
-    {
-        $this->problematiquePrecision = $problematiquePrecision;
-
-        return $this;
-    }
-
     public function getSituation(): array
     {
         return $this->situation;
+    }
+
+    public function getSituationAsStrings(): array
+    {
+        $mapping = [
+            1 => 'CNI/Titre de séjour',
+            2 => 'Carte vitale',
+            3 => 'AME',
+            4 => 'Scolarisé',
+            5 => 'Déscolarisé',
+            6 => 'En emploi',
+            7 => 'MLE',
+            8 => 'Pôle emploi',
+            9 => 'Minima-sociaux',
+            10 => 'PJJ',
+            11 => 'SPIP',
+            12 => 'Entreprise intermédiaire',
+            0 => 'Autres',
+        ];
+
+        return array_map(function($situation) use ($mapping)
+        {
+            return $mapping[$situation] ?? 'Inconnu';
+        },
+            $this->situation);
     }
 
     public function setSituation(array $situation): static
@@ -482,6 +428,24 @@ class Jeune
         return $this->actionsCollectives;
     }
 
+    public function getActionsCollectivesAsStrings(): array
+    {
+        $mapping = [
+            1 => 'Chantier pédagogique',
+            2 => 'Séjour',
+            3 => 'Chantier éducatif',
+            4 => 'Sortie',
+            5 => 'Quartier amélioration cadre de vie',
+            0 => 'Autres',
+        ];
+
+        return array_map(function($action) use ($mapping)
+            {
+                return $mapping[$action] ?? 'Inconnu';
+            },
+                $this->actionsCollectives);
+    }
+
     public function setActionsCollectives(array $actionsCollectives): static
     {
         $this->actionsCollectives = $actionsCollectives;
@@ -494,9 +458,88 @@ class Jeune
         return $this->problematique;
     }
 
+public function getProblematiqueAsStrings(): array
+    {
+        $mapping = [
+            1 => 'Scolarité',
+            2 => 'Santé',
+            3 => 'Insertion',
+            4 => 'Justice',
+            5 => 'Loisirs',
+            6 => 'Accès aux droits',
+            0 => 'Autres',
+        ];
+
+        return array_map(function($problematique) use ($mapping)
+            {
+                return $mapping[$problematique] ?? 'Inconnu';
+            },
+                $this->problematique);
+    }
+
     public function setProblematique(array $problematique): static
     {
         $this->problematique = $problematique;
+
+        return $this;
+    }
+
+    public function getSituationPrecision(): ?string
+    {
+        return $this->situationPrecision;
+    }
+
+    public function setSituationPrecision(?string $situationPrecision): static
+    {
+        $this->situationPrecision = $situationPrecision;
+
+        return $this;
+    }
+
+    public function getProblematiquePrecision(): ?string
+    {
+        return $this->ProblematiquePrecision;
+    }
+
+    public function setProblematiquePrecision(?string $ProblematiquePrecision): static
+    {
+        $this->ProblematiquePrecision = $ProblematiquePrecision;
+
+        return $this;
+    }
+
+    public function getAccompagnement(): ?int
+    {
+        return $this->accompagnement;
+    }
+
+    public function setAccompagnement(int $accompagnement): static
+    {
+        $this->accompagnement = $accompagnement;
+
+        return $this;
+    }
+
+    public function getTypeAccompagnement(): ?int
+    {
+        return $this->typeAccompagnement;
+    }
+
+    public function setTypeAccompagnement(int $typeAccompagnement): static
+    {
+        $this->typeAccompagnement = $typeAccompagnement;
+
+        return $this;
+    }
+
+    public function getReseauxPrecision(): ?string
+    {
+        return $this->reseauxPrecision;
+    }
+
+    public function setReseauxPrecision(?string $reseauxPrecision): static
+    {
+        $this->reseauxPrecision = $reseauxPrecision;
 
         return $this;
     }
