@@ -17,11 +17,12 @@ Encore
     /*
      * ENTRY CONFIG
      *
-     * Each entry will result in one JavaScript file (e.g. app.js)
+     * Each entry will result in one JavaScript file (e.g. main.js)
      * and one CSS file (e.g. app.sass) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/app.js')
-    .addEntry('styles', './assets/styles/app.css')
+    .addEntry('app', './assets/js/app.js')
+    .addEntry('jeune-form', './assets/js/jeune-form.js')
+    // .addEntry('vue', './assets/vue/vue.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -56,6 +57,9 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+
+    // enables Vue.js support
+    .enableVueLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
