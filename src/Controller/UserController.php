@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Secteur;
 use App\Entity\User;
-use App\Form\UserCollectionType;
 use App\Form\UserType;
+use App\Repository\JeuneRepository;
 use App\Repository\UserRepository;
 use DateTime;
 use DateTimeZone;
@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -38,18 +37,14 @@ class UserController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $users = array_fill(0, 5, new User());
-        $form = $this->createForm(UserCollectionType::class, ['users' => $users]);
         $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            foreach ($form->get('users')->getData() as $user) {
-                $user-> setCreationDate(creationDate: new DateTime('now', new DateTimeZone('Europe/Paris')));
-                $user-> setLastModification(lastModification: new DateTime('now', new DateTimeZone('Europe/Paris')));
-
-                $entityManager->persist($user);
-            }
+            $user->setCreationDate(creationDate: new DateTime('now', new DateTimeZone('Europe/Paris')));
+            $user->setLastModification(lastModification: new DateTime('now', new DateTimeZone('Europe/Paris')));
+            $entityManager->persist($user);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
@@ -62,10 +57,14 @@ class UserController extends AbstractController
         ]);
     }
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, JeuneRepository $jeuneRepository, Request $request): Response
     {
+        $jeunes = $jeuneRepository->findByReferentEduc($user);
+        $coJeunes = $jeuneRepository->findByCoreferentEduc($user);
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'jeunes' => $jeunes,
+            'coJeunes' => $coJeunes,
         ]);
     }
 

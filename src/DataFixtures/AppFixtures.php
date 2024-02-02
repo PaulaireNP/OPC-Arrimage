@@ -88,7 +88,6 @@ class AppFixtures extends Fixture
                 ->setCoreferentEduc($faker->randomElement([$user]))
                 ->setAccompagnement($faker->numberBetween(0, 1))
                 ->setTypeAccompagnement($faker->numberBetween(2, 3))
-                ->setPolySuivi($faker->randomElement(['Administratif', 'Judiciaire']))
                 ->setCivilite($faker->numberBetween(0, 2))
                 ->setDob($faker->dateTimeBetween('-6 months', 'Now'))
                 ->setQuartier($faker->randomElement(['Clichy-sous-bois', 'Sevran-Rougemont', 'Sevran-Beaudottes', 'Montfermeil', 'Tremblay-en-France']))

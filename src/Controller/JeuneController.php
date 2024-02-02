@@ -24,6 +24,9 @@ class JeuneController extends AbstractController
         ]);
     }
 
+    /**
+     * @throws \Exception
+     */
     #[Route('/new', name: 'app_jeune_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -33,8 +36,8 @@ class JeuneController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $jeune-> setCreationDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
-            $jeune-> setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
+            $jeune->setCreationDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
+            $jeune->setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $entityManager->persist($jeune);
             $entityManager->flush();
 
@@ -51,11 +54,8 @@ class JeuneController extends AbstractController
     #[Route('/{id}', name: 'app_jeune_show', methods: ['GET'])]
     public function show(Jeune $jeune): Response
     {
-
-
         return $this->render('jeune/show.html.twig', [
             'jeune' => $jeune,
-
         ]);
     }
 
@@ -66,7 +66,7 @@ class JeuneController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $jeune-> setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
+            $jeune->setLastModification(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $entityManager->flush();
 
             return $this->redirectToRoute('app_jeune_index', [], Response::HTTP_SEE_OTHER);

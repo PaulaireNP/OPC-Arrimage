@@ -44,9 +44,6 @@ class Jeune
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $lastModification = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $polySuivi = null;
-
     #[ORM\Column]
     private ?int $civilite = null;
 
@@ -103,7 +100,7 @@ class Jeune
     #[ORM\Column]
     private ?int $accompagnement = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $typeAccompagnement = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -230,18 +227,6 @@ class Jeune
     public function setLastModification(\DateTimeInterface $lastModification): static
     {
         $this->lastModification = $lastModification;
-
-        return $this;
-    }
-
-    public function getPolySuivi(): ?string
-    {
-        return $this->polySuivi;
-    }
-
-    public function setPolySuivi(?string $polySuivi): static
-    {
-        $this->polySuivi = $polySuivi;
 
         return $this;
     }

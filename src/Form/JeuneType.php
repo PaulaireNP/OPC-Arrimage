@@ -44,7 +44,6 @@ class JeuneType extends AbstractType
             ])
             ->add('typeAccompagnement', ChoiceType::class, [
                 'label' => false,
-                'required' => true,
                 'expanded' => true,
                 'choices' => [
                     'Ponctuel' => 2,
@@ -52,15 +51,6 @@ class JeuneType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'type-accompagnement',
-                ],
-            ])
-            ->add('polySuivi', ChoiceType::class, [
-                'label' => 'Poly suivi',
-                'required' => true,
-                'expanded' => true,
-                'choices' => [
-                    'Administratif' => true,
-                    'Judiciaire' => false,
                 ],
             ])
             ->add('civilite', ChoiceType::class, [
@@ -199,6 +189,9 @@ class JeuneType extends AbstractType
                         'message' => 'Veuillez sélectionner un secteur.',
                     ]),
                 ],
+                'attr' => [
+                    'class' => 'secteur-select',
+                ],
             ])
             ->add(('referentEduc'), EntityType::class, [
                 'class' => User::class,
@@ -211,6 +204,9 @@ class JeuneType extends AbstractType
                     ]),
                 ],
                 'label' => 'Référent éducatif',
+                'attr' => [
+                    'class' => 'referentEduc-select',
+                ],
             ])
             ->add('coreferentEduc', EntityType::class, [
                 'class' => User::class,
@@ -218,12 +214,14 @@ class JeuneType extends AbstractType
                 'placeholder' => 'Sélectionner un co-référent',
                 'required' => false,
                 'label' => 'Co-référent éducatif',
+                'attr' => [
+                    'class' => 'coreferentEduc-select',
+                ],
             ])
             ->add('rencontre', ChoiceType::class, [
                 'label' => 'Rencontre',
                 'required' => true,
                 'expanded' => true,
-                'placeholder' => 'Sélectionner une option',
                 'choices' => [
                     'PS' => 1,
                     'Famille' => 2,
@@ -232,12 +230,16 @@ class JeuneType extends AbstractType
                     'Partenaire (à préciser)' => 5,
                     'Autres (à préciser)' => 0,
                 ],
+                'attr' => [
+                    'class' => 'rencontre-choice',
+                ],
             ])
             ->add('rencontrePrecision', TextType::class, [
-                'label' => 'Précision',
+                'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Précisez',
+                    'class' => 'rencontre-precision',
                 ],
             ])
             ->add('situation', ChoiceType::class, [
@@ -252,11 +254,11 @@ class JeuneType extends AbstractType
                     'En emploi (à préciser)' => 6,
                     'MLE (conseiller réf.)' => 7,
                     'Pôle emploi' => 8,
-                    'Minima-sociaux(RSA, API...)' => 9,
-                    'PJJ(Educ. réf.)' => 10,
+                    'Minima-sociaux (RSA, API...)' => 9,
+                    'PJJ (Educ. réf.)' => 10,
                     'SPIP (Réfèrent)' => 11,
                     'Entreprise intermédiaire' => 12,
-                    'Autres' => 0,
+                    'Autres (à préciser)' => 0,
                 ],
                 'expanded' => true,
                 'multiple' => true,
@@ -265,13 +267,17 @@ class JeuneType extends AbstractType
                         'message' => 'Veuillez sélectionner une situation.',
                     ]),
                 ],
-                'placeholder' => 'Sélectionner une situation',
+                'attr' => [
+                    'placeholder' => 'Sélectionner une situation',
+                    'class' => 'situation-choice',
+                ],
             ])
             ->add('situationPrecision', TextType::class, [
-                'label' => 'Précision',
+                'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Précisez',
+                    'class' => 'situation-precision',
                 ],
             ])
             ->add('actionsCollectives', ChoiceType::class, [
@@ -283,16 +289,21 @@ class JeuneType extends AbstractType
                     'Chantier éducatif' => 3,
                     'Sortie' => 4,
                     'Quartier amélioration cadre de vie' => 5,
-                    'Autres' => 0,
+                    'Autres (à préciser)' => 0,
                 ],
                 'expanded' => true,
                 'multiple' => true,
+                'attr' => [
+                    'placeholder' => 'Sélectionner une action collective',
+                    'class' => 'actions-collectives-choice',
+                ],
             ])
             ->add('actionsCollectivesPrecision', TextType::class, [
-                'label' => 'Précision',
+                'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Précisez',
+                    'class' => 'actions-collectives-precision',
                 ],
             ])
             ->add('compteRendu', TextareaType::class, [
@@ -332,7 +343,7 @@ class JeuneType extends AbstractType
                     'Justice' => 4,
                     'Loisirs' => 5,
                     'Accès aux droits' => 6,
-                    'Autres' => 0,
+                    'Autres (à préciser)' => 0,
                 ],
                 'expanded' => true,
                 'multiple' => true,
@@ -341,12 +352,16 @@ class JeuneType extends AbstractType
                         'message' => 'Veuillez sélectionner une problématique.',
                     ]),
                 ],
+                'attr' => [
+                    'class' => 'problematique-choice',
+                ],
             ])
             ->add('problematiquePrecision', TextType::class, [
-                'label' => 'Précision',
+                'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Précisez',
+                    'class' => 'problematique-precision',
                 ],
             ]);
     }

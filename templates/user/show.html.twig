@@ -43,7 +43,7 @@
     </table>
 
     <button onclick="window.location.href='{{ path('app_user_index') }}'" class="back">
-        Quitter sans sauvegarder
+        Revenir à la liste
     </button>
 
     <button onclick="window.location.href='{{ path('app_user_edit', {'id': user.id}) }}'" class="modifier">
@@ -51,4 +51,75 @@
     </button>
 
     {{ include('user/_delete_form.html.twig') }}
+
+    <h2>Jeunes Référents</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Date de création</th>
+            <th>Dernière modification</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for jeune in jeunes %}
+            <tr>
+                <td>{{ jeune.lastname }}</td>
+                <td>{{ jeune.firstname }}</td>
+                <td>{{ jeune.mobile }}</td>
+                <td>{{ jeune.mail }}</td>
+                <td>{{ jeune.creationDate ? jeune.creationDate|date('Y-m-d H:i'): ''}}</td>
+                <td>{{ jeune.lastModification ? jeune.lastModification|date('Y-m-d H:i'): ''}}</td>
+                <td>
+                    <a href="{{ path('app_jeune_show', {'id': jeune.id}) }}">Voir</a>
+                    <a href="{{ path('app_jeune_edit', {'id': jeune.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">Aucun jeunes trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# Liste des jeunes dont l'utilisateur est le coréférent #}
+    <h2>Jeunes Coréférents</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Date de création</th>
+            <th>Dernière modification</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for jeune in coJeunes %}
+            <tr>
+                <td>{{ jeune.lastname }}</td>
+                <td>{{ jeune.firstname }}</td>
+                <td>{{ jeune.mobile }}</td>
+                <td>{{ jeune.mail }}</td>
+                <td>{{ jeune.creationDate ? jeune.creationDate|date('Y-m-d H:i'): ''}}</td>
+                <td>{{ jeune.lastModification ? jeune.lastModification|date('Y-m-d H:i'): ''}}</td>
+                <td>
+                    <a href="{{ path('app_jeune_show', {'id': jeune.id}) }}">Voir</a>
+                    <a href="{{ path('app_jeune_edit', {'id': jeune.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun jeune coréférent trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
