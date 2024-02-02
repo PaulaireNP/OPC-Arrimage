@@ -60,6 +60,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->jeunes = new ArrayCollection();
         $this->cojeunes = new ArrayCollection();
+        $this->creationDate = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
     }
 
     public function getId(): ?int
