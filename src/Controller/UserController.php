@@ -36,13 +36,12 @@ class UserController extends AbstractController
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = new User();
         $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setCreationDate(creationDate: new DateTime('now', new DateTimeZone('Europe/Paris')));
+            $user = $form->getData();
             $user->setLastModification(lastModification: new DateTime('now', new DateTimeZone('Europe/Paris')));
             $entityManager->persist($user);
             $entityManager->flush();
@@ -51,7 +50,6 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/new.html.twig', [
-            'user' => $user,
             'userForm' => $form->createView(),
             'date' => $date,
         ]);

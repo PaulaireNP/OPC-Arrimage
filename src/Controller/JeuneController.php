@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\FicheSuivi;
 use App\Entity\Jeune;
 use App\Form\JeuneType;
+use App\Repository\FicheSuiviRepository;
 use App\Repository\JeuneRepository;
 use DateTime;
 use DateTimeZone;
@@ -52,10 +54,12 @@ class JeuneController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_jeune_show', methods: ['GET'])]
-    public function show(Jeune $jeune): Response
+    public function show(Jeune $jeune, FicheSuiviRepository $ficheSuiviRepository): Response
     {
+        $ficheSuivis = $ficheSuiviRepository->findByUser($jeune);
         return $this->render('jeune/show.html.twig', [
             'jeune' => $jeune,
+            'fiche_suivis' => $ficheSuivis,
         ]);
     }
 

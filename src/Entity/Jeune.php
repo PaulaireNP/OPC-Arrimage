@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\JeuneRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -105,6 +107,14 @@ class Jeune
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $reseauxPrecision = null;
+
+    #[ORM\OneToMany(mappedBy: 'jeune', targetEntity: FicheSuivi::class)]
+    private Collection $fichesSuivi;
+
+    public function __construct()
+    {
+        $this->fichesSuivi = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -540,6 +550,36 @@ public function getProblematiqueAsStrings(): array
     public function setReseauxPrecision(?string $reseauxPrecision): static
     {
         $this->reseauxPrecision = $reseauxPrecision;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FicheSuivi>
+     */
+    public function getFichesSuivi(): Collection
+    {
+        return $this->fichesSuivi;
+    }
+
+    public function addFichesSuivi(FicheSuivi $fichesSuivi): static
+    {
+        if (!$this->fichesSuivi->contains($fichesSuivi)) {
+            $this->fichesSuivi->add($fichesSuivi);
+            $fichesSuivi->setJeune($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFichesSuivi(FicheSuivi $fichesSuivi): static
+    {
+        if ($this->fichesSuivi->removeElement($fichesSuivi)) {
+            // set the owning side to null (unless already changed)
+            if ($fichesSuivi->getJeune() === $this) {
+                $fichesSuivi->setJeune(null);
+            }
+        }
 
         return $this;
     }

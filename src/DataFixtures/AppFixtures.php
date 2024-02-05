@@ -16,7 +16,6 @@ class AppFixtures extends Fixture
 {
     const NB_USER = 5;
     const NB_JEUNE = 5;
-    const NB_INFOSFORM = 5;
     const NB_ARTICLE = 5;
     const NB_DOCUMENTS = 5;
 
@@ -126,22 +125,6 @@ class AppFixtures extends Fixture
 
 
             $manager->persist($jeune);
-        }
-
-        for ($i = 0; $i < self::NB_INFOSFORM; $i++) {
-            $infosForm = new InfosForm();
-            $infosForm
-                ->setLastname($faker->lastName())
-                ->setFirstname($faker->firstName())
-                ->setMobile($faker->phoneNumber)
-                ->setMail($faker->email)
-                ->setnumber($faker->buildingNumber)
-                ->setStreet($faker->streetName)
-                ->setAdditionalAddress($faker->paragraph())
-                ->setCity($faker->city)
-                ->setZipCode($faker->postcode);
-
-            $manager->persist($infosForm);
         }
 
         for ($i = 0; $i < self::NB_ARTICLE; $i++) {
