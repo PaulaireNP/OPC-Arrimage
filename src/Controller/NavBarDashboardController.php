@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class NavBarDashboardController extends AbstractController
 {
-    #[Route('/nav/bar/dashboard', name: 'app_nav_bar_dashboard')]
+    #[Route('/nav/bar/dashboardAdmin', name: 'app_nav_bar_dashboard')]
     public function index(): Response
     {
         return $this->render('navbarDashboardAdmin.sass.html.twig', [

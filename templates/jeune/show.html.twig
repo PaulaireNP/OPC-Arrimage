@@ -3,96 +3,130 @@
 {% block title %}Jeune{% endblock %}
 
 {% block body %}
-    <h1>Jeune</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Nom</th>
-                <td>{{ jeune.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Prénom</th>
-                <td>{{ jeune.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Date de naissance</th>
-                <td>{{ jeune.dob|date('d/m/Y') }}</td>
-            </tr>
-            <tr>
-                <th>Téléphone</th>
-                <td>{{ jeune.mobile }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ jeune.mail }}</td>
-            </tr>
-            <tr>
-                <th>Quartier</th>
-                <td>{{ jeune.quartier }}</td>
-            </tr>
-            <tr>
-                <th>Réseaux sociaux</th>
-                <td>{{ jeune.reseaux }}</td>
-            </tr>
-            <tr>
-                <th>Réseau sociaux précision</th>
-                <td>{{ jeune.reseauxPrecision }}</td>
-            <tr>
-                <th>Secteur</th>
-                <td>{{ jeune.secteur.name }}</td>
-            </tr>
-            <tr>
-                <th>Référent éducatif</th>
-                <td>{{ jeune.referentEduc.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Co-référent éducatif</th>
-                {% if jeune.coreferentEduc %}
-                    <td>{{ jeune.coreferentEduc.firstname }}</td>
-                {% else %}
-                    <td>Aucun</td>
-                {% endif %}
-            </tr>
-            <tr>
-                <th>Compte rendu</th>
-                <td>{{ jeune.compteRendu }}</td>
-            </tr>
-            <tr>
-                <th>Demande du jeune</th>
-                <td>{{ jeune.demandeJeune }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="main-show-jeune">
 
-    <div>
-        <h2>Fiche de liaison</h2>
+        {% include 'layout/navbarDashboardAdmin.html.twig' %}
 
-        <button onclick="window.location.href=''">Mettre à jour la fiche de liaison</button>
+        <div class="container-show-jeune">
 
-        <button onclick="window.location.href=''">Télécharger la fiche de liaison</button>
+            <h1>Jeunes</h1>
 
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ jeune.lastname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prénom</th>
+                        <td>{{ jeune.firstname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de naissance</th>
+                        <td>{{ jeune.dob|date('d/m/Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Téléphone</th>
+                        <td>{{ jeune.mobile }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ jeune.mail }}</td>
+                    </tr>
+                    <tr>
+                        <th>Quartier</th>
+                        <td>{{ jeune.quartier }}</td>
+                    </tr>
+                    <tr>
+                        <th>Réseaux sociaux</th>
+                        <td>{{ jeune.reseaux }}</td>
+                    </tr>
+                    <tr>
+                        <th>Réseau sociaux précision</th>
+                        <td>{{ jeune.reseauxPrecision }}</td>
+                    <tr>
+                        <th>Secteur</th>
+                        <td>{{ jeune.secteur.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Référent éducatif</th>
+                        <td>{{ jeune.referentEduc.firstname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Co-référent éducatif</th>
+                        {% if jeune.coreferentEduc %}
+                            <td>{{ jeune.coreferentEduc.firstname }}</td>
+                        {% else %}
+                            <td>Aucun</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Compte rendu</th>
+                        <td>{{ jeune.compteRendu }}</td>
+                    </tr>
+                    <tr>
+                        <th>Demande du jeune</th>
+                        <td>{{ jeune.demandeJeune }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div>
+                <h2>Fiche de liaison</h2>
+
+                <button onclick="window.location.href='{{ path('app_jeune_edit', {'id': jeune.id}) }}'">Mettre à jour la fiche de liaison</button>
+
+                <button onclick="window.location.href=''">Télécharger la fiche de liaison</button>
+
+            </div>
+
+            <div>
+
+                <h2>Fiche de suivi</h2>
+
+                <button onclick="window.location.href='{{ path('app_fiche_suivi_show', {'id': jeune.id}) }}'">Voir</button>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>date du rdv</th>
+                            <th>Contenu de l’échange/
+                                Observations</th>
+                            <th>Orientation /
+                                Accompagnement</th>
+                            <th>Echéance fixée
+                                avec le jeune</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for fiche_suivi in fiche_suivis %}
+                        <tr>
+                            <td>{{ fiche_suivi.creationDate ? fiche_suivi.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ fiche_suivi.echange }}</td>
+                            <td>{{ fiche_suivi.orientation }}</td>
+                            <td>{{ fiche_suivi.echeance ? fiche_suivi.echeance|date('Y-m-d') : '' }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">Aucune fiche de suivi pour le moment...</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <button onclick="window.location.href='{{ path('app_fiche_suivi_delete', {'id': jeune.id}) }}'">Supprimer</button>
+                <button onclick="window.location.href='{{ path('app_fiche_suivi_edit', {'id': jeune.id}) }}'">Modifier</button>
+
+                <button onclick="window.location.href='{{ path('app_fiche_suivi_new', {'jeune': jeune.id}) }}'">Créer une fiche de suivi</button>
+
+            </div> <br>
+
+            <button onclick="window.location.href='{{ path('app_jeune_index') }}'">Revenir à la liste</button>
+
+            {{ include('jeune/_delete_form.html.twig') }}
+
+        </div>
     </div>
-
-    <div>
-
-        <h2>Fiche de suivi (Si aucunes fiches)</h2>
-
-        <button onclick="window.location.href=''">Créer une fiche de suivi</button>
-
-    </div>
-
-    <div>
-
-        <h2>Fiche de suivi</h2>
-
-<button onclick="window.location.href=''">Créer une fiche de suivie</button>
-
-    </div> <br>
-
-    <button onclick="window.location.href='{{ path('app_jeune_index') }}'">Revenir à la liste</button>
-
-    <button onclick="window.location.href='{{ path('app_jeune_edit', {'id': jeune.id}) }}'">Modifier</button>
-
-    {{ include('jeune/_delete_form.html.twig') }}
 {% endblock %}

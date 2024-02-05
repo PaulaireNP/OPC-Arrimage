@@ -1288,7 +1288,7 @@ body {
 }
 
 /* end navbar Dashboard admin */
-/*start dashboard admin*/
+/*start dashboardAdmin admin*/
 .dashboard-container {
   display: flex;
 }
@@ -1416,7 +1416,7 @@ body {
   display: inline-block;
 }
 
-/*end dashboard admin*/
+/*end dashboardAdmin admin*/
 /*start liste article*/
 .main-blog {
   display: flex;
@@ -1465,10 +1465,18 @@ body {
 }
 
 /*end add jeune*/
+/*start form jeune*/
 .type-accompagnement {
   display: none;
 }
 
+/*end form jeune*/
+/*start show jeune*/
+.main-show-jeune {
+  display: flex;
+}
+
+/*end show jeune*/
 /*start list secteur*/
 .main-secteur {
   display: flex;

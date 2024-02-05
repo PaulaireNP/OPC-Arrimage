@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche de suivi{% endblock %}
+
+{% block body %}
+
+    <h1>Fiche de suivi</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rencontre</th>
+                <th>CreationDate</th>
+                <th>Echange</th>
+                <th>Orientation</th>
+                <th>Echeance</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_suivi in fiche_suivis %}
+            <tr>
+                <td>{{ fiche_suivi.id }}</td>
+                <td>{{ fiche_suivi.rencontre }}</td>
+                <td>{{ fiche_suivi.creationDate ? fiche_suivi.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ fiche_suivi.echange }}</td>
+                <td>{{ fiche_suivi.orientation }}</td>
+                <td>{{ fiche_suivi.echeance ? fiche_suivi.echeance|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_fiche_suivi_show', {'id': fiche_suivi.id}) }}">show</a>
+                    <a href="{{ path('app_fiche_suivi_edit', {'id': fiche_suivi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucune fiche de suivi pour le moment...</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_suivi_new') }}">Create new</a>
+{% endblock %}
