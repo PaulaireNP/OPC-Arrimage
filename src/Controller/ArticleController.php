@@ -10,6 +10,7 @@ use DateTime;
 use DateTimeZone;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,12 +19,33 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/article')]
 class ArticleController extends AbstractController
 {
+
     #[Route('/', name: 'app_article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository): Response
     {
-        return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->findAll(),
-        ]);
+        return $this->render('article/index.html.twig');
+    }
+
+    #[Route('/data', name: 'app_article_data',)]
+    public function jsonData(ArticleRepository $articleRepository): JsonResponse
+    {
+        $articles = $articleRepository->findAll();
+
+        $data = [];
+        foreach ($articles as $article) {
+            $data[] = [
+                'id' => $article->getId(),
+                'title' => $article->getTitle(),
+                'description' => $article->getDescription(),
+                'image' => $article->getImage(),
+                'creationDate' => $article->getCreationDate(),
+                'updateDate' => $article->getUpdateDate()->format('Y-m-d H:i:s'),
+                'author' => $article->getAuthor(),
+                'visible' => $article->isVisible(),
+            ];
+        }
+
+        return $this->json($data);
     }
 
     #[Route('/new', name: 'app_article_new', methods: ['GET', 'POST'])]
@@ -34,10 +56,22 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $image = $form -> get('image') -> getData();
+
             if($image){
                 $article->setImage($fileUploader->uploadArticles($image));
             }
+
+            $illustrations = $form->get('illustrations')->getData();
+            dd($illustrations);
+            $newIllustrations = [];
+            foreach ($illustrations as $illustration) {
+                $newIllustrations[] = $fileUploader->uploadIllustrations($illustration);
+            }
+            dd($newIllustrations);
+
+            $article->setIllustrations($newIllustrations);
             $article -> setCreationDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $article -> setUpdateDate(new DateTime('now', new DateTimeZone('Europe/Paris')));
             $entityManager->persist($article);

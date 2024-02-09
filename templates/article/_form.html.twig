@@ -1,4 +1,45 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.image) }}
+    {{ form_row(form.author) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.visible) }}
+    <h3>Illustrations</h3>
+    <div id="illustrations" data-prototype="{{ form_widget(form.illustrations.vars.prototype)|e('html_attr') }}">
+        {% for illustration in form.illustrations %}
+            <div>
+                {{ form_row(illustration) }}
+                <button type="button" class="btn btn-danger" onclick="removeIllustration(this)">Remove</button>
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" class="btn btn-success" onclick="addIllustration()">Add Illustration</button>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
+
 {{ form_end(form) }}
+
+<script>
+    function addIllustration() {
+        const container = document.getElementById('illustrations');
+        const prototype = container.getAttribute('data-prototype');
+        const index = container.children.length;
+
+        const newForm = prototype.replace(/__name__/g, index);
+
+        // Crée un nouveau élément DOM grace au prototype prototype
+        const newField = document.createElement('div');
+        newField.classList.add('illustration-field');
+
+        // bouton supprimer le nouveau element
+        newField.innerHTML = `${newForm} <button type="button" class="btn btn-danger" onclick="removeIllustration(this)">Remove</button>`;
+
+        // ajoute le nouveau field
+        container.appendChild(newField);
+    }
+
+    function removeIllustration(button) {
+        const div = button.closest('.illustration-field');
+        div.remove();
+    }
+</script>

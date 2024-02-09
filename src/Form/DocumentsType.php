@@ -24,10 +24,7 @@ class DocumentsType extends AbstractType
                     'Rapports d\'activités' => 'Rapportsdactivites'
                 ],
                 'required' => true,
-
             ])
-
-            #todo choosetype qui propose seulement les 3 catégories
             ->add('file', FileType::class, [
                 'label' => 'Fichiers (pdf,docx,odt,xlsx,ods)',
                 'mapped' => false,
@@ -35,6 +32,7 @@ class DocumentsType extends AbstractType
                 'constraints' => [
                     new File([
                         'maxSize' => '50000k',
+                        // mimeTypes Ce sont les types de fichiers qui sont accéptés au téléchargement
                         'mimeTypes' => [
                             'application/pdf',
                             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',

@@ -4,55 +4,70 @@
 
 {% block body %}
 
+
+
     <div class="main-blog">
 
         {% include 'layout/navbarDashboardAdmin.html.twig' %}
+
 
         <div>
 
             <h1 class="main-blog__title-blog">Blog</h1>
 
+
+            <div>
+                <label for="filter">Filtrer par :</label>
+                <input type="text" id="filterTitle" placeholder="Titre" >
+                <input type="text" id="filterDescription" placeholder="Description" >
+                <input type="text" id="filterAuthor" placeholder="Auteur" >
+            </div>
+
             <table class="main-blog__table">
                 <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Titre</th>
-                        <th>Description</th>
-                        <th>Image</th>
-                        <th>Date de publication</th>
-                        <th>Date de la dernière modification</th>
-                        <th>Auteur</th>
-                        <th>Visible</th>
-                        <th>Actions</th>
-                    </tr>
+                <tr>
+                    <th>
+                        Titre
+                        <button data-sort="title">↕</button>
+                    </th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>
+                        Date de création
+                        <button data-sort="creationDate">↕</button>
+                    </th>
+                    <th>
+                        Date de la dernière modification
+                        <button data-sort="updateDate">↕</button>
+                    </th>
+                    <th>
+                        Auteur
+                        <button data-sort="author">↕</button>
+                    </th>
+                    <th>
+                        Visible
+                        <button data-sort="visible">↕</button>
+                    </th>
+                    <th>Actions</th>
+                </tr>
                 </thead>
                 <tbody>
-                {% for article in articles %}
-                    <tr>
-                        <td>{{ article.id }}</td>
-                        <td>{{ article.title }}</td>
-                        <td>{{ article.description }}</td>
-                        <td>{{ article.image }}</td>
-                        <td>{{ article.creationDate ? article.creationDate|date('Y-m-d h H:i') : '' }}</td>
-                        <td>{{ article.updateDate ? article.updateDate|date('Y-m-d H:i') : '' }}</td>
-                        <td>{{ article.author }}</td>
-                        <td>{{ article.visible ? 'Yes' : 'No' }}</td>
-                        <td>
-                            <a href="{{ path('app_article_show', {'id': article.id}) }}">voir</a>
-                            <a href="{{ path('app_article_edit', {'id': article.id}) }}">modifier</a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="8">no records found</td>
-                    </tr>
-                {% endfor %}
+                {# La partie généré par le JavaScript #}
                 </tbody>
             </table>
 
             <a href="{{ path('app_article_new') }}">Créer un nouveau</a>
 
+            <div id="pagination">
+                <!-- Les boutons de pagination seront ajoutés ici dynamiquement -->
+            </div>
+
         </div>
 
+
     </div>
+
+    {% block javascripts %}
+        <script src="{{ asset('js/article.js') }}" defer></script>
+    {% endblock %}
 {% endblock %}

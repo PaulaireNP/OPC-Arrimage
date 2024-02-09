@@ -28,6 +28,21 @@ class FileUploader
         return $fileName;
     }
 
+    public function uploadIllustrations(UploadedFile $file): string
+    {
+        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFilename = $this->slugger->slug($originalFilename);
+        $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+        try {
+            $file->move($this->getTargetDirectory().'illustrations/', $fileName);
+        } catch (FileException $e) {
+            #todo ... handle exception if something happens during file upload
+        }
+
+        return $fileName;
+    }
+
     public function uploadDocument(UploadedFile $file): string
     {
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);

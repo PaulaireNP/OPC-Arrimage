@@ -36,6 +36,9 @@ class Article
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $creationDate = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?array $illustrations = null;
+
 
 
     public function getId(): ?int
@@ -123,6 +126,18 @@ class Article
     public function setCreationDate(\DateTimeInterface $creationDate): static
     {
         $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    public function getIllustrations(): ?array
+    {
+        return $this->illustrations;
+    }
+
+    public function setIllustrations(?array $illustrations): static
+    {
+        $this->illustrations = $illustrations;
 
         return $this;
     }
